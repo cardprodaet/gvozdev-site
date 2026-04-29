@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Контакты — Владислав Гвоздев</title>
+  <meta name="description" content="Запишитесь на бесплатную диагностику магазина WB или Ozon."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0f1e; --card:#111827; --border:rgba(255,255,255,.08);
+      --text:#f0f4ff; --muted:#8b9ab8; --accent:#2563eb; --accent2:#60a5fa;
+      --accent3:#f97316; --radius:20px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+ 
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(10,15,30,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:var(--text);text-decoration:none;}
+    .nav-logo span{color:var(--accent2);}
+    .nav-links{display:flex;gap:32px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-cta{background:var(--accent);color:white!important;padding:10px 22px;border-radius:12px;font-weight:700!important;}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .burger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:8px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{color:var(--text);text-decoration:none;font-size:22px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--border);}
+ 
+    /* HERO */
+    .page-hero{padding:140px 40px 80px;text-align:center;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(37,99,235,.15) 0%,transparent 70%);}
+    .page-hero-content{position:relative;}
+    .section-label{display:inline-block;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;}
+    .page-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(30px,5vw,56px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px;}
+    .page-hero p{font-size:18px;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.6;}
+ 
+    /* MAIN WRAP */
+    .contacts-wrap{max-width:1100px;margin:0 auto;padding:0 40px 100px;display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:start;}
+ 
+    /* FORM */
+    .form-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:40px;}
+    .form-title{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:900;margin-bottom:8px;}
+    .form-sub{font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6;}
+ 
+    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+    .field label{font-size:13px;font-weight:700;color:var(--muted);}
+    .field input,.field select,.field textarea{
+      width:100%;padding:14px 16px;border-radius:14px;border:1.5px solid var(--border);
+      background:rgba(255,255,255,.05);color:var(--text);font-size:15px;
+      font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{
+      border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.12);
+    }
+    .field input::placeholder,.field textarea::placeholder{color:var(--muted);}
+    .field select{appearance:none;-webkit-appearance:none;cursor:pointer;}
+    .field select option{background:#111827;color:var(--text);}
+    .field textarea{resize:vertical;min-height:120px;}
+ 
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+ 
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 28px;border-radius:14px;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s,box-shadow .15s,background .15s;width:100%;}
+    .btn:active{transform:scale(.97);}
+    .btn-primary{background:var(--accent);color:white;box-shadow:0 8px 24px rgba(37,99,235,.35);}
+    .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+ 
+    .form-hint{font-size:12px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.5;}
+ 
+    /* SUCCESS */
+    .success-msg{display:none;text-align:center;padding:32px 0;}
+    .success-icon{font-size:56px;margin-bottom:16px;}
+    .success-msg h3{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin-bottom:8px;}
+    .success-msg p{font-size:15px;color:var(--muted);}
+ 
+    /* SIDEBAR */
+    .sidebar{display:flex;flex-direction:column;gap:16px;}
+ 
+    .contact-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;transition:border-color .25s,transform .25s;}
+    .contact-card:hover{border-color:rgba(37,99,235,.35);transform:translateY(-3px);}
+    .contact-card a{text-decoration:none;color:var(--text);display:block;}
+ 
+    .contact-icon{width:48px;height:48px;border-radius:14px;background:rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;}
+    .contact-icon.tg{background:rgba(37,150,235,.15);}
+    .contact-icon.phone{background:rgba(34,197,94,.12);}
+    .contact-icon.email{background:rgba(249,115,22,.15);}
+ 
+    .contact-card h3{font-size:15px;font-weight:800;margin-bottom:4px;}
+    .contact-card p{font-size:13px;color:var(--muted);margin-bottom:10px;}
+    .contact-value{font-size:15px;font-weight:700;color:var(--accent2);}
+ 
+    /* PROFILE */
+    .profile-card{background:linear-gradient(135deg,#1e3a8a,#2563eb);border-radius:20px;padding:28px;text-align:center;}
+    .profile-photo{width:80px;height:80px;border-radius:50%;margin:0 auto 14px;overflow:hidden;border:3px solid rgba(255,255,255,.3);}
+    .profile-photo img{width:100%;height:100%;object-fit:cover;}
+    .profile-photo-placeholder{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 14px;border:3px solid rgba(255,255,255,.3);}
+    .profile-name{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;margin-bottom:4px;}
+    .profile-role{font-size:13px;opacity:.8;margin-bottom:16px;}
+    .profile-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+    .profile-badge{background:rgba(255,255,255,.15);color:white;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;}
+ 
+    /* STEPS */
+    .steps-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;}
+    .steps-card h3{font-size:15px;font-weight:800;margin-bottom:18px;}
+    .mini-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+    .mini-step:last-child{margin-bottom:0;}
+    .mini-num{width:26px;height:26px;border-radius:8px;background:rgba(37,99,235,.2);border:1px solid rgba(37,99,235,.4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:var(--accent2);flex-shrink:0;}
+    .mini-step-text b{display:block;font-size:13px;margin-bottom:2px;}
+    .mini-step-text p{font-size:12px;color:var(--muted);}
+ 
+    /* FAQ */
+    .faq-section{max-width:760px;margin:0 auto;padding:0 40px 80px;}
+    .faq-section h2{font-family:'Unbounded',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;letter-spacing:-1px;margin-bottom:28px;text-align:center;}
+    .faq-item{border:1px solid var(--border);border-radius:16px;margin-bottom:10px;overflow:hidden;background:var(--card);}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:700;gap:12px;user-select:none;}
+    .faq-q:hover{color:var(--accent2);}
+    .faq-arrow{color:var(--accent2);font-size:20px;flex-shrink:0;transition:transform .25s;}
+    .faq-item.open .faq-arrow{transform:rotate(180deg);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;font-size:14px;color:var(--muted);line-height:1.7;padding:0 22px;}
+    .faq-item.open .faq-a{max-height:200px;padding:0 22px 20px;}
+ 
+    /* MAP PLACEHOLDER */
+    .map-section{max-width:1100px;margin:0 auto;padding:0 40px 80px;}
+    .map-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;display:flex;align-items:center;gap:32px;}
+    .map-icon{font-size:48px;flex-shrink:0;}
+    .map-text h3{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:900;margin-bottom:8px;}
+    .map-text p{font-size:14px;color:var(--muted);line-height:1.6;}
+ 
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+ 
+    footer{border-top:1px solid var(--border);padding:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:1200px;margin:0 auto;}
+    .footer-logo{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900;color:var(--text);text-decoration:none;}
+    .footer-logo span{color:var(--accent2);}
+    .footer-links{display:flex;gap:24px;list-style:none;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:13px;transition:color .2s;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{font-size:13px;color:var(--muted);}
+ 
+    @media(max-width:960px){
+      nav{padding:16px 20px;}
+      .nav-links{display:none;}
+      .burger{display:flex;}
+      .page-hero{padding:110px 20px 50px;}
+      .contacts-wrap{grid-template-columns:1fr;padding:0 20px 70px;gap:24px;}
+      .form-row{grid-template-columns:1fr;}
+      .faq-section,.map-section{padding-left:20px;padding-right:20px;}
+      footer{padding:30px 20px;flex-direction:column;text-align:center;}
+      .footer-links{flex-wrap:wrap;justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+ 
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span>.expert</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta active">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+ 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+ 
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-content reveal">
+    <div class="section-label">Контакты</div>
+    <h1>Давайте обсудим<br>ваш магазин</h1>
+    <p>Заполните форму — отвечу в течение нескольких часов и запишу на бесплатную диагностику.</p>
+  </div>
+</div>
+ 
+<!-- MAIN -->
+<div class="contacts-wrap">
+ 
+  <!-- FORM -->
+  <div class="form-card reveal">
+    <div id="formContent">
+      <div class="form-title">Записаться на диагностику</div>
+      <p class="form-sub">Бесплатно, без обязательств. Разберу магазин и покажу точки роста.</p>
+ 
+      <div class="form-row">
+        <div class="field">
+          <label>Ваше имя</label>
+          <input type="text" id="fname" placeholder="Алексей">
+        </div>
+        <div class="field">
+          <label>Телефон или Telegram</label>
+          <input type="text" id="fcontact" placeholder="+7 999 123-45-67">
+        </div>
+      </div>
+ 
+      <div class="field">
+        <label>Ссылка на магазин</label>
+        <input type="text" id="fshop" placeholder="https://www.wildberries.ru/...">
+      </div>
+ 
+      <div class="field">
+        <label>Площадка</label>
+        <select id="fplatform">
+          <option value="">Выберите платформу</option>
+          <option value="WB">Wildberries</option>
+          <option value="Ozon">Ozon</option>
+          <option value="WB+Ozon">WB + Ozon</option>
+          <option value="Другое">Другое</option>
+        </select>
+      </div>
+ 
+      <div class="field">
+        <label>Интересующая услуга</label>
+        <select id="fservice">
+          <option value="">Выберите услугу</option>
+          <option value="Бесплатная диагностика">🎁 Бесплатная диагностика</option>
+          <option value="Аудит магазина">🔍 Аудит магазина — 6 900 ₽</option>
+          <option value="Упаковка карточки">🗂️ Упаковка карточки — 4 900 ₽</option>
+          <option value="Настройка рекламы">📣 Настройка рекламы — 9 900 ₽</option>
+          <option value="Сопровождение 30 дней">🤝 Сопровождение 30 дней — 29 900 ₽</option>
+        </select>
+      </div>
+ 
+      <div class="field">
+        <label>Расскажите о магазине <span style="color:var(--muted);font-weight:400;">(необязательно)</span></label>
+        <textarea id="fmessage" placeholder="Ниша, текущий оборот, главная проблема..."></textarea>
+      </div>
+ 
+      <button class="btn btn-primary" onclick="submitForm()">Отправить заявку →</button>
+      <p class="form-hint">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.<br>Отвечаю в течение нескольких часов в рабочее время.</p>
+    </div>
+ 
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">🎉</div>
+      <h3>Заявка отправлена!</h3>
+      <p>Отвечу в течение нескольких часов.<br>Пока можете написать мне в Telegram.</p>
+      <br>
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-primary">💬 Написать в Telegram</a>
+    </div>
+  </div>
+ 
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+ 
+    <div class="profile-card reveal">
+      <div class="profile-photo">
+        <img src="expert.jpg" alt="Владислав Гвоздев" onerror="this.parentElement.style.display='none'; document.getElementById('profilePlaceholder').style.display='flex';">
+      </div>
+      <div class="profile-photo-placeholder" id="profilePlaceholder" style="display:none;">👤</div>
+      <div class="profile-name">Владислав Гвоздев</div>
+      <div class="profile-role">Эксперт WB и Ozon</div>
+      <div class="profile-badges">
+        <span class="profile-badge">7+ лет</span>
+        <span class="profile-badge">150+ магазинов</span>
+        <span class="profile-badge">🎁 3 места</span>
+      </div>
+    </div>
+ 
+    <div class="contact-card reveal">
+      <a href="https://t.me/gvozdev_vladislav" target="_blank">
+        <div class="contact-icon tg">✈️</div>
+        <h3>Telegram</h3>
+        <p>Самый быстрый способ связи</p>
+        <div class="contact-value">@gvozdev_vladislav</div>
+      </a>
+    </div>
+ 
+    <div class="steps-card reveal">
+      <h3>Что будет после заявки</h3>
+      <div class="mini-step">
+        <div class="mini-num">1</div>
+        <div class="mini-step-text">
+          <b>Свяжусь с вами</b>
+          <p>В течение нескольких часов в рабочее время</p>
+        </div>
+      </div>
+      <div class="mini-step">
+        <div class="mini-num">2</div>
+        <div class="mini-step-text">
+          <b>Диагностика магазина</b>
+          <p>Разберу ваш магазин и покажу точки роста</p>
+        </div>
+      </div>
+      <div class="mini-step">
+        <div class="mini-num">3</div>
+        <div class="mini-step-text">
+          <b>План действий</b>
+          <p>Предложу конкретные шаги для роста</p>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- FAQ -->
+<div class="faq-section">
+  <h2 class="reveal">Частые вопросы</h2>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">Сколько стоит диагностика?<span class="faq-arrow">⌄</span></div>
+    <div class="faq-a">Бесплатно. Диагностика — это знакомство с вашим магазином. Покажу что мешает росту и что можно улучшить. Никаких скрытых платежей.</div>
+  </div>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">Как быстро вы отвечаете?<span class="faq-arrow">⌄</span></div>
+    <div class="faq-a">В рабочее время (пн–пт, 10:00–19:00 МСК) отвечаю в течение нескольких часов. Самый быстрый способ — написать в Telegram.</div>
+  </div>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">Работаете с новичками?<span class="faq-arrow">⌄</span></div>
+    <div class="faq-a">Да, работаю с магазинами на любом этапе — от запуска с нуля до масштабирования действующего бизнеса.</div>
+  </div>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">Можно ли оплатить частями?<span class="faq-arrow">⌄</span></div>
+    <div class="faq-a">По некоторым услугам (особенно сопровождение) возможна оплата частями. Обсудим индивидуально при знакомстве.</div>
+  </div>
+</div>
+ 
+<!-- MAP -->
+<div class="map-section">
+  <div class="map-card reveal">
+    <div class="map-icon">🌍</div>
+    <div class="map-text">
+      <h3>Работаю онлайн — по всей России</h3>
+      <p>Все консультации и работа проходят дистанционно — через Zoom, Telegram или Google Meet. География не имеет значения.</p>
+    </div>
+  </div>
+</div>
+ 
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span>.expert</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+ 
+<script>
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-uzZX_2Yx_86j5RpBaTqZb8l5LAfHEUYqo6W6_Yzk-9dOPPbvVJBNCYaZntolRIm_/exec";
+ 
+  function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+ 
+  function submitForm(){
+    const name    = document.getElementById('fname').value.trim();
+    const contact = document.getElementById('fcontact').value.trim();
+    const shop    = document.getElementById('fshop').value.trim();
+    const platform= document.getElementById('fplatform').value;
+    const service = document.getElementById('fservice').value;
+    const message = document.getElementById('fmessage').value.trim();
+ 
+    if(!name)    { alert('Введите ваше имя'); return; }
+    if(!contact) { alert('Введите телефон или Telegram'); return; }
+    if(!platform){ alert('Выберите платформу'); return; }
+    if(!service) { alert('Выберите услугу'); return; }
+ 
+    const url = `${GOOGLE_SCRIPT_URL}?service=${encodeURIComponent(service)}&name=${encodeURIComponent(name)}&username=${encodeURIComponent(contact)}&phone=${encodeURIComponent(contact)}&platform=${encodeURIComponent(platform)}&shop=${encodeURIComponent(shop)}&message=${encodeURIComponent(message)}&t=${Date.now()}`;
+    new Image().src = url;
+ 
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+ 
+  function toggleFaq(el){
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
+ 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*80);
+    });
+  }, {threshold:0.1});
+ 
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
+  });
+</script>
+</body>
+</html>
