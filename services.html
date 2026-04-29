@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Услуги — Владислав Гвоздев</title>
+  <meta name="description" content="Аудит магазина, упаковка карточек, настройка рекламы и сопровождение на WB и Ozon."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #0a0f1e;
+      --bg2:     #0d1428;
+      --card:    #111827;
+      --border:  rgba(255,255,255,.08);
+      --text:    #f0f4ff;
+      --muted:   #8b9ab8;
+      --accent:  #2563eb;
+      --accent2: #60a5fa;
+      --accent3: #f97316;
+      --radius:  20px;
+    }
+ 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+ 
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10,15,30,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .nav-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+    }
+ 
+    .nav-logo span { color: var(--accent2); }
+ 
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+ 
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .2s;
+    }
+ 
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+ 
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 12px;
+      font-weight: 700 !important;
+    }
+ 
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+ 
+    .burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+ 
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 99;
+      padding: 100px 40px 40px;
+      flex-direction: column;
+      gap: 8px;
+    }
+ 
+    .mobile-menu.open { display: flex; }
+ 
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 140px 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(37,99,235,.15) 0%, transparent 70%);
+    }
+ 
+    .page-hero-content { position: relative; }
+ 
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 14px;
+    }
+ 
+    .page-hero h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+ 
+    .page-hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+ 
+    /* ── TABS ── */
+    .tabs-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0 40px 60px;
+    }
+ 
+    .tab {
+      padding: 10px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Manrope', sans-serif;
+      transition: all .2s;
+    }
+ 
+    .tab:hover { color: var(--text); border-color: rgba(255,255,255,.2); }
+    .tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+ 
+    /* ── SERVICE BLOCKS ── */
+    .services-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+ 
+    .service-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      transition: border-color .25s;
+    }
+ 
+    .service-block:hover { border-color: rgba(37,99,235,.35); }
+ 
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+ 
+    .service-info {
+      padding: 44px 48px;
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    .service-icon-big {
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      background: rgba(37,99,235,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin-bottom: 24px;
+    }
+ 
+    .service-info h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -.5px;
+      margin-bottom: 12px;
+    }
+ 
+    .service-info .desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+ 
+    .includes-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 14px;
+    }
+ 
+    .includes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+ 
+    .includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+ 
+    .includes-list li::before {
+      content: '';
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(37,99,235,.2);
+      border: 1px solid rgba(37,99,235,.4);
+      flex-shrink: 0;
+      margin-top: 1px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+ 
+    .service-footer {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+ 
+    .service-price {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--accent2);
+    }
+ 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 0;
+      transition: transform .15s, box-shadow .15s, background .15s;
+    }
+ 
+    .btn:active { transform: scale(.97); }
+ 
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 8px 24px rgba(37,99,235,.35);
+    }
+ 
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37,99,235,.5);
+    }
+ 
+    .btn-ghost {
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+ 
+    .btn-ghost:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+ 
+    /* ── SERVICE VISUAL PANEL ── */
+    .service-visual {
+      background: linear-gradient(135deg, #0d1428 0%, #0f1f40 100%);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .service-block.reverse .service-visual {
+      border-left: 0;
+      border-right: 1px solid var(--border);
+    }
+ 
+    .service-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(37,99,235,.12) 0%, transparent 70%);
+    }
+ 
+    .visual-stat {
+      position: relative;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 24px;
+      width: 100%;
+      text-align: center;
+    }
+ 
+    .visual-stat-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+ 
+    .visual-stat-label {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+ 
+    .visual-tag {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37,99,235,.15);
+      border: 1px solid rgba(37,99,235,.3);
+      color: var(--accent2);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+ 
+    /* ── FAQ ── */
+    .faq-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+ 
+    .faq-section h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+ 
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      background: var(--card);
+    }
+ 
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 700;
+      gap: 12px;
+      user-select: none;
+    }
+ 
+    .faq-q:hover { color: var(--accent2); }
+ 
+    .faq-arrow {
+      color: var(--accent2);
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: transform .25s;
+    }
+ 
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+ 
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      padding: 0 22px;
+    }
+ 
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 22px 20px; }
+ 
+    /* ── CTA ── */
+    .cta-section {
+      padding: 0 40px 100px;
+    }
+ 
+    .cta-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+      border-radius: 28px;
+      padding: 70px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .cta-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 20%, rgba(255,255,255,.08) 0%, transparent 60%);
+    }
+ 
+    .cta-wrap h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 900;
+      margin-bottom: 14px;
+      position: relative;
+    }
+ 
+    .cta-wrap p {
+      font-size: 16px;
+      opacity: .8;
+      margin-bottom: 32px;
+      position: relative;
+    }
+ 
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+ 
+    .btn-white { background: white; color: var(--accent); }
+    .btn-white:hover { background: #f0f4ff; transform: translateY(-2px); }
+ 
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,.4);
+    }
+ 
+    .btn-outline-white:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+ 
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+ 
+    .footer-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+    }
+ 
+    .footer-logo span { color: var(--accent2); }
+ 
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+ 
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+ 
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+ 
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+ 
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+ 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .burger { display: flex; }
+ 
+      .page-hero { padding: 110px 20px 50px; }
+      .tabs-wrap { padding: 0 20px 40px; }
+ 
+      .services-wrap { padding: 0 20px 70px; }
+ 
+      .service-block {
+        grid-template-columns: 1fr;
+      }
+ 
+      .service-block.reverse { direction: ltr; }
+ 
+      .service-visual {
+        border-left: 0;
+        border-top: 1px solid var(--border);
+        padding: 32px 24px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+ 
+      .service-block.reverse .service-visual {
+        border-right: 0;
+        border-top: 1px solid var(--border);
+      }
+ 
+      .visual-stat { flex: 1; min-width: 120px; }
+ 
+      .service-info { padding: 28px 24px; }
+ 
+      .faq-section { padding: 0 20px 70px; }
+      .cta-section { padding: 0 20px 70px; }
+      .cta-wrap { padding: 50px 24px; }
+ 
+      footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span>.expert</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html" class="active">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+ 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+ 
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="section-label">Услуги</div>
+    <h1>Чем могу помочь</h1>
+    <p>Комплексная работа с вашим магазином на WB и Ozon — от быстрого аудита до полного сопровождения.</p>
+  </div>
+</div>
+ 
+<!-- ── TABS ── -->
+<div class="tabs-wrap">
+  <button class="tab active" onclick="scrollTo('audit')">🔍 Аудит</button>
+  <button class="tab" onclick="scrollTo('card')">🗂️ Упаковка карточки</button>
+  <button class="tab" onclick="scrollTo('ads')">📣 Реклама</button>
+  <button class="tab" onclick="scrollTo('support')">🤝 Сопровождение</button>
+</div>
+ 
+<!-- ── SERVICES ── -->
+<div class="services-wrap">
+ 
+  <!-- Аудит -->
+  <div class="service-block reveal" id="audit">
+    <div class="service-info">
+      <div class="service-icon-big">🔍</div>
+      <h2>Аудит магазина WB / Ozon</h2>
+      <p class="desc">Полный разбор вашего магазина: нахожу где теряете деньги, почему товары не продаются и что нужно исправить в первую очередь. Результат — чёткий план действий с конкретными шагами.</p>
+      <div class="includes-title">Что входит</div>
+      <ul class="includes-list">
+        <li>Анализ позиций и видимости товаров в поиске</li>
+        <li>Разбор карточек: SEO, фото, описание, инфографика</li>
+        <li>Анализ рекламных кампаний и расходов</li>
+        <li>Оценка ценообразования и маржинальности</li>
+        <li>Анализ конкурентов в вашей нише</li>
+        <li>Письменный отчёт + план действий на 30 дней</li>
+        <li>Созвон 60 минут — разбираем отчёт вместе</li>
+      </ul>
+      <div class="service-footer">
+        <div class="service-price">6 900 ₽</div>
+        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+      </div>
+    </div>
+    <div class="service-visual">
+      <div class="visual-stat">
+        <div class="visual-stat-num">1–2</div>
+        <div class="visual-stat-label">дня — срок выполнения</div>
+      </div>
+      <div class="visual-stat">
+        <div class="visual-stat-num">×3</div>
+        <div class="visual-stat-label">средний рост после аудита</div>
+      </div>
+      <div class="visual-tag">✓ Отчёт + созвон</div>
+      <div class="visual-tag">✓ WB и Ozon</div>
+    </div>
+  </div>
+ 
+  <!-- Упаковка карточки -->
+  <div class="service-block reverse reveal" id="card">
+    <div class="service-info">
+      <div class="service-icon-big">🗂️</div>
+      <h2>Упаковка карточки товара</h2>
+      <p class="desc">Делаю карточку, которая продаёт сама — попадает в топ поиска и конвертирует посетителей в покупателей. SEO, структура, визуал — всё по алгоритмам WB и Ozon.</p>
+      <div class="includes-title">Что входит</div>
+      <ul class="includes-list">
+        <li>Сбор семантики и SEO-оптимизация названия и описания</li>
+        <li>Разработка структуры карточки под алгоритмы площадки</li>
+        <li>Рекомендации по инфографике и главному фото</li>
+        <li>Настройка характеристик и атрибутов</li>
+        <li>A/B тест заголовков (при необходимости)</li>
+        <li>Рекомендации по ценообразованию</li>
+      </ul>
+      <div class="service-footer">
+        <div class="service-price">4 900 ₽</div>
+        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+      </div>
+    </div>
+    <div class="service-visual">
+      <div class="visual-stat">
+        <div class="visual-stat-num">3–5</div>
+        <div class="visual-stat-label">дней — срок выполнения</div>
+      </div>
+      <div class="visual-stat">
+        <div class="visual-stat-num">+60%</div>
+        <div class="visual-stat-label">рост конверсии в среднем</div>
+      </div>
+      <div class="visual-tag">✓ 1 карточка товара</div>
+      <div class="visual-tag">✓ WB и Ozon</div>
+    </div>
+  </div>
+ 
+  <!-- Реклама -->
+  <div class="service-block reveal" id="ads">
+    <div class="service-info">
+      <div class="service-icon-big">📣</div>
+      <h2>Настройка рекламы</h2>
+      <p class="desc">Выстраиваю рекламные кампании, которые приносят прибыль, а не сливают бюджет. Нахожу прибыльные связки, отключаю неэффективные расходы, масштабирую то, что работает.</p>
+      <div class="includes-title">Что входит</div>
+      <ul class="includes-list">
+        <li>Аудит текущих рекламных кампаний</li>
+        <li>Стратегия продвижения под вашу нишу</li>
+        <li>Настройка внутренней рекламы WB / Ozon</li>
+        <li>Подбор ставок и управление бюджетом</li>
+        <li>Настройка минус-слов и целевой аудитории</li>
+        <li>Отчёт с результатами и рекомендациями</li>
+        <li>Созвон после запуска — разбор первых результатов</li>
+      </ul>
+      <div class="service-footer">
+        <div class="service-price">9 900 ₽</div>
+        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+      </div>
+    </div>
+    <div class="service-visual">
+      <div class="visual-stat">
+        <div class="visual-stat-num">7</div>
+        <div class="visual-stat-label">дней — запуск кампаний</div>
+      </div>
+      <div class="visual-stat">
+        <div class="visual-stat-num">3.2×</div>
+        <div class="visual-stat-label">средний ROI клиентов</div>
+      </div>
+      <div class="visual-tag">✓ Без слива бюджета</div>
+      <div class="visual-tag">✓ WB и Ozon</div>
+    </div>
+  </div>
+ 
+  <!-- Сопровождение -->
+  <div class="service-block reverse reveal" id="support">
+    <div class="service-info">
+      <div class="service-icon-big">🤝</div>
+      <h2>Сопровождение 30 дней</h2>
+      <p class="desc">Полное ведение магазина под ключ. Занимаюсь вашим магазином каждый день — аналитика, реклама, карточки, ценообразование. Вы фокусируетесь на бизнесе, я на маркетплейсе.</p>
+      <div class="includes-title">Что входит</div>
+      <ul class="includes-list">
+        <li>Ежедневный мониторинг показателей магазина</li>
+        <li>Управление рекламными кампаниями</li>
+        <li>Оптимизация карточек и ценообразования</li>
+        <li>Еженедельные созвоны с разбором результатов</li>
+        <li>Ответы на вопросы в чате в рабочее время</li>
+        <li>Работа с отзывами и рейтингом</li>
+        <li>Итоговый отчёт и план на следующий месяц</li>
+      </ul>
+      <div class="service-footer">
+        <div class="service-price">29 900 ₽</div>
+        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+      </div>
+    </div>
+    <div class="service-visual">
+      <div class="visual-stat">
+        <div class="visual-stat-num">30</div>
+        <div class="visual-stat-label">дней полного ведения</div>
+      </div>
+      <div class="visual-stat">
+        <div class="visual-stat-num">×4</div>
+        <div class="visual-stat-label">средний рост продаж</div>
+      </div>
+      <div class="visual-tag">✓ Ежедневный контроль</div>
+      <div class="visual-tag">✓ Чат + созвоны</div>
+    </div>
+  </div>
+ 
+</div>
+ 
+<!-- ── FAQ ── -->
+<div class="faq-section">
+  <h2>Частые вопросы</h2>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      С чего начать, если я новичок на маркетплейсе?
+      <span class="faq-arrow">⌄</span>
+    </div>
+    <div class="faq-a">Начните с аудита — даже если магазин только запускается. Это поможет сразу сделать всё правильно и избежать типичных ошибок, которые потом сложно исправить.</div>
+  </div>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Работаете с любыми нишами?
+      <span class="faq-arrow">⌄</span>
+    </div>
+    <div class="faq-a">Да, работаю с большинством ниш на WB и Ozon. Исключения — узкоспециализированные B2B-товары и некоторые регулируемые категории. Уточните в Telegram — отвечу честно.</div>
+  </div>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Как быстро будет результат?
+      <span class="faq-arrow">⌄</span>
+    </div>
+    <div class="faq-a">Первые улучшения видны уже через 7–14 дней после внедрения рекомендаций. Стабильный рост — на горизонте 30 дней. Конкретные сроки зависят от ниши и текущего состояния магазина.</div>
+  </div>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Можно ли заказать несколько услуг сразу?
+      <span class="faq-arrow">⌄</span>
+    </div>
+    <div class="faq-a">Да, и это выгоднее. Комплексный подход (аудит + карточки + реклама) даёт значительно лучший результат, чем каждая услуга по отдельности. Напишите — обсудим пакет под ваш магазин.</div>
+  </div>
+ 
+  <div class="faq-item reveal">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Есть ли гарантия результата?
+      <span class="faq-arrow">⌄</span>
+    </div>
+    <div class="faq-a">Гарантирую качество работы и соответствие договорённостям. Результат в цифрах зависит от многих факторов — ниши, конкуренции, бюджета. Могу показать кейсы похожих магазинов ещё до начала работы.</div>
+  </div>
+</div>
+ 
+<!-- ── CTA ── -->
+<div class="cta-section">
+  <div class="cta-wrap reveal">
+    <h2>Не знаете с чего начать?</h2>
+    <p>Запишитесь на бесплатную диагностику — разберу магазин и скажу, что нужно в первую очередь.</p>
+    <div class="cta-actions">
+      <a href="contacts.html" class="btn btn-white">🎁 Бесплатная диагностика</a>
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-outline-white">💬 Написать в Telegram</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span>.expert</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+ 
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+ 
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+ 
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+ 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+ 
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow =
+      window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
+  });
+</script>
+ 
+</body>
+</html>
