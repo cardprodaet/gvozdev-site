@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Блог — Владислав Гвоздев</title>
+  <meta name="description" content="Статьи про WB и Ozon — SEO, реклама, карточки, аналитика."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0a0f1e; --card:#111827; --border:rgba(255,255,255,.08);
+      --text:#f0f4ff; --muted:#8b9ab8; --accent:#2563eb; --accent2:#60a5fa;
+      --accent3:#f97316; --radius:20px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+ 
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(10,15,30,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:var(--text);text-decoration:none;}
+    .nav-logo span{color:var(--accent2);}
+    .nav-links{display:flex;gap:32px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-cta{background:var(--accent);color:white!important;padding:10px 22px;border-radius:12px;font-weight:700!important;}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .burger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:8px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{color:var(--text);text-decoration:none;font-size:22px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--border);}
+ 
+    .page-hero{padding:140px 40px 70px;text-align:center;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(37,99,235,.15) 0%,transparent 70%);}
+    .page-hero-content{position:relative;}
+    .section-label{display:inline-block;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--accent2);margin-bottom:14px;}
+    .page-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(30px,5vw,56px);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px;}
+    .page-hero p{font-size:18px;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.6;}
+ 
+    /* FEATURED */
+    .featured-wrap{max-width:1100px;margin:0 auto;padding:0 40px 50px;}
+    .featured-card{background:var(--card);border:1px solid var(--border);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1fr 420px;transition:border-color .25s;}
+    .featured-card:hover{border-color:rgba(37,99,235,.4);}
+    .featured-img{background:linear-gradient(135deg,#0d1428,#1e3a8a);display:flex;align-items:center;justify-content:center;font-size:80px;min-height:300px;}
+    .featured-info{padding:40px 44px;display:flex;flex-direction:column;}
+    .featured-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--accent2);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:700;margin-bottom:18px;width:fit-content;}
+    .featured-info h2{font-family:'Unbounded',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.5px;line-height:1.2;margin-bottom:14px;}
+    .featured-info p{font-size:15px;color:var(--muted);line-height:1.7;flex:1;margin-bottom:24px;}
+    .featured-meta{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+    .meta-item{font-size:12px;color:var(--muted);}
+    .meta-dot{width:4px;height:4px;border-radius:50%;background:var(--muted);}
+ 
+    /* FILTERS */
+    .filters-wrap{max-width:1100px;margin:0 auto;padding:0 40px 40px;display:flex;gap:10px;flex-wrap:wrap;}
+    .filter-btn{padding:9px 20px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+    .filter-btn:hover{color:var(--text);border-color:rgba(255,255,255,.2);}
+    .filter-btn.active{background:var(--accent);color:white;border-color:var(--accent);}
+ 
+    /* GRID */
+    .blog-wrap{max-width:1100px;margin:0 auto;padding:0 40px 80px;}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;}
+ 
+    .blog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s;text-decoration:none;color:var(--text);}
+    .blog-card:hover{border-color:rgba(37,99,235,.35);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.4);}
+    .blog-card-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative;}
+    .blog-card-img.blue{background:linear-gradient(135deg,#0d1428,#1e3a8a);}
+    .blog-card-img.orange{background:linear-gradient(135deg,#1c0a00,#7c2d12);}
+    .blog-card-img.green{background:linear-gradient(135deg,#052e16,#14532d);}
+    .blog-card-img.purple{background:linear-gradient(135deg,#1e1b4b,#3730a3);}
+    .blog-card-img.teal{background:linear-gradient(135deg,#042f2e,#134e4a);}
+ 
+    .read-time{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);color:white;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;}
+ 
+    .blog-card-body{padding:22px;display:flex;flex-direction:column;flex:1;}
+    .blog-tag{display:inline-block;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--accent2);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;margin-bottom:12px;width:fit-content;}
+    .blog-tag.orange{background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.3);color:var(--accent3);}
+    .blog-tag.green{background:rgba(34,197,94,.12);border-color:rgba(34,197,94,.3);color:#4ade80;}
+    .blog-card h3{font-size:16px;font-weight:800;line-height:1.35;margin-bottom:10px;}
+    .blog-card p{font-size:13px;color:var(--muted);line-height:1.65;flex:1;margin-bottom:18px;}
+    .blog-card-footer{display:flex;align-items:center;justify-content:space-between;}
+    .blog-date{font-size:12px;color:var(--muted);}
+ 
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s,background .15s;}
+    .btn-ghost{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border);}
+    .btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-1px);}
+    .btn-primary{background:var(--accent);color:white;box-shadow:0 8px 24px rgba(37,99,235,.35);}
+    .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+    .btn-white{background:white;color:var(--accent);}
+    .btn-white:hover{background:#f0f4ff;transform:translateY(-2px);}
+    .btn-outline-white{background:transparent;color:white;border:1.5px solid rgba(255,255,255,.4);}
+    .btn-outline-white:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+ 
+    /* SUBSCRIBE */
+    .subscribe-section{max-width:1100px;margin:0 auto;padding:0 40px 80px;}
+    .subscribe-wrap{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+    .subscribe-text h2{font-family:'Unbounded',sans-serif;font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:12px;}
+    .subscribe-text p{font-size:15px;color:var(--muted);line-height:1.65;}
+    .subscribe-form{display:flex;flex-direction:column;gap:12px;}
+    .subscribe-input{width:100%;padding:14px 18px;border-radius:14px;border:1.5px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);font-size:15px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s;}
+    .subscribe-input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(37,99,235,.12);}
+    .subscribe-input::placeholder{color:var(--muted);}
+    .subscribe-hint{font-size:12px;color:var(--muted);}
+ 
+    /* POPULAR TOPICS */
+    .topics-section{max-width:1100px;margin:0 auto;padding:0 40px 80px;}
+    .topics-section h2{font-family:'Unbounded',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;letter-spacing:-1px;margin-bottom:28px;}
+    .topics-grid{display:flex;flex-wrap:wrap;gap:10px;}
+    .topic-tag{padding:10px 20px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;}
+    .topic-tag:hover{color:var(--text);border-color:rgba(37,99,235,.4);background:rgba(37,99,235,.1);}
+ 
+    /* CTA */
+    .cta-section{padding:0 40px 100px;}
+    .cta-wrap{max-width:1100px;margin:0 auto;background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 50%,#2563eb 100%);border-radius:28px;padding:70px 60px;text-align:center;position:relative;overflow:hidden;}
+    .cta-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(255,255,255,.08) 0%,transparent 60%);}
+    .cta-wrap h2{font-family:'Unbounded',sans-serif;font-size:clamp(22px,4vw,38px);font-weight:900;margin-bottom:14px;position:relative;}
+    .cta-wrap p{font-size:16px;opacity:.8;margin-bottom:32px;position:relative;}
+    .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;}
+ 
+    footer{border-top:1px solid var(--border);padding:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:1200px;margin:0 auto;}
+    .footer-logo{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900;color:var(--text);text-decoration:none;}
+    .footer-logo span{color:var(--accent2);}
+    .footer-links{display:flex;gap:24px;list-style:none;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:13px;transition:color .2s;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{font-size:13px;color:var(--muted);}
+ 
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+ 
+    @media(max-width:960px){
+      nav{padding:16px 20px;}
+      .nav-links{display:none;}
+      .burger{display:flex;}
+      .page-hero{padding:110px 20px 50px;}
+      .featured-wrap,.filters-wrap,.blog-wrap,.subscribe-section,.topics-section,.cta-section{padding-left:20px;padding-right:20px;}
+      .featured-card{grid-template-columns:1fr;}
+      .featured-img{min-height:200px;}
+      .featured-info{padding:24px;}
+      .subscribe-wrap{grid-template-columns:1fr;padding:28px;}
+      .cta-wrap{padding:50px 24px;}
+      footer{padding:30px 20px;flex-direction:column;text-align:center;}
+      .footer-links{flex-wrap:wrap;justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+ 
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span>.expert</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html" class="active">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+ 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+ 
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-content reveal">
+    <div class="section-label">Блог</div>
+    <h1>Про маркетплейсы<br>без воды</h1>
+    <p>SEO, реклама, карточки, аналитика — всё что нужно знать для роста на WB и Ozon.</p>
+  </div>
+</div>
+ 
+<!-- FEATURED -->
+<div class="featured-wrap">
+  <div class="featured-card reveal">
+    <div class="featured-img">📈</div>
+    <div class="featured-info">
+      <div class="featured-tag">🔥 Главная статья</div>
+      <div class="featured-meta">
+        <span class="meta-item">15 апреля 2025</span>
+        <div class="meta-dot"></div>
+        <span class="meta-item">12 мин чтения</span>
+        <div class="meta-dot"></div>
+        <span class="meta-item">SEO</span>
+      </div>
+      <h2>Как вывести товар в топ WB за 30 дней: полный гайд</h2>
+      <p>Разбираю пошагово весь процесс — от сбора семантики до выхода в топ-10 поисковой выдачи. Реальные примеры, конкретные цифры, никакой воды.</p>
+      <a href="contacts.html" class="btn btn-primary">Читать статью →</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- FILTERS -->
+<div class="filters-wrap">
+  <button class="filter-btn active" onclick="filterPosts('all',this)">Все статьи</button>
+  <button class="filter-btn" onclick="filterPosts('seo',this)">SEO</button>
+  <button class="filter-btn" onclick="filterPosts('ads',this)">Реклама</button>
+  <button class="filter-btn" onclick="filterPosts('analytics',this)">Аналитика</button>
+  <button class="filter-btn" onclick="filterPosts('cards',this)">Карточки</button>
+  <button class="filter-btn" onclick="filterPosts('strategy',this)">Стратегия</button>
+</div>
+ 
+<!-- BLOG GRID -->
+<div class="blog-wrap">
+  <div class="blog-grid" id="blogGrid">
+ 
+    <div class="blog-card reveal" data-tag="seo">
+      <div class="blog-card-img blue">🔍<span class="read-time">8 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag">SEO</div>
+        <h3>5 ошибок в SEO карточки, которые убивают продажи</h3>
+        <p>Почему даже хороший товар не продаётся? Разбираю самые частые ошибки в названии, описании и характеристиках.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">10 апр 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="ads">
+      <div class="blog-card-img orange">📣<span class="read-time">10 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag orange">Реклама</div>
+        <h3>Как снизить ДРР с 40% до 15% без потери продаж</h3>
+        <p>Пошаговый разбор: как найти неэффективные кампании, убрать мусорный трафик и масштабировать прибыльные связки.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">2 апр 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="analytics">
+      <div class="blog-card-img green">📊<span class="read-time">7 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag green">Аналитика</div>
+        <h3>Какие метрики смотреть каждый день — чеклист продавца</h3>
+        <p>Не нужно смотреть 100 показателей. Вот 7 метрик, которые реально важны для роста магазина на WB и Ozon.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">25 мар 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="cards">
+      <div class="blog-card-img purple">🗂️<span class="read-time">9 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag">Карточки</div>
+        <h3>Главное фото карточки: что работает в 2025 году</h3>
+        <p>Разбираю 20+ главных фото из топа WB — что у них общего, какие приёмы реально увеличивают CTR.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">18 мар 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="strategy">
+      <div class="blog-card-img teal">🎯<span class="read-time">11 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag green">Стратегия</div>
+        <h3>Как выбрать нишу на WB в 2025 году — полный разбор</h3>
+        <p>Какие ниши перегреты, где ещё есть место, как оценить конкуренцию и маржинальность до запуска.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">10 мар 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="ads">
+      <div class="blog-card-img orange">💰<span class="read-time">6 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag orange">Реклама</div>
+        <h3>Автоматические vs ручные кампании на WB: что выбрать</h3>
+        <p>Сравниваю два типа рекламных кампаний — плюсы, минусы, когда что использовать для максимального ROI.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">1 мар 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="seo">
+      <div class="blog-card-img blue">✍️<span class="read-time">8 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag">SEO</div>
+        <h3>Как писать описание товара, которое попадает в топ</h3>
+        <p>Структура, ключевые слова, объём, запрещённые приёмы — всё что нужно знать для SEO-описания в 2025.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">20 фев 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="analytics">
+      <div class="blog-card-img green">🔬<span class="read-time">7 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag green">Аналитика</div>
+        <h3>MPStats vs Moneyplace: какой сервис аналитики лучше</h3>
+        <p>Сравниваю два популярных инструмента аналитики для WB и Ozon — функции, цены, что выбрать новичку.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">12 фев 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="blog-card reveal" data-tag="strategy">
+      <div class="blog-card-img teal">🚀<span class="read-time">13 мин</span></div>
+      <div class="blog-card-body">
+        <div class="blog-tag green">Стратегия</div>
+        <h3>Запуск магазина на WB с нуля — пошаговый план на 90 дней</h3>
+        <p>Что делать в первые 30, 60 и 90 дней после регистрации на WB. Конкретный план с задачами и целями.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">3 фев 2025</span>
+          <a href="contacts.html" class="btn btn-ghost" style="padding:8px 14px;font-size:12px;">Читать →</a>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- SUBSCRIBE -->
+<div class="subscribe-section">
+  <div class="subscribe-wrap reveal">
+    <div class="subscribe-text">
+      <h2>Получайте статьи первыми</h2>
+      <p>Раз в неделю — полезная статья про WB и Ozon. Никакого спама, только практика.</p>
+    </div>
+    <div class="subscribe-form">
+      <input class="subscribe-input" type="email" placeholder="Ваш email">
+      <button class="btn btn-primary" onclick="subscribe()" style="padding:14px;">Подписаться →</button>
+      <p class="subscribe-hint">Нажимая кнопку, вы соглашаетесь на обработку данных.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- TOPICS -->
+<div class="topics-section">
+  <h2 class="reveal">Популярные темы</h2>
+  <div class="topics-grid reveal">
+    <a href="#" class="topic-tag" onclick="filterPosts('seo', document.querySelector('[onclick*=seo]')); return false;">🔍 SEO и оптимизация</a>
+    <a href="#" class="topic-tag" onclick="filterPosts('ads', document.querySelector('[onclick*=ads]')); return false;">📣 Реклама</a>
+    <a href="#" class="topic-tag" onclick="filterPosts('analytics', document.querySelector('[onclick*=analytics]')); return false;">📊 Аналитика</a>
+    <a href="#" class="topic-tag" onclick="filterPosts('cards', document.querySelector('[onclick*=cards]')); return false;">🗂️ Карточки товаров</a>
+    <a href="#" class="topic-tag" onclick="filterPosts('strategy', document.querySelector('[onclick*=strategy]')); return false;">🎯 Стратегия</a>
+    <a href="#" class="topic-tag">🏆 Wildberries</a>
+    <a href="#" class="topic-tag">🛒 Ozon</a>
+    <a href="#" class="topic-tag">💰 Ценообразование</a>
+    <a href="#" class="topic-tag">⭐ Отзывы и рейтинг</a>
+  </div>
+</div>
+ 
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-wrap reveal">
+    <h2>Хотите роста прямо сейчас?</h2>
+    <p>Статьи — это теория. Запишитесь на диагностику — разберём ваш магазин лично.</p>
+    <div class="cta-actions">
+      <a href="contacts.html" class="btn btn-white">🎁 Бесплатная диагностика</a>
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-outline-white">💬 Написать в Telegram</a>
+    </div>
+  </div>
+</div>
+ 
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span>.expert</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+ 
+<script>
+  function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+ 
+  function filterPosts(tag, btn){
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    document.querySelectorAll('[data-tag]').forEach(card => {
+      card.style.display = (tag==='all' || card.dataset.tag===tag) ? '' : 'none';
+    });
+  }
+ 
+  function subscribe(){
+    const input = document.querySelector('.subscribe-input');
+    if(!input.value.includes('@')){ alert('Введите корректный email'); return; }
+    input.value = '';
+    alert('✅ Вы подписались! Первая статья уже в пути.');
+  }
+ 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*80);
+    });
+  }, {threshold:0.1});
+ 
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
+  });
+</script>
+</body>
+</html>
