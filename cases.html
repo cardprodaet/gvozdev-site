@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Кейсы — Владислав Гвоздев</title>
+  <meta name="description" content="Реальные результаты клиентов на WB и Ozon — рост продаж, ROI, выход в топ."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #0a0f1e;
+      --card:    #111827;
+      --border:  rgba(255,255,255,.08);
+      --text:    #f0f4ff;
+      --muted:   #8b9ab8;
+      --accent:  #2563eb;
+      --accent2: #60a5fa;
+      --accent3: #f97316;
+      --radius:  20px;
+    }
+ 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+ 
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10,15,30,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .nav-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+    }
+ 
+    .nav-logo span { color: var(--accent2); }
+ 
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+ 
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .2s;
+    }
+ 
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+ 
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 12px;
+      font-weight: 700 !important;
+    }
+ 
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+ 
+    .burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+ 
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 99;
+      padding: 100px 40px 40px;
+      flex-direction: column;
+      gap: 8px;
+    }
+ 
+    .mobile-menu.open { display: flex; }
+ 
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 140px 40px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(37,99,235,.15) 0%, transparent 70%);
+    }
+ 
+    .page-hero-content { position: relative; }
+ 
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 14px;
+    }
+ 
+    .page-hero h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(30px, 5vw, 56px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+ 
+    .page-hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+ 
+    /* ── TOTAL STATS ── */
+    .total-stats {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 70px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+ 
+    .total-stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      transition: border-color .25s, transform .25s;
+    }
+ 
+    .total-stat:hover {
+      border-color: rgba(37,99,235,.4);
+      transform: translateY(-3px);
+    }
+ 
+    .total-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+ 
+    .total-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+ 
+    /* ── FILTERS ── */
+    .filters-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 40px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+ 
+    .filter-btn {
+      padding: 9px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Manrope', sans-serif;
+      transition: all .2s;
+    }
+ 
+    .filter-btn:hover { color: var(--text); border-color: rgba(255,255,255,.2); }
+    .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+ 
+    /* ── CASES GRID ── */
+    .cases-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+ 
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+ 
+    /* ── FEATURED CASE ── */
+    .case-featured {
+      grid-column: 1 / -1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 0;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      transition: border-color .25s;
+      margin-bottom: 4px;
+    }
+ 
+    .case-featured:hover { border-color: rgba(37,99,235,.4); }
+ 
+    .case-featured-info {
+      padding: 44px 48px;
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37,99,235,.15);
+      border: 1px solid rgba(37,99,235,.3);
+      color: var(--accent2);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+ 
+    .case-tag.orange {
+      background: rgba(249,115,22,.15);
+      border-color: rgba(249,115,22,.3);
+      color: var(--accent3);
+    }
+ 
+    .case-tag.green {
+      background: rgba(34,197,94,.12);
+      border-color: rgba(34,197,94,.3);
+      color: #4ade80;
+    }
+ 
+    .case-featured h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -.5px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+ 
+    .case-featured p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 28px;
+    }
+ 
+    .case-metrics {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+ 
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+ 
+    .metric-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+    }
+ 
+    .metric-num.orange { color: var(--accent3); }
+    .metric-num.green { color: #4ade80; }
+ 
+    .metric-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+ 
+    .case-featured-visual {
+      background: linear-gradient(135deg, #0d1428, #0f1f40);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .case-featured-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(37,99,235,.12) 0%, transparent 70%);
+    }
+ 
+    .chart-bar-wrap {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+ 
+    .chart-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+ 
+    .chart-row-label {
+      font-size: 12px;
+      color: var(--muted);
+      width: 60px;
+      flex-shrink: 0;
+      text-align: right;
+    }
+ 
+    .chart-bar-bg {
+      flex: 1;
+      height: 32px;
+      background: rgba(255,255,255,.05);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+ 
+    .chart-bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: white;
+      width: 0;
+      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+ 
+    .bar-before { background: rgba(255,255,255,.2); }
+    .bar-after  { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+ 
+    /* ── REGULAR CASE CARD ── */
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+ 
+    .case-card:hover {
+      border-color: rgba(37,99,235,.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    }
+ 
+    .case-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+ 
+    .case-card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+ 
+    .case-result-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+ 
+    .case-result-item { display: flex; flex-direction: column; gap: 3px; }
+ 
+    .case-big-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+    }
+ 
+    .case-big-num.orange { color: var(--accent3); }
+    .case-big-num.green  { color: #4ade80; }
+ 
+    .case-small-label {
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+ 
+    .case-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 16px;
+    }
+ 
+    .case-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+ 
+    .case-meta-text { font-size: 12px; color: var(--muted); }
+ 
+    .btn-xs {
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(37,99,235,.15);
+      color: var(--accent2);
+      border: 1px solid rgba(37,99,235,.3);
+      cursor: pointer;
+      font-family: 'Manrope', sans-serif;
+      text-decoration: none;
+      transition: background .2s;
+      display: inline-block;
+    }
+ 
+    .btn-xs:hover { background: rgba(37,99,235,.3); }
+ 
+    /* ── PROCESS ── */
+    .process-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+ 
+    .process-section .section-title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 40px;
+    }
+ 
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+ 
+    .process-step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+    }
+ 
+    .process-step::after {
+      content: '→';
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent2);
+      font-size: 18px;
+      z-index: 1;
+    }
+ 
+    .process-step:last-child::after { display: none; }
+ 
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      background: rgba(37,99,235,.15);
+      border: 1px solid rgba(37,99,235,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--accent2);
+      margin-bottom: 14px;
+    }
+ 
+    .process-step h4 {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+ 
+    .process-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+ 
+    /* ── REVIEWS ── */
+    .reviews-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+ 
+    .reviews-section .section-title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 32px;
+    }
+ 
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+ 
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+ 
+    .review-stars { color: #fbbf24; font-size: 15px; margin-bottom: 12px; }
+ 
+    .review-text {
+      font-size: 14.5px;
+      line-height: 1.65;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+ 
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+ 
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+ 
+    .review-name { font-size: 14px; font-weight: 700; }
+    .review-meta { font-size: 12px; color: var(--muted); }
+ 
+    /* ── CTA ── */
+    .cta-section {
+      padding: 0 40px 100px;
+    }
+ 
+    .cta-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+      border-radius: 28px;
+      padding: 70px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .cta-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 20%, rgba(255,255,255,.08) 0%, transparent 60%);
+    }
+ 
+    .cta-wrap h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 900;
+      margin-bottom: 14px;
+      position: relative;
+    }
+ 
+    .cta-wrap p {
+      font-size: 16px;
+      opacity: .8;
+      margin-bottom: 32px;
+      position: relative;
+    }
+ 
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+ 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 0;
+      transition: transform .15s, box-shadow .15s, background .15s;
+    }
+ 
+    .btn-white { background: white; color: var(--accent); }
+    .btn-white:hover { background: #f0f4ff; transform: translateY(-2px); }
+ 
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,.4);
+    }
+ 
+    .btn-outline-white:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+ 
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+ 
+    .footer-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+    }
+ 
+    .footer-logo span { color: var(--accent2); }
+ 
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+ 
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+ 
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+ 
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+ 
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+ 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .burger { display: flex; }
+ 
+      .page-hero { padding: 110px 20px 50px; }
+ 
+      .total-stats {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 20px 50px;
+      }
+ 
+      .filters-wrap,
+      .cases-wrap,
+      .process-section,
+      .reviews-section,
+      .cta-section { padding-left: 20px; padding-right: 20px; }
+ 
+      .case-featured {
+        grid-template-columns: 1fr;
+      }
+ 
+      .case-featured-visual {
+        border-left: 0;
+        border-top: 1px solid var(--border);
+        padding: 28px 20px;
+      }
+ 
+      .case-featured-info { padding: 28px 24px; }
+ 
+      .process-steps {
+        grid-template-columns: 1fr 1fr;
+      }
+ 
+      .process-step::after { display: none; }
+ 
+      .reviews-grid { grid-template-columns: 1fr; }
+ 
+      .cta-wrap { padding: 50px 24px; }
+ 
+      footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span>.expert</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html" class="active">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+ 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+ 
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-content reveal">
+    <div class="section-label">Кейсы</div>
+    <h1>Результаты клиентов</h1>
+    <p>Реальные магазины, реальные цифры. Никакой ретуши — только то, что было достигнуто.</p>
+  </div>
+</div>
+ 
+<!-- ── TOTAL STATS ── -->
+<div class="total-stats">
+  <div class="total-stat reveal">
+    <div class="total-num">150+</div>
+    <div class="total-label">магазинов в работе</div>
+  </div>
+  <div class="total-stat reveal">
+    <div class="total-num">×4</div>
+    <div class="total-label">средний рост продаж</div>
+  </div>
+  <div class="total-stat reveal">
+    <div class="total-num">3.2×</div>
+    <div class="total-label">средний ROI рекламы</div>
+  </div>
+  <div class="total-stat reveal">
+    <div class="total-num">30</div>
+    <div class="total-label">дней до результата</div>
+  </div>
+</div>
+ 
+<!-- ── FILTERS ── -->
+<div class="filters-wrap">
+  <button class="filter-btn active" onclick="filter('all', this)">Все</button>
+  <button class="filter-btn" onclick="filter('wb', this)">Wildberries</button>
+  <button class="filter-btn" onclick="filter('ozon', this)">Ozon</button>
+  <button class="filter-btn" onclick="filter('audit', this)">Аудит</button>
+  <button class="filter-btn" onclick="filter('ads', this)">Реклама</button>
+  <button class="filter-btn" onclick="filter('support', this)">Сопровождение</button>
+</div>
+ 
+<!-- ── CASES ── -->
+<div class="cases-wrap">
+  <div class="cases-grid" id="casesGrid">
+ 
+    <!-- FEATURED -->
+    <div class="case-featured reveal" data-tags="wb support">
+      <div class="case-featured-info">
+        <div class="case-tag">🍽️ Посуда • WB • Сопровождение</div>
+        <h2>Рост выручки с 120 до 380 тыс. ₽ за 6 недель</h2>
+        <p>Магазин посуды стагнировал 4 месяца — продажи не росли, реклама сливала бюджет. После аудита выявили проблемы с SEO карточек и нерелевантные ключи в рекламе. Переупаковали карточки, перестроили рекламные кампании, скорректировали цены. Результат — рост выручки в 3.2 раза за 6 недель.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">×3.2</div>
+            <div class="metric-label">рост выручки</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num orange">6</div>
+            <div class="metric-label">недель работы</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num green">+47%</div>
+            <div class="metric-label">рост конверсии</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-featured-visual">
+        <div class="chart-bar-wrap">
+          <div class="chart-row">
+            <div class="chart-row-label">До</div>
+            <div class="chart-bar-bg">
+              <div class="chart-bar-fill bar-before" data-w="31" style="">120 тыс.</div>
+            </div>
+          </div>
+          <div class="chart-row">
+            <div class="chart-row-label">После</div>
+            <div class="chart-bar-bg">
+              <div class="chart-bar-fill bar-after" data-w="100" style="">380 тыс.</div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:14px; padding:14px 18px; width:100%; text-align:center;">
+          <div style="font-family:'Unbounded',sans-serif; font-size:28px; font-weight:900; color:var(--accent2);">+260 000 ₽</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">прибавка в месяц</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- CARD 1 -->
+    <div class="case-card reveal" data-tags="ozon ads">
+      <div class="case-tag orange">💄 Косметика • Ozon • Реклама</div>
+      <h3>ROI рекламы 3.2 за 14 дней</h3>
+      <p>Магазин косметики тратил на рекламу больше, чем зарабатывал. Провёл аудит кампаний — нашли нецелевые ключи, завышенные ставки, отсутствие минус-слов. Полностью перенастроили рекламу.</p>
+      <div class="case-result-row">
+        <div class="case-result-item">
+          <div class="case-big-num">3.2×</div>
+          <div class="case-small-label">ROI рекламы</div>
+        </div>
+        <div class="case-result-item">
+          <div class="case-big-num orange">−45%</div>
+          <div class="case-small-label">снижение расходов</div>
+        </div>
+      </div>
+      <div class="case-divider"></div>
+      <div class="case-meta-row">
+        <span class="case-meta-text">⏱ 14 дней</span>
+        <a href="contacts.html" class="btn-xs">Хочу так же →</a>
+      </div>
+    </div>
+ 
+    <!-- CARD 2 -->
+    <div class="case-card reveal" data-tags="wb audit">
+      <div class="case-tag green">👗 Одежда • WB • Аудит + карточки</div>
+      <h3>Продажи выросли в 4 раза за месяц</h3>
+      <p>Товар не выходил из аутсайдеров полгода. После аудита выяснили — карточка не оптимизирована под поисковые запросы, главное фото не конвертит. Переделали карточку с нуля.</p>
+      <div class="case-result-row">
+        <div class="case-result-item">
+          <div class="case-big-num green">×4</div>
+          <div class="case-small-label">рост продаж</div>
+        </div>
+        <div class="case-result-item">
+          <div class="case-big-num">Топ-5</div>
+          <div class="case-small-label">позиция в поиске</div>
+        </div>
+      </div>
+      <div class="case-divider"></div>
+      <div class="case-meta-row">
+        <span class="case-meta-text">⏱ 30 дней</span>
+        <a href="contacts.html" class="btn-xs">Хочу так же →</a>
+      </div>
+    </div>
+ 
+    <!-- CARD 3 -->
+    <div class="case-card reveal" data-tags="wb ozon support">
+      <div class="case-tag">🏠 Товары для дома • WB • Сопровождение</div>
+      <h3>Выход в прибыль с нуля за 30 дней</h3>
+      <p>Новый магазин — нет истории продаж, нет рейтинга, нет позиций. Выстроили стратегию запуска с нуля: карточки, SEO, первые продажи, наращивание рейтинга, запуск рекламы.</p>
+      <div class="case-result-row">
+        <div class="case-result-item">
+          <div class="case-big-num">180к</div>
+          <div class="case-small-label">выручка в 1-й месяц</div>
+        </div>
+        <div class="case-result-item">
+          <div class="case-big-num orange">+22%</div>
+          <div class="case-small-label">маржинальность</div>
+        </div>
+      </div>
+      <div class="case-divider"></div>
+      <div class="case-meta-row">
+        <span class="case-meta-text">⏱ 30 дней</span>
+        <a href="contacts.html" class="btn-xs">Хочу так же →</a>
+      </div>
+    </div>
+ 
+    <!-- CARD 4 -->
+    <div class="case-card reveal" data-tags="ozon audit">
+      <div class="case-tag orange">🧸 Игрушки • Ozon • Аудит</div>
+      <h3>Снижение ДРР с 48% до 18% за 3 недели</h3>
+      <p>Магазин детских игрушек работал в минус — ДРР (доля рекламных расходов) была 48%. Провели аудит, нашли 12 критичных ошибок. После исправления ДРР упал до 18%.</p>
+      <div class="case-result-row">
+        <div class="case-result-item">
+          <div class="case-big-num green">−30%</div>
+          <div class="case-small-label">снижение ДРР</div>
+        </div>
+        <div class="case-result-item">
+          <div class="case-big-num">×2.6</div>
+          <div class="case-small-label">рост чистой прибыли</div>
+        </div>
+      </div>
+      <div class="case-divider"></div>
+      <div class="case-meta-row">
+        <span class="case-meta-text">⏱ 3 недели</span>
+        <a href="contacts.html" class="btn-xs">Хочу так же →</a>
+      </div>
+    </div>
+ 
+    <!-- CARD 5 -->
+    <div class="case-card reveal" data-tags="wb ads">
+      <div class="case-tag">🔧 Инструменты • WB • Реклама</div>
+      <h3>Выход товара в топ-10 по горячим ключам</h3>
+      <p>Магазин инструментов не мог пробиться в топ по ключевым запросам. Выстроили стратегию продвижения через рекламу + органику. Через 3 недели — топ-10 по 5 ключевым запросам.</p>
+      <div class="case-result-row">
+        <div class="case-result-item">
+          <div class="case-big-num">Топ-10</div>
+          <div class="case-small-label">по 5 ключевым запросам</div>
+        </div>
+        <div class="case-result-item">
+          <div class="case-big-num orange">+85%</div>
+          <div class="case-small-label">рост органических продаж</div>
+        </div>
+      </div>
+      <div class="case-divider"></div>
+      <div class="case-meta-row">
+        <span class="case-meta-text">⏱ 3 недели</span>
+        <a href="contacts.html" class="btn-xs">Хочу так же →</a>
+      </div>
+    </div>
+ 
+    <!-- CARD 6 -->
+    <div class="case-card reveal" data-tags="ozon support">
+      <div class="case-tag green">🍃 Здоровье • Ozon • Сопровождение</div>
+      <h3>Оборот вырос с 200 до 850 тыс. ₽ за 2 месяца</h3>
+      <p>Магазин БАДов и витаминов — высококонкурентная ниша. Комплексная работа: переупаковка карточек, рекламная стратегия, работа с отзывами, ценообразование.</p>
+      <div class="case-result-row">
+        <div class="case-result-item">
+          <div class="case-big-num">×4.2</div>
+          <div class="case-small-label">рост оборота</div>
+        </div>
+        <div class="case-result-item">
+          <div class="case-big-num green">+650к</div>
+          <div class="case-small-label">прибавка в месяц</div>
+        </div>
+      </div>
+      <div class="case-divider"></div>
+      <div class="case-meta-row">
+        <span class="case-meta-text">⏱ 2 месяца</span>
+        <a href="contacts.html" class="btn-xs">Хочу так же →</a>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- ── PROCESS ── -->
+<div class="process-section">
+  <div class="reveal">
+    <div class="section-label">Как это работает</div>
+    <h2 class="section-title">От заявки до результата</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">1</div>
+      <h4>Бесплатная диагностика</h4>
+      <p>Разбираю магазин, нахожу ключевые проблемы, обозначаю потенциал роста.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">2</div>
+      <h4>Стратегия и план</h4>
+      <p>Составляю конкретный план действий с приоритетами и сроками на 30 дней.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">3</div>
+      <h4>Внедрение</h4>
+      <p>Реализую план — карточки, реклама, ценообразование, аналитика.</p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">4</div>
+      <h4>Контроль и рост</div>
+      <p>Мониторю результаты, корректирую стратегию, фиксируем рост.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── REVIEWS ── -->
+<div class="reviews-section">
+  <div class="reveal">
+    <div class="section-label">Отзывы</div>
+    <h2 class="section-title">Говорят клиенты</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Продажи выросли почти в 3 раза за первый месяц. Подход чёткий, без воды — только конкретные действия. Рекомендую всем, кто серьёзно занимается маркетплейсами.»</p>
+      <div class="review-author">
+        <div class="review-avatar">АК</div>
+        <div>
+          <div class="review-name">Алексей К.</div>
+          <div class="review-meta">Посуда • WB</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Реклама наконец вышла в плюс — до этого сливали бюджет месяцами. Владислав нашёл проблему буквально за один созвон. Очень доволен результатом.»</p>
+      <div class="review-author">
+        <div class="review-avatar">МС</div>
+        <div>
+          <div class="review-name">Марина С.</div>
+          <div class="review-meta">Косметика • Ozon</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Товар вышел в топ и держится там уже 2 месяца. Работает по-настоящему системно. Уже планирую продолжить сотрудничество на следующий месяц.»</p>
+      <div class="review-author">
+        <div class="review-avatar">ИП</div>
+        <div>
+          <div class="review-name">Игорь П.</div>
+          <div class="review-meta">Одежда • WB</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── CTA ── -->
+<div class="cta-section">
+  <div class="cta-wrap reveal">
+    <h2>Хотите такой же результат?</h2>
+    <p>Запишитесь на бесплатную диагностику — покажу, что можно улучшить в вашем магазине.</p>
+    <div class="cta-actions">
+      <a href="contacts.html" class="btn btn-white">🎁 Бесплатная диагностика</a>
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-outline-white">💬 Написать в Telegram</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span>.expert</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+ 
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+ 
+  // Filter
+  function filter(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+ 
+    document.querySelectorAll('[data-tags]').forEach(card => {
+      if (tag === 'all' || card.dataset.tags.includes(tag)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+ 
+  // Scroll reveal + chart bars
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.classList.add('visible');
+          e.target.querySelectorAll('.chart-bar-fill').forEach(bar => {
+            bar.style.width = bar.dataset.w + '%';
+          });
+        }, i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+ 
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow =
+      window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
+  });
+</script>
+ 
+</body>
+</html>
