@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Обо мне — Владислав Гвоздев</title>
+  <meta name="description" content="7 лет в e-commerce, 150+ магазинов. Эксперт по росту продаж на Wildberries и Ozon."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #0a0f1e;
+      --card:    #111827;
+      --border:  rgba(255,255,255,.08);
+      --text:    #f0f4ff;
+      --muted:   #8b9ab8;
+      --accent:  #2563eb;
+      --accent2: #60a5fa;
+      --accent3: #f97316;
+      --radius:  20px;
+    }
+ 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+ 
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10,15,30,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .nav-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+    }
+ 
+    .nav-logo span { color: var(--accent2); }
+ 
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+ 
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .2s;
+    }
+ 
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+ 
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 12px;
+      font-weight: 700 !important;
+    }
+ 
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+ 
+    .burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+ 
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 99;
+      padding: 100px 40px 40px;
+      flex-direction: column;
+      gap: 8px;
+    }
+ 
+    .mobile-menu.open { display: flex; }
+ 
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    /* ── HERO ── */
+    .about-hero {
+      padding: 130px 40px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: center;
+    }
+ 
+    .hero-text .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 16px;
+    }
+ 
+    .hero-text h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 10px;
+    }
+ 
+    .hero-text .tagline {
+      font-size: 18px;
+      color: var(--accent2);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+ 
+    .hero-text p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+ 
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+ 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 0;
+      transition: transform .15s, box-shadow .15s, background .15s;
+    }
+ 
+    .btn:active { transform: scale(.97); }
+ 
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 8px 24px rgba(37,99,235,.35);
+    }
+ 
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+ 
+    .btn-ghost {
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+ 
+    .btn-ghost:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+ 
+    /* ── PHOTO BLOCK ── */
+    .photo-block {
+      position: relative;
+    }
+ 
+    .photo-main {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+    }
+ 
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+    }
+ 
+    .photo-card {
+      position: absolute;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+ 
+    .photo-card-1 {
+      bottom: 28px;
+      left: -28px;
+      text-align: center;
+    }
+ 
+    .photo-card-2 {
+      top: 28px;
+      right: -28px;
+      text-align: center;
+    }
+ 
+    .photo-card .num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+    }
+ 
+    .photo-card .label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+ 
+    /* ── STATS ROW ── */
+    .stats-row {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+ 
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      transition: border-color .25s, transform .25s;
+    }
+ 
+    .stat-card:hover {
+      border-color: rgba(37,99,235,.4);
+      transform: translateY(-3px);
+    }
+ 
+    .stat-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+ 
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+ 
+    /* ── STORY ── */
+    .story-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+ 
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 14px;
+    }
+ 
+    .section-title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 48px;
+    }
+ 
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+ 
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), rgba(37,99,235,.1));
+      border-radius: 2px;
+    }
+ 
+    .tl-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+ 
+    .tl-item:last-child { margin-bottom: 0; }
+ 
+    .tl-dot {
+      position: absolute;
+      left: -40px;
+      top: 6px;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+ 
+    .tl-dot::after {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: white;
+    }
+ 
+    .tl-year {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+ 
+    .tl-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+ 
+    .tl-desc {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+ 
+    /* ── VALUES ── */
+    .values-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+ 
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+ 
+    .value-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color .25s, transform .25s;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity .25s;
+    }
+ 
+    .value-card:hover {
+      border-color: rgba(37,99,235,.4);
+      transform: translateY(-3px);
+    }
+ 
+    .value-card:hover::before { opacity: 1; }
+ 
+    .value-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+ 
+    .value-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+ 
+    .value-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+ 
+    /* ── EXPERTISE ── */
+    .expertise-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+ 
+    .expertise-text p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+ 
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+ 
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+ 
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 700;
+    }
+ 
+    .skill-pct { color: var(--accent2); }
+ 
+    .skill-bar {
+      height: 6px;
+      background: rgba(255,255,255,.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+ 
+    .skill-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0;
+      transition: width 1s ease;
+    }
+ 
+    /* ── PHOTO GRID ── */
+    .photos-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+ 
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+ 
+    .photo-item {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      transition: transform .25s;
+    }
+ 
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+ 
+    .photo-item:hover { transform: scale(1.02); }
+ 
+    /* ── CTA ── */
+    .cta-section {
+      padding: 0 40px 100px;
+    }
+ 
+    .cta-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+      border-radius: 28px;
+      padding: 70px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    .cta-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 20%, rgba(255,255,255,.08) 0%, transparent 60%);
+    }
+ 
+    .cta-wrap h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 900;
+      margin-bottom: 14px;
+      position: relative;
+    }
+ 
+    .cta-wrap p {
+      font-size: 16px;
+      opacity: .8;
+      margin-bottom: 32px;
+      position: relative;
+    }
+ 
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+ 
+    .btn-white { background: white; color: var(--accent); }
+    .btn-white:hover { background: #f0f4ff; transform: translateY(-2px); }
+ 
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,.4);
+    }
+ 
+    .btn-outline-white:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+ 
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+ 
+    .footer-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+    }
+ 
+    .footer-logo span { color: var(--accent2); }
+ 
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+ 
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+ 
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+ 
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+ 
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+ 
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .burger { display: flex; }
+ 
+      .about-hero {
+        grid-template-columns: 1fr;
+        padding: 110px 20px 50px;
+        gap: 40px;
+      }
+ 
+      .photo-block { max-width: 340px; margin: 0 auto; }
+      .photo-card-1 { left: -10px; }
+      .photo-card-2 { right: -10px; }
+ 
+      .stats-row {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 20px 60px;
+      }
+ 
+      .story-section,
+      .values-section,
+      .photos-section,
+      .cta-section { padding-left: 20px; padding-right: 20px; }
+ 
+      .expertise-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px 60px;
+      }
+ 
+      .photos-grid { grid-template-columns: 1fr 1fr; }
+ 
+      .cta-wrap { padding: 50px 24px; }
+ 
+      footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span>.expert</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html" class="active">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+ 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+ 
+<!-- ── HERO ── -->
+<div class="about-hero">
+  <div class="hero-text reveal">
+    <div class="section-label">Обо мне</div>
+    <h1>Владислав Гвоздев</h1>
+    <p class="tagline">Эксперт по росту продаж на WB и Ozon</p>
+    <p>7 лет я помогаю предпринимателям зарабатывать на маркетплейсах — без лишних расходов, с конкретными результатами. Начинал как продавец сам, прошёл все ошибки, которые проходят новички, и научился их избегать.</p>
+    <p>Сегодня работаю с магазинами от 0 до 10 млн оборота в месяц. Специализация — Wildberries и Ozon. Инструменты — аналитика, SEO, реклама, упаковка карточек.</p>
+    <div class="hero-actions">
+      <a href="contacts.html" class="btn btn-primary">🎁 Бесплатная диагностика</a>
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">💬 Telegram</a>
+    </div>
+  </div>
+ 
+  <div class="photo-block reveal">
+    <img src="support.jpg" class="photo-main" alt="Владислав Гвоздев"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="photo-placeholder" style="display:none;">👤</div>
+    <div class="photo-card photo-card-1">
+      <div class="num">150+</div>
+      <div class="label">магазинов</div>
+    </div>
+    <div class="photo-card photo-card-2">
+      <div class="num">7</div>
+      <div class="label">лет опыта</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── STATS ── -->
+<div class="stats-row">
+  <div class="stat-card reveal">
+    <div class="stat-num">150+</div>
+    <div class="stat-label">магазинов выведено в топ</div>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-num">7</div>
+    <div class="stat-label">лет в e-commerce</div>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-num">×4</div>
+    <div class="stat-label">средний рост продаж</div>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-num">30</div>
+    <div class="stat-label">дней до первых результатов</div>
+  </div>
+</div>
+ 
+<!-- ── STORY ── -->
+<div class="story-section">
+  <div class="reveal">
+    <div class="section-label">История</div>
+    <h2 class="section-title">Путь в e-commerce</h2>
+  </div>
+ 
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2018</div>
+      <div class="tl-title">Первый магазин на WB</div>
+      <p class="tl-desc">Запустил собственный магазин товаров для дома. Первые полгода — убытки и ошибки. Это научило меня тому, чего нет ни в одном курсе.</p>
+    </div>
+ 
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2019</div>
+      <div class="tl-title">Первый выход в топ</div>
+      <p class="tl-desc">После глубокого изучения алгоритмов WB вывел первый товар в топ-3 по ключевому запросу. Продажи выросли в 5 раз за месяц — это изменило всё.</p>
+    </div>
+ 
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2020</div>
+      <div class="tl-title">Первые клиенты</div>
+      <p class="tl-desc">Начал помогать знакомым предпринимателям. Первые 10 клиентов — по сарафанному радио. Все вышли в плюс в течение месяца.</p>
+    </div>
+ 
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2021–2022</div>
+      <div class="tl-title">Масштабирование и Ozon</div>
+      <p class="tl-desc">Добавил Ozon в список площадок. Выстроил систему работы с клиентами, разработал собственную методологию аудита и роста. 50+ магазинов за два года.</p>
+    </div>
+ 
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-year">2023–сейчас</div>
+      <div class="tl-title">150+ магазинов и спикер конференций</div>
+      <p class="tl-desc">Вышел на уровень 150+ магазинов в портфеле. Выступаю на отраслевых конференциях по e-commerce. Продолжаю работать с клиентами лично — без делегирования.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── VALUES ── -->
+<div class="values-section">
+  <div class="reveal">
+    <div class="section-label">Принципы</div>
+    <h2 class="section-title">Как я работаю</h2>
+  </div>
+ 
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <span class="value-icon">📊</span>
+      <h3>Только цифры</h3>
+      <p>Никаких «я думаю» и «наверное». Каждое решение — на основе данных аналитики. Смотрю на цифры, делаю выводы, предлагаю конкретные шаги.</p>
+    </div>
+ 
+    <div class="value-card reveal">
+      <span class="value-icon">⚡</span>
+      <h3>Скорость результата</h3>
+      <p>Не затягиваю работу на месяцы. Первые улучшения — уже в первые 2 недели. Стабильный рост — за 30 дней. Это не магия, это система.</p>
+    </div>
+ 
+    <div class="value-card reveal">
+      <span class="value-icon">🎯</span>
+      <h3>Честность</h3>
+      <p>Если магазин не готов к росту или ниша слишком сложная — скажу об этом прямо, до начала работы. Не берусь за проекты, в которых не уверен.</p>
+    </div>
+ 
+    <div class="value-card reveal">
+      <span class="value-icon">🤝</span>
+      <h3>Личное участие</h3>
+      <p>Работаю с каждым клиентом сам, без передачи ассистентам. Вы платите за мой опыт — значит, работать буду я.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── EXPERTISE ── -->
+<div class="expertise-section">
+  <div class="expertise-text reveal">
+    <div class="section-label">Экспертиза</div>
+    <h2 class="section-title" style="font-size:clamp(22px,3vw,34px); margin-bottom:24px;">Что умею лучше всего</h2>
+    <p>За 7 лет я досконально изучил алгоритмы WB и Ozon — как они ранжируют товары, что влияет на видимость, как работает реклама изнутри.</p>
+    <p>Постоянно слежу за обновлениями платформ и тестирую новые подходы на реальных магазинах, прежде чем рекомендовать клиентам.</p>
+    <p>Специализируюсь на товарных нишах с высокой конкуренцией — именно там мои методы дают наибольший эффект.</p>
+  </div>
+ 
+  <div class="reveal">
+    <ul class="skills-list">
+      <li class="skill-item">
+        <div class="skill-name">
+          <span>SEO и оптимизация карточек</span>
+          <span class="skill-pct">97%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-w="97"></div></div>
+      </li>
+      <li class="skill-item">
+        <div class="skill-name">
+          <span>Настройка рекламы WB / Ozon</span>
+          <span class="skill-pct">94%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-w="94"></div></div>
+      </li>
+      <li class="skill-item">
+        <div class="skill-name">
+          <span>Аналитика и работа с данными</span>
+          <span class="skill-pct">90%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+      </li>
+      <li class="skill-item">
+        <div class="skill-name">
+          <span>Стратегия ценообразования</span>
+          <span class="skill-pct">88%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-w="88"></div></div>
+      </li>
+      <li class="skill-item">
+        <div class="skill-name">
+          <span>Работа с отзывами и рейтингом</span>
+          <span class="skill-pct">85%</span>
+        </div>
+        <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+      </li>
+    </ul>
+  </div>
+</div>
+ 
+<!-- ── PHOTOS ── -->
+<div class="photos-section">
+  <div class="reveal">
+    <div class="section-label">Фото</div>
+    <h2 class="section-title" style="font-size:clamp(22px,3vw,34px); margin-bottom:32px;">В работе и на конференциях</h2>
+  </div>
+  <div class="photos-grid">
+    <div class="photo-item reveal">
+      <img src="expert.jpg" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="photo-item reveal">
+      <img src="support.jpg" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="photo-item reveal" style="background: linear-gradient(135deg,#1e3a8a,#1d4ed8);">
+      🎤
+    </div>
+  </div>
+</div>
+ 
+<!-- ── CTA ── -->
+<div class="cta-section">
+  <div class="cta-wrap reveal">
+    <h2>Давайте познакомимся</h2>
+    <p>Запишитесь на бесплатную диагностику — расскажите о магазине, я покажу точки роста.</p>
+    <div class="cta-actions">
+      <a href="contacts.html" class="btn btn-white">🎁 Бесплатная диагностика</a>
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-outline-white">💬 Написать в Telegram</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span>.expert</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+ 
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+ 
+  // Scroll reveal + skill bars
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.classList.add('visible');
+          // Animate skill bars inside revealed element
+          e.target.querySelectorAll('.skill-fill').forEach(bar => {
+            bar.style.width = bar.dataset.w + '%';
+          });
+        }, i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+ 
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow =
+      window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
+  });
+</script>
+ 
+</body>
+</html>
