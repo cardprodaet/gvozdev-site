@@ -710,6 +710,15 @@
 
     .mobile-menu a:hover { color: var(--accent2); }
 
+    /* ── FAQ ── */
+    .faq-item{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:700;gap:12px;user-select:none;}
+    .faq-q:hover{color:var(--accent2);}
+    .faq-arrow{color:var(--accent2);font-size:20px;flex-shrink:0;transition:transform .25s;}
+    .faq-item.open .faq-arrow{transform:rotate(180deg);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s;font-size:14px;color:var(--muted);line-height:1.7;padding:0 22px;}
+    .faq-item.open .faq-a{max-height:200px;padding:0 22px 20px;}
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -1007,6 +1016,68 @@
   </div>
 </section>
 
+<!-- ── HOW IT WORKS ── -->
+<section id="how">
+  <div class="reveal">
+    <div class="section-label">Процесс</div>
+    <h2 class="section-title">Как мы работаем</h2>
+    <p class="section-sub">Прозрачный процесс — вы всегда знаете что происходит и что будет дальше.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;">
+    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">1</div>
+      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Заявка</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;">Оставляете заявку — отвечаю в течение нескольких часов и договариваемся о звонке.</p>
+    </div>
+    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">2</div>
+      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Диагностика</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;">Бесплатно разбираю ваш магазин: карточки, рекламу, позиции, конкурентов — нахожу точки роста.</p>
+    </div>
+    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">3</div>
+      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Стратегия</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;">Составляем план с конкретными шагами и KPI. Вы понимаете что и когда произойдёт.</p>
+    </div>
+    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">4</div>
+      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Результат</h3>
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;">Реализуем, замеряем, корректируем. Первые улучшения — уже в первые недели работы.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="reveal">
+    <div class="section-label">Вопросы</div>
+    <h2 class="section-title">Частые вопросы</h2>
+    <p class="section-sub">Отвечаю на то, что спрашивают чаще всего перед началом работы.</p>
+  </div>
+  <div style="max-width:760px;display:flex;flex-direction:column;gap:10px;">
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Сколько стоит диагностика?<span class="faq-arrow">⌄</span></div>
+      <div class="faq-a">Бесплатно. Диагностика — это знакомство с вашим магазином. Разберу что мешает росту и покажу конкретные точки улучшения. Никаких скрытых платежей.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Через сколько будет результат?<span class="faq-arrow">⌄</span></div>
+      <div class="faq-a">Первые улучшения заметны уже в первые 2–3 недели. Стабильный рост продаж — в первые 30–60 дней работы.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Работаете с новичками и с нуля?<span class="faq-arrow">⌄</span></div>
+      <div class="faq-a">Да, работаю на любом этапе — от запуска с нуля до масштабирования магазина с оборотом от 1 млн в месяц.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Вы работаете только с WB или ещё с Ozon?<span class="faq-arrow">⌄</span></div>
+      <div class="faq-a">Работаю с обоими маркетплейсами — Wildberries и Ozon. Можно вести один или оба одновременно.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">Как вы гарантируете результат?<span class="faq-arrow">⌄</span></div>
+      <div class="faq-a">Показываю кейсы с реальными цифрами до и после. Работаю только тогда, когда вижу потенциал роста — если роста нет, скажу об этом честно на диагностике.</div>
+    </div>
+  </div>
+</section>
+
 <!-- ── CTA ── -->
 <div class="cta-section">
   <div class="cta-wrap reveal">
@@ -1046,6 +1117,13 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function toggleFaq(el){
+    const item = el.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
 
   window.addEventListener('scroll', () => {
     document.getElementById('nav').style.boxShadow =
