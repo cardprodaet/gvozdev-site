@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Заявка отправлена — Владислав Гвоздев</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Yandex.Metrika -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+    ym(109215727,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+    ym(109215727,"reachGoal","form_submit");
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109215727" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+    gtag('event', 'conversion', {'send_to': 'G-XXXXXXXXXX/form_submit'});
+  </script>
+  <style>
+    :root{--bg:#0a0f1e;--card:#111827;--border:rgba(255,255,255,.08);--text:#f0f4ff;--muted:#8b9ab8;--accent:#2563eb;--accent2:#60a5fa;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden;}
+    body::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(37,99,235,.12) 0%,transparent 70%);}
+    .wrap{position:relative;max-width:560px;}
+    .icon{font-size:72px;margin-bottom:24px;display:block;animation:pop .5s cubic-bezier(.175,.885,.32,1.275) both;}
+    @keyframes pop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+    h1{font-family:'Unbounded',sans-serif;font-size:clamp(24px,5vw,36px);font-weight:900;margin-bottom:16px;letter-spacing:-.5px;}
+    .sub{font-size:17px;color:var(--muted);line-height:1.65;margin-bottom:12px;}
+    .highlight{background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.3);border-radius:16px;padding:20px 24px;margin:28px 0;font-size:15px;color:var(--accent2);font-weight:700;}
+    .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px;}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:14px;font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;text-decoration:none;transition:transform .15s,background .15s;}
+    .btn-primary{background:var(--accent);color:white;box-shadow:0 8px 24px rgba(37,99,235,.35);}
+    .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+    .btn-ghost{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border);}
+    .btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+    .countdown{font-size:13px;color:var(--muted);margin-top:20px;}
+    .countdown span{color:var(--accent2);font-weight:800;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="icon">🎉</span>
+    <h1>Заявка отправлена!</h1>
+    <p class="sub">Владислав свяжется с вами в течение нескольких часов в рабочее время.</p>
+    <div class="highlight">
+      ⏱ Среднее время ответа — 2 часа<br>
+      Пн–Пт, 10:00–19:00 МСК
+    </div>
+    <p class="sub">Пока ждёте — напишите в Telegram, там отвечаю быстрее всего.</p>
+    <div class="actions">
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-primary">💬 Написать в Telegram</a>
+      <a href="index.html" class="btn btn-ghost">← На главную</a>
+    </div>
+    <p class="countdown">Вернуть на главную через <span id="sec">10</span> сек</p>
+  </div>
+  <script>
+    let s = 10;
+    const el = document.getElementById('sec');
+    const t = setInterval(() => { el.textContent = --s; if(s<=0){ clearInterval(t); location.href='index.html'; }}, 1000);
+  </script>
+</body>
+</html>
