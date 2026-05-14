@@ -532,5 +532,20 @@
     nav.style.background=window.scrollY>50?'rgba(10,15,30,.97)':'rgba(10,15,30,.85)';
   });
 </script>
+<!-- ── FLOATING WA BUTTON ── -->
+<a href="https://wa.me/79279122297" target="_blank" id="waFloat" style="
+  position:fixed; bottom:100px; right:28px; z-index:9998;
+  width:60px; height:60px; border-radius:50%;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  box-shadow:0 8px 32px rgba(37,211,102,.5);
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; font-size:28px;
+  transition:transform .2s, box-shadow .2s;
+" title="Написать в WhatsApp">
+  📱
+</a>
+<style>
+  #waFloat:hover { transform:scale(1.12); box-shadow:0 12px 40px rgba(37,211,102,.75); }
+</style>
 </body>
 </html>
