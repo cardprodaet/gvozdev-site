@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SEO на Ozon: как попасть в топ поисковой выдачи — Владислав Гвоздев</title>
+  <meta name="description" content="Полное руководство по SEO на Ozon: как работает алгоритм поиска, как собирать семантику, оптимизировать карточку и выходить в топ выдачи. Реальные примеры и цифры."/>
+  <meta name="author" content="Владислав Гвоздев"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="SEO на Ozon: как попасть в топ поисковой выдачи"/>
+  <meta property="og:description" content="Разбираю алгоритм Ozon, сбор семантики, оптимизацию карточки и стратегию выхода в топ — конкретные данные без воды."/>
+  <meta property="og:url" content="https://cardprodaet.github.io/gvozdev-site/blog-seo-ozon.html"/>
+  <meta property="og:site_name" content="Гвоздев | Карточка продает"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="SEO на Ozon: как попасть в топ поисковой выдачи"/>
+  <meta name="twitter:description" content="Полное руководство по SEO на Ozon от эксперта Владислава Гвоздева."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="shortcut icon" href="favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(109215727,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109215727" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <style>
+    :root{--bg:#0a0f1e;--card:#111827;--border:rgba(255,255,255,.08);--text:#f0f4ff;--muted:#8b9ab8;--accent:#2563eb;--accent2:#60a5fa;--accent3:#f97316;--radius:20px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(10,15,30,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:var(--text);text-decoration:none;}
+    .nav-logo span{color:var(--accent2);}
+    .nav-links{display:flex;gap:32px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-cta{background:var(--accent);color:white!important;padding:10px 22px;border-radius:12px;font-weight:700!important;}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .burger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:8px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{color:var(--text);text-decoration:none;font-size:22px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--border);}
+
+    /* ARTICLE HERO */
+    .article-hero{padding:120px 40px 60px;position:relative;overflow:hidden;}
+    .article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(37,99,235,.18) 0%,transparent 70%);}
+    .article-hero-inner{position:relative;max-width:860px;margin:0 auto;}
+
+    /* BREADCRUMBS */
+    .breadcrumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:28px;flex-wrap:wrap;}
+    .breadcrumbs a{color:var(--muted);text-decoration:none;transition:color .2s;}
+    .breadcrumbs a:hover{color:var(--accent2);}
+    .breadcrumbs span{color:var(--accent2);}
+
+    .article-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--accent2);border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;margin-bottom:20px;}
+    .article-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(26px,4.5vw,48px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:24px;}
+    .article-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .meta-item{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+    .meta-dot{width:4px;height:4px;border-radius:50%;background:var(--muted);opacity:.5;}
+    .meta-item strong{color:var(--text);}
+
+    /* ARTICLE BODY */
+    .article-wrap{max-width:860px;margin:0 auto;padding:0 40px 100px;}
+
+    .article-body h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-.5px;margin:52px 0 18px;line-height:1.25;color:var(--text);}
+    .article-body h3{font-family:'Unbounded',sans-serif;font-size:clamp(16px,2.5vw,20px);font-weight:700;margin:34px 0 14px;line-height:1.3;color:var(--accent2);}
+    .article-body p{font-size:16px;line-height:1.8;color:rgba(240,244,255,.85);margin-bottom:20px;}
+    .article-body ul,.article-body ol{margin:18px 0 24px 0;padding-left:0;list-style:none;}
+    .article-body ul li,.article-body ol li{font-size:16px;line-height:1.75;color:rgba(240,244,255,.85);margin-bottom:10px;padding-left:28px;position:relative;}
+    .article-body ul li::before{content:'→';position:absolute;left:0;color:var(--accent2);font-weight:700;}
+    .article-body ol{counter-reset:ol-counter;}
+    .article-body ol li{counter-increment:ol-counter;}
+    .article-body ol li::before{content:counter(ol-counter)'.';position:absolute;left:0;color:var(--accent3);font-weight:800;}
+
+    /* TIP BOX */
+    .tip-box{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.25);border-left:4px solid var(--accent);border-radius:16px;padding:24px 28px;margin:32px 0;}
+    .tip-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:10px;}
+    .tip-box p{margin:0;font-size:15px;color:var(--text);}
+
+    /* WARNING BOX */
+    .warn-box{background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.25);border-left:4px solid var(--accent3);border-radius:16px;padding:24px 28px;margin:32px 0;}
+    .warn-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent3);margin-bottom:10px;}
+    .warn-box p{margin:0;font-size:15px;color:var(--text);}
+
+    /* QUOTE */
+    .pull-quote{border-left:4px solid var(--accent2);padding:20px 28px;margin:36px 0;background:rgba(96,165,250,.06);border-radius:0 16px 16px 0;}
+    .pull-quote p{font-size:18px;font-style:italic;color:var(--text);margin:0;line-height:1.65;}
+    .pull-quote cite{display:block;margin-top:10px;font-size:13px;color:var(--muted);font-style:normal;}
+
+    /* STEP LIST */
+    .step-list{display:flex;flex-direction:column;gap:20px;margin:28px 0;}
+    .step-item{display:flex;gap:20px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 24px;}
+    .step-num{width:44px;height:44px;min-width:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#1d4ed8);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:white;}
+    .step-content h4{font-size:16px;font-weight:800;margin-bottom:6px;color:var(--text);}
+    .step-content p{font-size:14px;color:var(--muted);margin:0;line-height:1.65;}
+
+    /* STAT ROW */
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 20px;text-align:center;}
+    .stat-num{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:900;color:var(--accent2);display:block;margin-bottom:6px;}
+    .stat-label{font-size:13px;color:var(--muted);}
+
+    /* CTA */
+    .article-cta{background:linear-gradient(135deg,#0d1428,#1e3a8a);border:1px solid rgba(37,99,235,.35);border-radius:24px;padding:48px 40px;text-align:center;margin:60px 0 0;}
+    .article-cta h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:900;margin-bottom:16px;line-height:1.25;}
+    .article-cta p{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto 32px;line-height:1.7;}
+    .btn-primary{display:inline-block;background:var(--accent);color:white;padding:16px 36px;border-radius:14px;font-size:16px;font-weight:800;text-decoration:none;transition:background .2s,transform .2s;}
+    .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+    .cta-sub{margin-top:14px;font-size:13px;color:var(--muted);}
+
+    /* FOOTER */
+    footer{background:var(--card);border-top:1px solid var(--border);padding:48px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+    .footer-logo{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900;color:var(--text);text-decoration:none;}
+    .footer-logo span{color:var(--accent2);}
+    .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{font-size:13px;color:var(--muted);}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      nav{padding:16px 20px;}
+      .nav-links{display:none;}
+      .burger{display:flex;}
+      .article-hero{padding:100px 20px 48px;}
+      .article-wrap{padding:0 20px 80px;}
+      .stat-row{grid-template-columns:1fr 1fr;}
+      footer{padding:36px 20px;flex-direction:column;align-items:flex-start;}
+    }
+    @media(max-width:560px){
+      .stat-row{grid-template-columns:1fr;}
+      .article-cta{padding:36px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span> | Карточка продает</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html" class="active">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span>›</span>
+      <a href="blog.html">Блог</a>
+      <span>›</span>
+      <span style="color:var(--text);">SEO на Ozon</span>
+    </nav>
+    <div class="article-tag">🔍 SEO и продвижение</div>
+    <h1>SEO на Ozon: как попасть в топ поисковой выдачи</h1>
+    <div class="article-meta">
+      <div class="meta-item">Автор: <strong>Владислав Гвоздев</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Май 2025</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">⏱ 8 мин чтения</div>
+    </div>
+  </div>
+</section>
+
+<main class="article-wrap">
+  <div class="article-body">
+
+    <p>Ozon — второй по размеру маркетплейс в России, и алгоритм его поиска работает принципиально иначе, чем на Wildberries. Многие продавцы, которые успешно вышли в топ на WB, приходят на Ozon и не могут понять, почему те же методы не работают. Разберём всё по существу.</p>
+
+    <p>За три года работы с Ozon я оптимизировал больше 400 карточек в разных нишах — от бытовой химии до электроники. Всё, что написано дальше, основано на реальных тестах и данных аналитики, а не пересказе чужих курсов.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="stat-num">68%</span>
+        <div class="stat-label">покупателей на Ozon начинают путь с поисковой строки</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">×5–10</span>
+        <div class="stat-label">разница в трафике между топ-5 и позицией 30+</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">21–45 д</span>
+        <div class="stat-label">реальный срок выхода в топ при системной работе</div>
+      </div>
+    </div>
+
+    <h2>Как Ozon ранжирует товары: честный разбор</h2>
+
+    <p>Ozon публично признаёт, что использует модель машинного обучения для ранжирования. Алгоритм называется «персонализированный поиск» — это важный нюанс. Два разных пользователя, введя одинаковый запрос, увидят разные результаты, исходя из истории их покупок и поведения на платформе.</p>
+
+    <p>Тем не менее, есть базовые факторы, которые влияют на всех пользователей одинаково. Ozon сам раскрывает их в документации для продавцов, и я проверил каждый из них на практике.</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Текстовая релевантность</h4>
+          <p>Совпадение слов из поискового запроса с текстом в названии, описании, характеристиках и rich-контенте карточки. Ozon анализирует не только точные вхождения, но и морфологию — «кроссовок», «кроссовки», «кроссовках» воспринимаются как одно.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Рейтинг и отзывы</h4>
+          <p>Средняя оценка товара и количество отзывов — один из самых тяжёлых факторов. Ozon открыто говорит: товары с рейтингом ниже 4.5 получают пессимизацию в выдаче относительно конкурентов с высокими оценками.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Конверсия и поведение</h4>
+          <p>CTR карточки в выдаче, конверсия из просмотра в корзину, процент выкупа заказов — алгоритм смотрит на всю воронку, а не только на клики.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Коммерческие условия</h4>
+          <p>Наличие товара (out-of-stock обнуляет позиции), скорость доставки (FBO всегда выигрывает у FBS в ранжировании), участие в акциях Ozon и конкурентность цены.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Шаг 1. Сбор семантики для Ozon</h2>
+
+    <p>Семантика на Ozon собирается иначе, чем для Яндекса или даже WB. Покупатели на Ozon часто используют более длинные и описательные запросы — «беспроводные наушники для спорта с шумоподавлением» вместо просто «наушники». Это нужно учитывать при сборе.</p>
+
+    <h3>Источники ключевых слов для Ozon</h3>
+
+    <ul>
+      <li><strong>Строка поиска Ozon (подсказки):</strong> начните вводить товар и записывайте все подсказки — это реальные запросы реальных покупателей прямо сейчас</li>
+      <li><strong>Ozon Seller — статистика поисковых запросов:</strong> в личном кабинете Ozon Seller есть раздел с аналитикой запросов — показывает частотность по категориям</li>
+      <li><strong>MPStats и Moneyplace:</strong> оба сервиса работают с Ozon и дают частотность запросов, конкурентность и динамику</li>
+      <li><strong>Карточки конкурентов из топ-5:</strong> смотрите, по каким запросам они ранжируются через сторонние сервисы</li>
+      <li><strong>Отзывы покупателей на аналогичные товары:</strong> люди пишут в отзывах именно те слова, которые они используют при поиске</li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-box-label">💡 Совет по семантике</div>
+      <p>На Ozon работает так называемый «длинный хвост» намного лучше, чем на WB. Запрос «термос для чая 1 литр с кнопкой» при частотности 800/месяц даёт конверсию 12–18%, тогда как «термос» при частотности 50 000/месяц конвертирует на уровне 1–2%. Для старта всегда берите НЧ и СЧ запросы.</p>
+    </div>
+
+    <h2>Шаг 2. Оптимизация названия карточки</h2>
+
+    <p>Название на Ozon — главный SEO-элемент карточки. В отличие от WB, Ozon допускает более длинные названия (до 200 символов), и этим нужно пользоваться.</p>
+
+    <h3>Формула идеального названия на Ozon</h3>
+
+    <p>Структура, которую я использую для всех клиентов:</p>
+
+    <ul>
+      <li><strong>Тип товара + Бренд (если известен) + Ключевые характеристики + Назначение/аудитория</strong></li>
+      <li>Пример для электроники: «Наушники беспроводные Bluetooth с шумоподавлением для спорта, 40 ч работы, IPX5»</li>
+      <li>Пример для одежды: «Платье летнее женское миди из хлопка с открытой спиной, размер 42–52»</li>
+      <li>Пример для товаров для дома: «Термос для чая и кофе 1 л, кнопка, сохраняет тепло 24 часа, нержавеющая сталь»</li>
+    </ul>
+
+    <div class="warn-box">
+      <div class="warn-box-label">⚠️ Запрещённые приёмы в названии</div>
+      <p>Ozon активно борется с названиями, содержащими: «Лучший», «№1», «Топ», «Хит», имена конкурентов, не соответствующие характеристикам данные. При обнаружении такого контента карточка получает штраф — вплоть до удаления из поиска на 7–14 дней.</p>
+    </div>
+
+    <h2>Шаг 3. Описание и rich-контент</h2>
+
+    <p>На Ozon есть уникальный инструмент — rich-контент. Это визуальный конструктор, который позволяет создать лендинг прямо внутри карточки товара. И это не просто красивая картинка — rich-контент индексируется алгоритмом и влияет на ранжирование.</p>
+
+    <h3>Что должно быть в описании</h3>
+
+    <ul>
+      <li>Первые 200–300 символов описания — самые важные: Ozon показывает только этот фрагмент в сниппете выдачи</li>
+      <li>Включите в первый абзац 2–3 главных поисковых запроса в естественной форме</li>
+      <li>Расписывайте применение товара сценарно: «идеально подходит для...», «используется при...» — это добавляет длиннохвостовые запросы</li>
+      <li>Объём описания — от 800 до 3 000 символов. Меньше — недостаточно сигналов для алгоритма, больше — воспринимается как спам</li>
+    </ul>
+
+    <div class="pull-quote">
+      <p>Rich-контент на Ozon — это одновременно SEO-инструмент и конверсионный инструмент. Карточки с rich-контентом в среднем конвертируют на 23–35% лучше, чем карточки только с текстовым описанием.</p>
+      <cite>— Владислав Гвоздев, из личного опыта работы с Ozon</cite>
+    </div>
+
+    <h3>Как правильно заполнять характеристики</h3>
+
+    <p>Характеристики на Ozon — это не формальность, а полноценный SEO-элемент. Ozon использует их для фильтрации в каталоге и для ответа на поисковые запросы. Незаполненные поля = потеря части трафика.</p>
+
+    <ul>
+      <li>Заполняйте абсолютно все поля, даже необязательные — алгоритм это видит</li>
+      <li>В поле «Назначение» и «Применение» укажите все возможные сценарии использования</li>
+      <li>Поле «Ключевые слова» в настройках карточки — используйте его, но без спама: 5–8 запросов, которых нет в названии и описании</li>
+      <li>Проверьте конкурентов из топ-3 — какие характеристики они заполнили, которые вы пропустили</li>
+    </ul>
+
+    <h2>Шаг 4. Фото и видео как фактор ранжирования</h2>
+
+    <p>На Ozon медиаконтент влияет на ранжирование прямее, чем на большинстве других маркетплейсов. Алгоритм учитывает полноту заполнения карточки — в том числе количество и качество фотографий.</p>
+
+    <ul>
+      <li>Минимум 6–8 фотографий — это базовый стандарт для конкурентоспособной карточки</li>
+      <li>Видеообложка (видео на главном фото) — Ozon маркирует такие карточки специальным значком, и их CTR выше на 18–30%</li>
+      <li>Инфографика с ключевыми характеристиками на 2–3 слайдах — обязательна для технически сложных товаров</li>
+      <li>3D-обзор и видеоинструкция — Ozon даёт буст в выдаче карточкам с расширенным медиаконтентом</li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-box-label">💡 Про видеообложку</div>
+      <p>Сделать видеообложку можно даже без съёмки: возьмите 5–7 фото товара, смонтируйте слайд-шоу с текстом в CapCut или DaVinci Resolve, наложите ключевые выгоды. Время производства — 2–3 часа. Эффект — рост CTR на 20%+ уже в первую неделю.</p>
+    </div>
+
+    <h2>Шаг 5. Рейтинг и отзывы на Ozon</h2>
+
+    <p>Ozon — единственный крупный российский маркетплейс, где рейтинг продавца и рейтинг товара считаются отдельно. Оба влияют на ранжирование, но по-разному.</p>
+
+    <h3>Как набрать первые отзывы на Ozon</h3>
+
+    <ol>
+      <li>Программа «Отзывы за баллы» — официальный инструмент Ozon, работает через личный кабинет. Платно, но легально и эффективно: средняя конверсия 20–25% от доставленных заказов</li>
+      <li>Вкладыш в упаковке с QR-кодом — работает хуже, чем на WB, но всё равно даёт 5–10% конверсию в отзыв</li>
+      <li>Ответы на вопросы покупателей — Ozon показывает карточки с быстрыми и полезными ответами на вопросы выше в персонализированной выдаче</li>
+      <li>Работа с негативными отзывами — всегда отвечайте в течение 24 часов. Ozon учитывает скорость ответа продавца при расчёте рейтинга магазина</li>
+    </ol>
+
+    <div class="warn-box">
+      <div class="warn-box-label">⚠️ Про накрутку отзывов</div>
+      <p>Ozon имеет одну из самых продвинутых систем обнаружения фейковых отзывов среди российских маркетплейсов. Алгоритм анализирует паттерны: время публикации, IP, модель поведения аккаунта, историю покупок. За накрутку — удаление отзывов и блокировка карточки. Не рискуйте.</p>
+    </div>
+
+    <h2>Шаг 6. FBO vs FBS: как модель фулфилмента влияет на SEO</h2>
+
+    <p>Это один из самых недооценённых факторов ранжирования на Ozon. Товары на складе Ozon (FBO) получают преимущество в поиске по нескольким причинам:</p>
+
+    <ul>
+      <li>Скорость доставки — FBO-товары доставляются за 1–2 дня, FBS может занимать 3–7 дней. Алгоритм ранжирует быстрые доставки выше</li>
+      <li>Значок «Ozon Доставка» — покупатели фильтруют выдачу по этому признаку, и FBS-товары выпадают из фильтра</li>
+      <li>Участие в акциях — многие акции Ozon доступны только для FBO-товаров</li>
+      <li>Приоритет в органической выдаче — Ozon публично признаёт, что FBO имеет приоритет при прочих равных условиях</li>
+    </ul>
+
+    <p>Если у вас небольшой оборот и FBO финансово нецелесообразен — используйте FBS, но учитывайте это ограничение при планировании стратегии продвижения.</p>
+
+    <h2>Шаг 7. Реклама на Ozon как инструмент SEO-разгона</h2>
+
+    <p>Внутренняя реклама Ozon (Ozon Performance) — мощный инструмент не только для прямых продаж, но и для разгона органического ранжирования. Логика та же, что на WB: продажи с рекламы → рост конверсии → сигнал алгоритму → рост органических позиций.</p>
+
+    <h3>Типы рекламы на Ozon и их цели</h3>
+
+    <ul>
+      <li><strong>Трафаретная реклама (аукцион):</strong> показы в поисковой выдаче и в карточках конкурентов. Лучший инструмент для разгона ключей — настройте на 5–10 целевых запросов</li>
+      <li><strong>Продвижение в поиске (буст):</strong> дополнительные показы за фиксированный процент от продаж (1–15%). Самый простой вариант для начинающих</li>
+      <li><strong>Медийная реклама:</strong> баннеры на главной и в категориях — подходит для брендов с бюджетом от 100 000 руб/мес</li>
+      <li><strong>Внешняя реклама с трекингом:</strong> Ozon даёт уникальные ссылки для отслеживания внешнего трафика — используйте для интеграций с блогерами</li>
+    </ul>
+
+    <div class="pull-quote">
+      <p>Клиент с нишевым товаром для рукоделия: запустили трафаретную рекламу на 15 000 руб/мес по низкочастотным запросам, получили 240 заказов за месяц — и карточка органически вышла в топ-8 по трём ключевым запросам. Бюджет на рекламу теперь можно снизить на 60%.</p>
+      <cite>— Владислав Гвоздев</cite>
+    </div>
+
+    <h2>Итоговая карта действий: что делать прямо сейчас</h2>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Аудит текущей карточки</h4>
+          <p>Проверьте: название по формуле, все поля характеристик, минимум 6 фото, наличие rich-контента, рейтинг от 4.5.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Сбор и внедрение семантики</h4>
+          <p>Соберите 30–50 запросов через Ozon Seller + MPStats. Приоритет: НЧ и СЧ запросы с хорошей конверсией.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Rich-контент и видеообложка</h4>
+          <p>Создайте rich-контент с ключевыми выгодами и инфографикой. Добавьте видеообложку хотя бы в формате слайд-шоу.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Запуск рекламы и сбор отзывов</h4>
+          <p>Запустите «Продвижение в поиске» на 5–7% и параллельно подключите программу «Отзывы за баллы» для первых 15–20 отзывов.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>SEO на Ozon — это марафон, а не спринт. Алгоритм обновляется медленнее, чем на WB, но и позиции держатся дольше. Если вы системно работаете с карточкой в течение 45–60 дней — результат будет стабильным и предсказуемым.</p>
+
+  </div>
+
+  <div class="article-cta">
+    <h2>Хотите SEO-аудит вашей карточки на Ozon?</h2>
+    <p>За 30 минут разберём вашу карточку, найдём точки роста и дадим конкретный план оптимизации — с цифрами и приоритетами.</p>
+    <a href="contacts.html" class="btn-primary">Записаться на аудит →</a>
+    <div class="cta-sub">Бесплатно · Онлайн · 30 минут · Конкретные рекомендации</div>
+  </div>
+</main>
+
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span> | Карточка продает</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+    <li><a href="https://t.me/card_prodaet" target="_blank">📢 Канал @card_prodaet</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+
+<a href="https://t.me/gvozdev_vladislav" target="_blank" id="tgFloat" style="position:fixed;bottom:28px;right:28px;z-index:9998;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);box-shadow:0 8px 32px rgba(37,99,235,.55);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;transition:transform .2s,box-shadow .2s;animation:tgPulse 2.5s ease-in-out infinite;" title="Написать в Telegram">✈️<span style="position:absolute;top:-6px;right:-4px;background:#22c55e;color:white;font-family:'Manrope',sans-serif;font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3);">онлайн</span></a>
+<style>#tgFloat:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,99,235,.7);}@keyframes tgPulse{0%,100%{box-shadow:0 8px 32px rgba(37,99,235,.55);}50%{box-shadow:0 8px 48px rgba(37,99,235,.85),0 0 0 8px rgba(37,99,235,.12);}}</style>
+
+<a href="https://wa.me/79279122297" target="_blank" id="waFloat" style="position:fixed;bottom:100px;right:28px;z-index:9998;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 8px 32px rgba(37,211,102,.5);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;transition:transform .2s,box-shadow .2s;" title="Написать в WhatsApp">📱</a>
+<style>#waFloat:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,211,102,.75);}</style>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  window.addEventListener('scroll',function(){
+    const nav=document.getElementById('nav');
+    nav.style.background=window.scrollY>50?'rgba(10,15,30,.97)':'rgba(10,15,30,.85)';
+  });
+</script>
+</body>
+</html>
