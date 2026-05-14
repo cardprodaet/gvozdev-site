@@ -762,6 +762,15 @@
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
   </style>
+  <!-- Yandex.Metrika -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+    ym(XXXXXXXX,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
 </head>
 <body>
 
@@ -796,7 +805,7 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">Принимаю новых клиентов — осталось 3 места</div>
+    <div class="hero-badge">🔴 Осталось <span id="spotsLeft">3</span> места — следующий набор через <span id="countdown"></span></div>
     <h1>
       Вывожу магазины<br>
       в <span class="blue">топ WB</span> и <span class="orange">Ozon</span><br>
@@ -1117,6 +1126,31 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Countdown timer — следующий понедельник
+  (function() {
+    function getNextMonday() {
+      const now = new Date();
+      const day = now.getDay();
+      const diff = day === 0 ? 1 : 8 - day;
+      const next = new Date(now);
+      next.setDate(now.getDate() + diff);
+      next.setHours(10, 0, 0, 0);
+      return next;
+    }
+    function updateCountdown() {
+      const el = document.getElementById('countdown');
+      if (!el) return;
+      const diff = getNextMonday() - new Date();
+      if (diff <= 0) { el.textContent = 'скоро'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      el.textContent = (d > 0 ? d + 'д ' : '') + h + 'ч ' + m + 'м';
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+  })();
 
   function toggleFaq(el){
     const item = el.closest('.faq-item');
