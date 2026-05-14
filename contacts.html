@@ -355,28 +355,42 @@
 </footer>
  
 <script>
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-uzZX_2Yx_86j5RpBaTqZb8l5LAfHEUYqo6W6_Yzk-9dOPPbvVJBNCYaZntolRIm_/exec";
- 
+  const TG_TOKEN   = "8596876523:AAFtt56dSrudnnWpgGgTocZcC5lCvd6THsQ";
+  const TG_CHAT_ID = "911552952";
+
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
- 
-  function submitForm(){
-    const name    = document.getElementById('fname').value.trim();
-    const contact = document.getElementById('fcontact').value.trim();
-    const shop    = document.getElementById('fshop').value.trim();
-    const platform= document.getElementById('fplatform').value;
-    const service = document.getElementById('fservice').value;
-    const message = document.getElementById('fmessage').value.trim();
- 
-    if(!name)    { alert('Введите ваше имя'); return; }
-    if(!contact) { alert('Введите телефон или Telegram'); return; }
-    if(!platform){ alert('Выберите платформу'); return; }
-    if(!service) { alert('Выберите услугу'); return; }
- 
-    const url = `${GOOGLE_SCRIPT_URL}?service=${encodeURIComponent(service)}&name=${encodeURIComponent(name)}&username=${encodeURIComponent(contact)}&phone=${encodeURIComponent(contact)}&platform=${encodeURIComponent(platform)}&shop=${encodeURIComponent(shop)}&message=${encodeURIComponent(message)}&t=${Date.now()}`;
-    new Image().src = url;
- 
+
+  async function submitForm(){
+    const name     = document.getElementById('fname').value.trim();
+    const contact  = document.getElementById('fcontact').value.trim();
+    const shop     = document.getElementById('fshop').value.trim();
+    const platform = document.getElementById('fplatform').value;
+    const service  = document.getElementById('fservice').value;
+    const message  = document.getElementById('fmessage').value.trim();
+
+    if(!name)     { alert('Введите ваше имя'); return; }
+    if(!contact)  { alert('Введите телефон или Telegram'); return; }
+    if(!platform) { alert('Выберите платформу'); return; }
+    if(!service)  { alert('Выберите услугу'); return; }
+
+    const text = `🔔 *Новая заявка с сайта!*\n\n` +
+      `👤 *Имя:* ${name}\n` +
+      `📞 *Контакт:* ${contact}\n` +
+      `🛒 *Площадка:* ${platform}\n` +
+      `📦 *Услуга:* ${service}\n` +
+      (shop    ? `🔗 *Магазин:* ${shop}\n`    : '') +
+      (message ? `💬 *Сообщение:* ${message}` : '');
+
+    try {
+      await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text, parse_mode: 'Markdown' })
+      });
+    } catch(e) { console.error(e); }
+
     document.getElementById('formContent').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('successMsg').style.display  = 'block';
   }
  
   function toggleFaq(el){
