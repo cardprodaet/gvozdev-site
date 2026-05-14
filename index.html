@@ -1165,6 +1165,59 @@
   });
 </script>
 
+<!-- ── ACTIVITY NOTIFICATIONS ── -->
+<div id="activityNote" style="
+  position:fixed; bottom:104px; left:24px; z-index:9997;
+  background:#111827; border:1px solid rgba(255,255,255,.1);
+  border-radius:16px; padding:14px 18px;
+  display:flex; align-items:center; gap:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+  max-width:280px; opacity:0;
+  transition:opacity .4s, transform .4s;
+  transform:translateY(12px);
+  pointer-events:none;
+">
+  <div style="
+    width:38px; height:38px; border-radius:50%; flex-shrink:0;
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px;
+  ">👤</div>
+  <div>
+    <div id="activityName" style="font-size:13px; font-weight:700; color:#f0f4ff;"></div>
+    <div id="activityText" style="font-size:12px; color:#8b9ab8; margin-top:2px;"></div>
+  </div>
+</div>
+<script>
+  const activities = [
+    { name: 'Дмитрий', city: 'Москва',       action: 'оставил заявку на аудит' },
+    { name: 'Анна',    city: 'Санкт-Петербург', action: 'записалась на диагностику' },
+    { name: 'Сергей',  city: 'Екатеринбург', action: 'написал в Telegram' },
+    { name: 'Ольга',   city: 'Новосибирск',  action: 'оставила заявку' },
+    { name: 'Максим',  city: 'Краснодар',    action: 'записался на консультацию' },
+    { name: 'Елена',   city: 'Казань',        action: 'оставила заявку на сопровождение' },
+  ];
+  let noteIdx = 0;
+  function showActivity() {
+    const el   = document.getElementById('activityNote');
+    const data = activities[noteIdx % activities.length];
+    const mins = Math.floor(Math.random() * 28) + 2;
+    document.getElementById('activityName').textContent = data.name + ' из ' + data.city;
+    document.getElementById('activityText').textContent = data.action + ' · ' + mins + ' мин. назад';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+    setTimeout(() => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(12px)';
+    }, 4000);
+    noteIdx++;
+  }
+  setTimeout(() => {
+    showActivity();
+    setInterval(showActivity, 18000);
+  }, 8000);
+</script>
+
 <!-- ── EXIT POPUP ── -->
 <div id="exitPopup" style="
   display:none; position:fixed; inset:0; z-index:9999;
@@ -1245,5 +1298,33 @@
     if (e.key === 'Escape') closePopup();
   });
 </script>
+
+<!-- ── FLOATING TG BUTTON ── -->
+<a href="https://t.me/cardprodaet" target="_blank" id="tgFloat" style="
+  position:fixed; bottom:28px; right:28px; z-index:9998;
+  width:60px; height:60px; border-radius:50%;
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  box-shadow:0 8px 32px rgba(37,99,235,.55);
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; font-size:28px;
+  transition:transform .2s, box-shadow .2s;
+  animation:tgPulse 2.5s ease-in-out infinite;
+" title="Написать в Telegram">
+  ✈️
+  <span style="
+    position:absolute; top:-6px; right:-4px;
+    background:#22c55e; color:white;
+    font-family:'Manrope',sans-serif; font-size:10px; font-weight:800;
+    padding:2px 6px; border-radius:999px;
+    white-space:nowrap; box-shadow:0 2px 8px rgba(0,0,0,.3);
+  ">онлайн</span>
+</a>
+<style>
+  #tgFloat:hover { transform:scale(1.12); box-shadow:0 12px 40px rgba(37,99,235,.7); }
+  @keyframes tgPulse {
+    0%,100% { box-shadow:0 8px 32px rgba(37,99,235,.55); }
+    50%      { box-shadow:0 8px 48px rgba(37,99,235,.85), 0 0 0 8px rgba(37,99,235,.12); }
+  }
+</style>
 </body>
 </html>
