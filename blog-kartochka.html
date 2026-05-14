@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Как сделать продающую карточку товара на WB и Ozon — Владислав Гвоздев</title>
+  <meta name="description" content="Подробное руководство по созданию продающей карточки товара на Wildberries и Ozon: главное фото, инфографика, описание, SEO, характеристики. Опыт эксперта."/>
+  <meta name="author" content="Владислав Гвоздев"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Как сделать продающую карточку товара на WB и Ozon"/>
+  <meta property="og:description" content="Подробное руководство по созданию продающей карточки товара: главное фото, инфографика, описание, SEO, характеристики. Конкретные советы с примерами."/>
+  <meta property="og:url" content="https://cardprodaet.github.io/gvozdev-site/blog-kartochka.html"/>
+  <meta property="og:site_name" content="Гвоздев | Карточка продает"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Как сделать продающую карточку товара на WB и Ozon"/>
+  <meta name="twitter:description" content="Подробное руководство по созданию продающей карточки товара от эксперта по маркетплейсам."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="shortcut icon" href="favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(109215727,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109215727" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <style>
+    :root{--bg:#0a0f1e;--card:#111827;--border:rgba(255,255,255,.08);--text:#f0f4ff;--muted:#8b9ab8;--accent:#2563eb;--accent2:#60a5fa;--accent3:#f97316;--radius:20px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(10,15,30,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:var(--text);text-decoration:none;}
+    .nav-logo span{color:var(--accent2);}
+    .nav-links{display:flex;gap:32px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-cta{background:var(--accent);color:white!important;padding:10px 22px;border-radius:12px;font-weight:700!important;}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .burger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:8px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{color:var(--text);text-decoration:none;font-size:22px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--border);}
+
+    .article-hero{padding:120px 40px 60px;position:relative;overflow:hidden;}
+    .article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(96,165,250,.13) 0%,transparent 70%);}
+    .article-hero-inner{position:relative;max-width:860px;margin:0 auto;}
+
+    .breadcrumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:28px;flex-wrap:wrap;}
+    .breadcrumbs a{color:var(--muted);text-decoration:none;transition:color .2s;}
+    .breadcrumbs a:hover{color:var(--accent2);}
+    .breadcrumbs span{color:var(--accent2);}
+
+    .article-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.3);color:var(--accent2);border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;margin-bottom:20px;}
+    .article-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(26px,4.5vw,48px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:24px;}
+    .article-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .meta-item{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+    .meta-dot{width:4px;height:4px;border-radius:50%;background:var(--muted);opacity:.5;}
+    .meta-item strong{color:var(--text);}
+
+    .article-wrap{max-width:860px;margin:0 auto;padding:0 40px 100px;}
+
+    .article-body h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-.5px;margin:52px 0 18px;line-height:1.25;color:var(--text);}
+    .article-body h3{font-family:'Unbounded',sans-serif;font-size:clamp(15px,2vw,19px);font-weight:700;margin:30px 0 12px;line-height:1.3;color:var(--accent2);}
+    .article-body p{font-size:16px;line-height:1.8;color:rgba(240,244,255,.85);margin-bottom:20px;}
+    .article-body ul,.article-body ol{margin:18px 0 24px 0;padding-left:0;list-style:none;}
+    .article-body ul li,.article-body ol li{font-size:16px;line-height:1.75;color:rgba(240,244,255,.85);margin-bottom:10px;padding-left:28px;position:relative;}
+    .article-body ul li::before{content:'→';position:absolute;left:0;color:var(--accent2);font-weight:700;}
+    .article-body ol{counter-reset:ol-counter;}
+    .article-body ol li{counter-increment:ol-counter;}
+    .article-body ol li::before{content:counter(ol-counter)'.';position:absolute;left:0;color:var(--accent3);font-weight:800;}
+
+    /* SECTION CARD */
+    .section-block{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;margin:36px 0;position:relative;overflow:hidden;}
+    .section-block::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+    .section-block-num{font-family:'Unbounded',sans-serif;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;}
+    .section-block-title{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:900;color:var(--text);margin-bottom:16px;line-height:1.3;}
+    .section-block p{font-size:15px;line-height:1.75;color:rgba(240,244,255,.85);margin-bottom:14px;}
+    .section-block p:last-child{margin-bottom:0;}
+    .section-block ul{margin:12px 0 0;}
+    .section-block ul li{font-size:15px;margin-bottom:8px;padding-left:22px;}
+    .section-block ul li::before{content:'✓';color:#4ade80;}
+
+    .tip-box{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.25);border-left:4px solid var(--accent);border-radius:16px;padding:24px 28px;margin:32px 0;}
+    .tip-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:10px;}
+    .tip-box p{margin:0;font-size:15px;color:var(--text);}
+
+    .warn-box{background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.25);border-left:4px solid var(--accent3);border-radius:16px;padding:24px 28px;margin:32px 0;}
+    .warn-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent3);margin-bottom:10px;}
+    .warn-box p{margin:0;font-size:15px;color:var(--text);}
+
+    .pull-quote{border-left:4px solid var(--accent2);padding:20px 28px;margin:36px 0;background:rgba(96,165,250,.06);border-radius:0 16px 16px 0;}
+    .pull-quote p{font-size:18px;font-style:italic;color:var(--text);margin:0;line-height:1.65;}
+    .pull-quote cite{display:block;margin-top:10px;font-size:13px;color:var(--muted);font-style:normal;}
+
+    /* COMPARISON TABLE */
+    .compare-table{width:100%;border-collapse:collapse;margin:28px 0;border-radius:16px;overflow:hidden;}
+    .compare-table th{background:rgba(37,99,235,.15);color:var(--accent2);font-family:'Unbounded',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1px;padding:14px 16px;text-align:left;}
+    .compare-table td{padding:14px 16px;font-size:14px;border-bottom:1px solid var(--border);color:rgba(240,244,255,.85);}
+    .compare-table tr:last-child td{border-bottom:none;}
+    .compare-table tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+    .compare-table .good{color:#4ade80;font-weight:700;}
+    .compare-table .bad{color:#f87171;font-weight:700;}
+
+    /* PHOTO GRID */
+    .photo-sequence{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin:28px 0;}
+    .photo-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 14px;text-align:center;}
+    .photo-item-num{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:900;color:var(--accent2);margin-bottom:8px;}
+    .photo-item-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+    .photo-item-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+
+    /* STAT ROW */
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 20px;text-align:center;}
+    .stat-num{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:900;color:var(--accent2);display:block;margin-bottom:6px;}
+    .stat-label{font-size:13px;color:var(--muted);}
+
+    /* CTA */
+    .article-cta{background:linear-gradient(135deg,#042f2e,#134e4a);border:1px solid rgba(96,165,250,.25);border-radius:24px;padding:48px 40px;text-align:center;margin:60px 0 0;}
+    .article-cta h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:900;margin-bottom:16px;line-height:1.25;}
+    .article-cta p{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto 32px;line-height:1.7;}
+    .btn-primary{display:inline-block;background:var(--accent);color:white;padding:16px 36px;border-radius:14px;font-size:16px;font-weight:800;text-decoration:none;transition:background .2s,transform .2s;}
+    .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+    .cta-sub{margin-top:14px;font-size:13px;color:var(--muted);}
+
+    footer{background:var(--card);border-top:1px solid var(--border);padding:48px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+    .footer-logo{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900;color:var(--text);text-decoration:none;}
+    .footer-logo span{color:var(--accent2);}
+    .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{font-size:13px;color:var(--muted);}
+
+    @media(max-width:900px){
+      nav{padding:16px 20px;}
+      .nav-links{display:none;}
+      .burger{display:flex;}
+      .article-hero{padding:100px 20px 48px;}
+      .article-wrap{padding:0 20px 80px;}
+      .stat-row{grid-template-columns:1fr 1fr;}
+      footer{padding:36px 20px;flex-direction:column;align-items:flex-start;}
+      .compare-table{font-size:13px;}
+      .compare-table th,.compare-table td{padding:10px 12px;}
+    }
+    @media(max-width:560px){
+      .stat-row{grid-template-columns:1fr;}
+      .article-cta{padding:36px 20px;}
+      .photo-sequence{grid-template-columns:1fr 1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span> | Карточка продает</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html" class="active">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span>›</span>
+      <a href="blog.html">Блог</a>
+      <span>›</span>
+      <span style="color:var(--text);">Продающая карточка товара</span>
+    </nav>
+    <div class="article-tag">🎯 Карточка товара</div>
+    <h1>Как сделать продающую карточку товара на WB и Ozon</h1>
+    <div class="article-meta">
+      <div class="meta-item">Автор: <strong>Владислав Гвоздев</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Май 2025</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">⏱ 8 мин чтения</div>
+    </div>
+  </div>
+</section>
+
+<main class="article-wrap">
+  <div class="article-body">
+
+    <p>Карточка товара — это ваш главный продавец на маркетплейсе. Он работает 24/7, не просит зарплату и встречает каждого потенциального покупателя. И именно от него зависит, купят у вас или уйдут к конкурентам.</p>
+
+    <p>Я проанализировал тысячи карточек на WB и Ozon. Вижу одну и ту же картину: продавцы с хорошим товаром теряют продажи из-за слабой карточки, а конкуренты с посредственным продуктом, но отличной презентацией — зарабатывают. В этой статье разберу все элементы карточки по порядку — от главного фото до характеристик — с конкретными примерами и цифрами.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="stat-num">2.1 с</span>
+        <div class="stat-label">среднее время, которое покупатель тратит на оценку карточки в выдаче</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">×3.5</span>
+        <div class="stat-label">разница в конверсии между сильной и слабой карточкой в одной нише</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">68%</span>
+        <div class="stat-label">решений о покупке принимается на основе фотографий</div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>Карточка товара — это не просто страница с фото и описанием. Это воронка продаж, упакованная в несколько экранов. Каждый элемент должен работать на конверсию.</p>
+      <cite>— Владислав Гвоздев</cite>
+    </div>
+
+    <h2>Элемент 1. Главное фото — ваш крючок в каталоге</h2>
+
+    <p>Главное фото — единственное, что видит покупатель в выдаче до клика. Его задача: выделиться среди десятков конкурентов и заставить нажать именно на вашу карточку. Это называется CTR (click-through rate), и он напрямую влияет на ранжирование.</p>
+
+    <div class="section-block">
+      <div class="section-block-num">Техническая база</div>
+      <div class="section-block-title">Требования к главному фото</div>
+      <p>Оба маркетплейса предъявляют чёткие требования. Для WB: минимум 900×1200 px (рекомендую 1440×1920), формат JPG или PNG, белый или светлый фон для большинства категорий. Для Ozon: минимум 200×200 px, рекомендую 1200×1200, белый фон обязателен для электроники и бытовой техники.</p>
+      <ul>
+        <li>Разрешение минимум 1440×1920 px — иначе фото мутит при зуме</li>
+        <li>Объём файла до 5 МБ — большие файлы грузятся медленно</li>
+        <li>Товар должен занимать 70–85% площади кадра</li>
+        <li>Никакого текста на главном фото в некоторых категориях (проверяйте правила своей ниши)</li>
+      </ul>
+    </div>
+
+    <h3>Что реально продаёт на главном фото</h3>
+
+    <p>За годы практики я выделил несколько подходов, которые стабильно показывают высокий CTR:</p>
+
+    <ul>
+      <li><strong>Контекст использования:</strong> товар в руках или «в деле» — кастрюля с едой, спортивная сумка на плече, детская игрушка в руках ребёнка. Покупатель мысленно примеряет продукт к своей жизни</li>
+      <li><strong>Ключевая выгода крупным текстом:</strong> «Не протекает», «Греет до -30°С», «200 стирок без потери цвета» — одна чёткая фраза убирает барьер недоверия ещё в каталоге</li>
+      <li><strong>Сравнение с конкурентами:</strong> блок «Vs» или «Лучше, чем...» на фото работает там, где разница ощутима</li>
+      <li><strong>Комплект и бонус:</strong> «В комплекте 3 предмета» или «+ подарок» — визуализация ценности набора на главном фото увеличивает CTR на 15–25%</li>
+    </ul>
+
+    <div class="warn-box">
+      <div class="warn-box-label">⚠️ Типичная ошибка</div>
+      <p>Продавцы копируют фото у поставщика или с AliExpress. Такое же фото стоит у 5–10 конкурентов, потому что они закупаются у того же поставщика. В каталоге ваши карточки неотличимы. Всегда делайте собственную съёмку — это не вложение, это необходимость.</p>
+    </div>
+
+    <h2>Элемент 2. Галерея фотографий — полная презентация товара</h2>
+
+    <p>После клика на карточку покупатель листает галерею. У вас есть 7–10 фотографий на WB и до 15 на Ozon, чтобы закрыть все вопросы и снять все возражения. Я составляю галерею по жёсткой логике — каждый слайд отвечает за свою задачу.</p>
+
+    <div class="photo-sequence">
+      <div class="photo-item">
+        <div class="photo-item-num">1</div>
+        <div class="photo-item-name">Главное фото</div>
+        <div class="photo-item-desc">CTR в каталоге. Крючок.</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-item-num">2</div>
+        <div class="photo-item-name">Состав / материал</div>
+        <div class="photo-item-desc">Доверие. Деталь крупно.</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-item-num">3</div>
+        <div class="photo-item-name">Инфографика</div>
+        <div class="photo-item-desc">3–5 ключевых выгод.</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-item-num">4</div>
+        <div class="photo-item-name">Применение</div>
+        <div class="photo-item-desc">Товар в использовании.</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-item-num">5</div>
+        <div class="photo-item-name">Размеры / таблица</div>
+        <div class="photo-item-desc">Снижение возвратов.</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-item-num">6</div>
+        <div class="photo-item-name">Сравнение</div>
+        <div class="photo-item-desc">Vs конкурент или аналог.</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-item-num">7</div>
+        <div class="photo-item-name">Упаковка</div>
+        <div class="photo-item-desc">Что внутри, комплект.</div>
+      </div>
+      <div class="photo-item">
+        <div class="photo-item-num">8+</div>
+        <div class="photo-item-name">UGC / отзыв</div>
+        <div class="photo-item-desc">Живое фото от покупателя.</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-label">💡 Про Ozon Rich Content</div>
+      <p>На Ozon есть инструмент Rich Content — расширенное описание с блоками, как лендинг. Используйте его: карточки с Rich Content конвертируют в среднем на 20–35% лучше обычных. Там можно разместить видео, таблицы характеристик, инфографику и полноценный текст с форматированием.</p>
+    </div>
+
+    <h2>Элемент 3. Инфографика — визуальные продажи</h2>
+
+    <p>Инфографика — это фотография с текстом и графическими элементами, которая доносит ключевые преимущества товара визуально. Именно она чаще всего становится второй картинкой в галерее и определяет, листает ли покупатель дальше.</p>
+
+    <h3>Что должна содержать хорошая инфографика</h3>
+
+    <ul>
+      <li><strong>3–5 выгод, а не характеристик.</strong> Не «толщина 0.3 мм», а «Почти невидимый на экране». Не «состав 80% хлопок», а «Мягкий как кожа с первой стирки»</li>
+      <li><strong>Иконки + краткий текст.</strong> Мозг обрабатывает иконки в 60 000 раз быстрее текста. Используйте простые понятные пиктограммы</li>
+      <li><strong>Контрастные цвета и читабельный шрифт.</strong> Минимальный размер текста на инфографике — 16–18px в финальном изображении</li>
+      <li><strong>Один главный акцент.</strong> Не пытайтесь уместить всё — выберите самую сильную выгоду и сделайте её центром инфографики</li>
+    </ul>
+
+    <p>Реальный пример из практики: клиент продавал органайзер для проводов. На первой инфографике было написано «Органайзер силиконовый 15×8 см». Конверсия: 1.4%. После переработки инфографики — «Избавит от хаоса проводов за 60 секунд» с пиктограммой до/после. Конверсия выросла до 3.1%.</p>
+
+    <h2>Элемент 4. Название — SEO и первый экран</h2>
+
+    <p>Название карточки видно в двух местах: в поисковой выдаче (под главным фото) и в самой карточке сверху. Оно выполняет двойную функцию: SEO-сигнал для алгоритма и информация для покупателя.</p>
+
+    <p>Структура идеального названия:</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Элемент</th>
+          <th>Что включать</th>
+          <th>Пример</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Тип товара</td>
+          <td>Главный ВЧ-запрос</td>
+          <td>Кроссовки женские</td>
+        </tr>
+        <tr>
+          <td>Назначение</td>
+          <td>Для чего, для кого</td>
+          <td>для бега и фитнеса</td>
+        </tr>
+        <tr>
+          <td>Материал / состав</td>
+          <td>Ключевая характеристика</td>
+          <td>дышащая сетка</td>
+        </tr>
+        <tr>
+          <td>Особенность</td>
+          <td>Выгода или уникальность</td>
+          <td>амортизация EVA</td>
+        </tr>
+        <tr>
+          <td>Цвет / размер</td>
+          <td>Если важно для поиска</td>
+          <td>белые</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box">
+      <div class="warn-box-label">⚠️ Про спам ключевых слов</div>
+      <p>Не делайте из названия «мусорный» список ключей: «Кроссовки женские мужские детские унисекс Nike Adidas бег спорт лёгкие». WB и Ozon пессимизируют такие карточки. Название должно быть читабельным для человека и одновременно содержать нужные ключи органично.</p>
+    </div>
+
+    <h2>Элемент 5. Описание — закрываем возражения и добавляем SEO</h2>
+
+    <p>Описание читают 20–30% пользователей, которые зашли на карточку. Это люди на стадии принятия решения — им нужна последняя аргументация. Хорошее описание закрывает все оставшиеся вопросы и возражения.</p>
+
+    <div class="section-block">
+      <div class="section-block-num">Структура</div>
+      <div class="section-block-title">Как писать описание, которое продаёт</div>
+      <p><strong>Первый абзац (100–150 слов):</strong> главная боль покупателя и как ваш товар её решает. Например: «Замёрзли от тонких перчаток на прогулке? Эти варежки сохраняют тепло при -30°С за счёт трёхслойного утеплителя Thinsulate...»</p>
+      <p><strong>Основная часть (300–500 слов):</strong> подробное раскрытие характеристик через выгоды. Не «толщина стенок 2 мм», а «Толстые стенки 2 мм не деформируются при ударе и служат 5+ лет». Здесь же — среднечастотные и низкочастотные ключевые слова, вписанные естественно.</p>
+      <p><strong>Финальный блок:</strong> применение, совместимость, кому подходит. Помогает покупателю убедиться, что товар именно для него. Снижает возвраты.</p>
+      <ul>
+        <li>Используйте маркированные списки — они легче читаются</li>
+        <li>Ключевые слова — в первые 200 символов описания</li>
+        <li>Избегайте «воды»: «наш товар высочайшего качества» — это ничего не говорит</li>
+        <li>Пишите конкретно: цифры, материалы, сертификаты, гарантии</li>
+      </ul>
+    </div>
+
+    <h2>Элемент 6. Характеристики — трафик из фильтров</h2>
+
+    <p>Многие продавцы заполняют характеристики «по минимуму». Это большая ошибка: WB и Ozon показывают карточку в результатах фильтрации только тогда, когда соответствующие поля заполнены. Незаполненное поле «Материал подошвы» = полное отсутствие в фильтре «Материал подошвы: резина».</p>
+
+    <p>Что критично заполнить в любой категории:</p>
+
+    <ul>
+      <li>Материал (основной и дополнительные)</li>
+      <li>Страна производства</li>
+      <li>Все размерные характеристики (длина, ширина, высота, вес, объём)</li>
+      <li>Цвет (точный оттенок, а не просто «синий»)</li>
+      <li>Назначение и область применения</li>
+      <li>Возраст, пол, аудитория (где применимо)</li>
+      <li>Состав / комплектация</li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-box-label">💡 Про SEO в характеристиках</div>
+      <p>На Ozon поле «Описание» в характеристиках — это отдельный SEO-блок. Заполняйте его полноценным текстом на 1 000–2 000 символов. WB аналогично индексирует поля дополнительных характеристик. Не оставляйте ни одного незаполненного поля.</p>
+    </div>
+
+    <h2>Элемент 7. SEO-оптимизация — органический трафик без рекламы</h2>
+
+    <p>SEO карточки — это про то, по каким запросам алгоритм решит вас показывать. На WB и Ozon работают похожие принципы, но есть нюансы.</p>
+
+    <h3>WB: где «живут» ключевые слова</h3>
+    <ul>
+      <li><strong>Название</strong> — самый сильный сигнал для алгоритма, вес ключа здесь максимальный</li>
+      <li><strong>Описание</strong> — средний вес, алгоритм индексирует весь текст</li>
+      <li><strong>Характеристики</strong> — важны для фильтрационного трафика, а не поискового</li>
+    </ul>
+
+    <h3>Ozon: особенности индексации</h3>
+    <ul>
+      <li><strong>Название</strong> — аналогично WB, приоритетный сигнал</li>
+      <li><strong>Rich Content</strong> — текст внутри Rich Content НЕ индексируется для поиска на Ozon</li>
+      <li><strong>Описание (в характеристиках)</strong> — индексируется, сюда идут СЧ и НЧ ключи</li>
+      <li><strong>Ключевые слова (отдельное поле)</strong> — на Ozon есть специальное поле для ключей, заполняйте его через запятую</li>
+    </ul>
+
+    <div class="section-block">
+      <div class="section-block-num">Практика</div>
+      <div class="section-block-title">Как собрать семантику за 1 час</div>
+      <p>Не нужно дорогих инструментов для базовой оптимизации. Вот мой быстрый алгоритм:</p>
+      <ul>
+        <li>Введите главный запрос в поиск WB/Ozon — скопируйте все подсказки (это реальные запросы пользователей)</li>
+        <li>Откройте 5–10 карточек топ-конкурентов — проанализируйте их названия и описания</li>
+        <li>В Mpstats или бесплатном инструменте WB соберите частотность по 20–30 ключам</li>
+        <li>Разбейте по частотности: ВЧ (10 000+ показов/мес) — в название, СЧ (1 000–10 000) — в описание, НЧ (100–1 000) — в характеристики</li>
+        <li>Проверьте, что ключи написаны именно в той форме, которую используют покупатели</li>
+      </ul>
+    </div>
+
+    <h2>Отличия WB и Ozon: что важно учитывать</h2>
+
+    <p>Подход к карточкам на двух маркетплейсах похож, но есть принципиальные различия:</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Параметр</th>
+          <th>Wildberries</th>
+          <th>Ozon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Главное фото</td>
+          <td>Свободный фон для большинства категорий</td>
+          <td>Белый фон обязателен для электроники</td>
+        </tr>
+        <tr>
+          <td>Видео в карточке</td>
+          <td>Поддерживается, влияет на конверсию</td>
+          <td>Rich Content включает видео-блок</td>
+        </tr>
+        <tr>
+          <td>Rich Content</td>
+          <td>Нет аналога</td>
+          <td class="good">Есть — сильно повышает конверсию</td>
+        </tr>
+        <tr>
+          <td>Поле «Ключевые слова»</td>
+          <td class="bad">Нет отдельного поля</td>
+          <td class="good">Есть — используйте обязательно</td>
+        </tr>
+        <tr>
+          <td>Вопросы к товару</td>
+          <td>Покупатель задаёт вопросы, продавец отвечает</td>
+          <td>Аналогичная механика</td>
+        </tr>
+        <tr>
+          <td>Кол-во фото</td>
+          <td>До 30 фото + видео</td>
+          <td>До 15 фото + видео</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Чек-лист идеальной карточки товара</h2>
+
+    <ul>
+      <li>Главное фото: высокое разрешение, товар занимает 70–80% кадра, есть сильный визуальный элемент или текст с выгодой</li>
+      <li>Галерея: 7–10 фото, каждое с чёткой задачей (материал, инфографика, применение, размеры, упаковка)</li>
+      <li>Инфографика: 3–5 выгод в читабельном формате, конкретные цифры вместо абстракций</li>
+      <li>Название: ВЧ-запрос + 2–3 ключевых параметра, читается как нормальный текст</li>
+      <li>Описание: от боли покупателя, через выгоды к конкретике, СЧ и НЧ ключи вписаны органично</li>
+      <li>Характеристики: заполнены все поля без исключения</li>
+      <li>На Ozon: заполнено поле «Ключевые слова», создан Rich Content</li>
+      <li>Видео: добавлено хотя бы одно видео с демонстрацией товара (это увеличивает конверсию на 10–20%)</li>
+      <li>Размерная таблица: есть на фото и в характеристиках (для одежды, обуви, аксессуаров)</li>
+    </ul>
+
+    <p>Хорошая карточка — это не разовая работа. Рынок меняется, конкуренты оптимизируются, алгоритмы обновляются. Возьмите за правило раз в 2–3 месяца пересматривать свои карточки: обновлять фото, проверять SEO, анализировать конкурентов. Это не займёт много времени, но стабильно даёт прирост продаж без дополнительного рекламного бюджета.</p>
+
+  </div>
+
+  <div class="article-cta">
+    <h2>Хотите карточку, которая продаёт сама?</h2>
+    <p>Запишитесь на бесплатный разбор карточки. Разберу вашу текущую карточку по всем элементам, сравню с конкурентами и дам конкретный план доработки — с приоритетами и ожидаемым результатом.</p>
+    <a href="contacts.html" class="btn-primary">Получить разбор карточки →</a>
+    <div class="cta-sub">Бесплатно · Онлайн · 30 минут · Конкретный план действий</div>
+  </div>
+</main>
+
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span> | Карточка продает</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+
+<a href="https://t.me/cardprodaet" target="_blank" id="tgFloat" style="position:fixed;bottom:28px;right:28px;z-index:9998;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);box-shadow:0 8px 32px rgba(37,99,235,.55);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;transition:transform .2s,box-shadow .2s;animation:tgPulse 2.5s ease-in-out infinite;" title="Написать в Telegram">✈️<span style="position:absolute;top:-6px;right:-4px;background:#22c55e;color:white;font-family:'Manrope',sans-serif;font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3);">онлайн</span></a>
+<style>#tgFloat:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,99,235,.7);}@keyframes tgPulse{0%,100%{box-shadow:0 8px 32px rgba(37,99,235,.55);}50%{box-shadow:0 8px 48px rgba(37,99,235,.85),0 0 0 8px rgba(37,99,235,.12);}}</style>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  window.addEventListener('scroll',function(){
+    const nav=document.getElementById('nav');
+    nav.style.background=window.scrollY>50?'rgba(10,15,30,.97)':'rgba(10,15,30,.85)';
+  });
+</script>
+</body>
+</html>
