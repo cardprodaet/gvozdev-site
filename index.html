@@ -1001,6 +1001,108 @@
   </div>
 </section>
 
+<!-- ── ROI CALCULATOR ── -->
+<section id="calculator" style="padding:0 40px 100px;max-width:1200px;margin:0 auto;">
+  <div class="reveal" style="text-align:center;margin-bottom:48px;">
+    <div class="section-label">Калькулятор</div>
+    <h2 class="section-title">Сколько вы теряете прямо сейчас?</h2>
+    <p class="section-sub">Введите данные — покажу потенциал роста вашего магазина.</p>
+  </div>
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:28px;padding:48px;max-width:800px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
+      <div>
+        <label style="display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">Текущий оборот в месяц</label>
+        <div style="position:relative;">
+          <input id="calc-revenue" type="number" placeholder="300000" min="0"
+            style="width:100%;padding:16px 50px 16px 18px;border-radius:14px;border:1.5px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);font-size:16px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s;"
+            oninput="calcROI()" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+          <span style="position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700;">₽</span>
+        </div>
+      </div>
+      <div>
+        <label style="display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">Площадка</label>
+        <select id="calc-platform" onchange="calcROI()"
+          style="width:100%;padding:16px 18px;border-radius:14px;border:1.5px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);font-size:16px;font-family:'Manrope',sans-serif;outline:none;appearance:none;cursor:pointer;">
+          <option value="wb">Wildberries</option>
+          <option value="ozon">Ozon</option>
+          <option value="both">WB + Ozon</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-bottom:28px;">
+      <label style="display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">Главная проблема</label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;" id="calc-problems">
+        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Мало трафика</button>
+        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Низкая конверсия</button>
+        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Реклама не окупается</button>
+        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Не выхожу в топ</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="calc-result" style="background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(96,165,250,.08));border:1px solid rgba(37,99,235,.3);border-radius:20px;padding:32px;margin-bottom:28px;display:none;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;margin-bottom:24px;">
+        <div>
+          <div style="font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Сейчас</div>
+          <div id="res-current" style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:900;color:var(--text);">—</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:28px;">→</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:800;color:#4ade80;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Потенциал</div>
+          <div id="res-potential" style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:900;color:#4ade80;">—</div>
+        </div>
+      </div>
+      <div style="text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:4px;">Дополнительная выручка в месяц</div>
+        <div id="res-extra" style="font-family:'Unbounded',sans-serif;font-size:32px;font-weight:900;color:var(--accent2);">—</div>
+      </div>
+    </div>
+
+    <div id="calc-cta" style="display:none;text-align:center;">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:16px;">Это приблизительный расчёт. На диагностике покажу точные цифры для вашего магазина.</p>
+      <a href="contacts.html" style="display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:14px;background:var(--accent);color:white;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 8px 24px rgba(37,99,235,.4);">🎁 Получить точный расчёт бесплатно →</a>
+    </div>
+
+    <div id="calc-placeholder" style="text-align:center;color:var(--muted);font-size:14px;padding:16px 0;">
+      Введите оборот — покажу потенциал роста
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleProblem(btn) {
+  const active = btn.style.background === 'var(--accent)' || btn.style.background === 'rgb(37, 99, 235)';
+  btn.style.background = active ? 'var(--card)' : 'var(--accent)';
+  btn.style.color = active ? 'var(--muted)' : 'white';
+  btn.style.borderColor = active ? 'var(--border)' : 'var(--accent)';
+  calcROI();
+}
+
+function calcROI() {
+  const rev = parseFloat(document.getElementById('calc-revenue').value) || 0;
+  if (rev < 1000) {
+    document.getElementById('calc-result').style.display = 'none';
+    document.getElementById('calc-cta').style.display = 'none';
+    document.getElementById('calc-placeholder').style.display = 'block';
+    return;
+  }
+  const multiplier = 2.5;
+  const potential = Math.round(rev * multiplier);
+  const extra = potential - rev;
+  const fmt = n => n >= 1000000
+    ? (n/1000000).toFixed(1).replace('.0','') + ' млн ₽'
+    : (n/1000).toFixed(0) + ' тыс. ₽';
+  document.getElementById('res-current').textContent = fmt(rev);
+  document.getElementById('res-potential').textContent = fmt(potential);
+  document.getElementById('res-extra').textContent = '+' + fmt(extra);
+  document.getElementById('calc-result').style.display = 'block';
+  document.getElementById('calc-cta').style.display = 'block';
+  document.getElementById('calc-placeholder').style.display = 'none';
+}
+</script>
+
 <!-- ── CASES ── -->
 <section id="cases">
   <div class="reveal">
