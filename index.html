@@ -1165,5 +1165,85 @@
   });
 </script>
 
+<!-- ── EXIT POPUP ── -->
+<div id="exitPopup" style="
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,.7); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center; padding:20px;
+">
+  <div style="
+    background:#111827; border:1px solid rgba(255,255,255,.12);
+    border-radius:28px; padding:48px 40px; max-width:440px; width:100%;
+    text-align:center; position:relative;
+    box-shadow:0 32px 80px rgba(0,0,0,.6);
+  ">
+    <button onclick="closePopup()" style="
+      position:absolute; top:16px; right:20px;
+      background:none; border:none; color:#8b9ab8;
+      font-size:22px; cursor:pointer; line-height:1;
+    ">✕</button>
+    <div style="font-size:48px; margin-bottom:16px;">✋</div>
+    <div style="
+      font-family:'Unbounded',sans-serif; font-size:22px;
+      font-weight:900; margin-bottom:12px; color:#f0f4ff;
+      line-height:1.2;
+    ">Подождите!</div>
+    <p style="color:#8b9ab8; font-size:15px; line-height:1.7; margin-bottom:28px;">
+      Напишите в Telegram — разберу ваш магазин <strong style="color:#f0f4ff;">бесплатно</strong> и покажу точки роста. Отвечаю за 2 часа.
+    </p>
+    <a href="https://t.me/cardprodaet" target="_blank" onclick="closePopup()" style="
+      display:block; background:#2563eb; color:white;
+      padding:15px 28px; border-radius:14px;
+      font-weight:800; font-size:15px; text-decoration:none;
+      box-shadow:0 8px 28px rgba(37,99,235,.45);
+      transition:background .2s;
+      margin-bottom:12px;
+    ">💬 Написать в Telegram</a>
+    <button onclick="closePopup()" style="
+      background:none; border:none; color:#8b9ab8;
+      font-size:13px; cursor:pointer; font-family:'Manrope',sans-serif;
+    ">Нет, спасибо</button>
+  </div>
+</div>
+
+<script>
+  let popupShown = false;
+
+  function showPopup() {
+    if (popupShown) return;
+    popupShown = true;
+    const popup = document.getElementById('exitPopup');
+    popup.style.display = 'flex';
+    setTimeout(() => popup.style.opacity = '1', 10);
+  }
+
+  function closePopup() {
+    const popup = document.getElementById('exitPopup');
+    popup.style.display = 'none';
+    sessionStorage.setItem('popupClosed', '1');
+  }
+
+  // Показать при движении мыши к верху (уход со страницы)
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 10 && !sessionStorage.getItem('popupClosed')) {
+      showPopup();
+    }
+  });
+
+  // Показать через 60 секунд если не ушёл
+  setTimeout(() => {
+    if (!sessionStorage.getItem('popupClosed')) showPopup();
+  }, 60000);
+
+  // Закрыть по клику на фон
+  document.getElementById('exitPopup').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('exitPopup')) closePopup();
+  });
+
+  // Закрыть по Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePopup();
+  });
+</script>
 </body>
 </html>
