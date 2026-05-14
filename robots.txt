@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cardprodaet.github.io/gvozdev-site/sitemap.xml
