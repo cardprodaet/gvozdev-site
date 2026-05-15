@@ -864,6 +864,54 @@
   </div>
 </nav>
 
+<!-- ── PROMO BAR ── -->
+<div id="promoBar" style="
+  position:fixed; top:0; left:0; right:0; z-index:101;
+  background:linear-gradient(90deg,#1d4ed8,#2563eb,#f97316);
+  background-size:200% 100%;
+  animation:promoGrad 4s ease infinite;
+  padding:10px 20px;
+  display:flex; align-items:center; justify-content:center; gap:16px;
+  flex-wrap:wrap; text-align:center;
+  font-family:'Manrope',sans-serif; font-size:14px; font-weight:700; color:white;
+">
+  <span>🎁 Только <span id="promoLeft" style="color:#fde68a;"></span> — бесплатная диагностика магазина</span>
+  <span style="background:rgba(0,0,0,.25);border-radius:8px;padding:4px 12px;font-size:13px;letter-spacing:.5px;">⏱ <span id="promoTimer">--:--:--</span></span>
+  <a href="contacts.html" style="background:white;color:#1d4ed8;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap;">Записаться →</a>
+  <span onclick="document.getElementById('promoBar').style.display='none'; document.querySelector('nav').style.top='0';" style="position:absolute;right:16px;cursor:pointer;opacity:.7;font-size:18px;line-height:1;">×</span>
+</div>
+<style>
+  @keyframes promoGrad { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+  nav { top: 42px !important; transition: top .3s; }
+</style>
+<script>
+(function(){
+  const bar = document.getElementById('promoBar');
+  const timerEl = document.getElementById('promoTimer');
+  const leftEl = document.getElementById('promoLeft');
+
+  // Deadline — пятница текущей недели 23:59
+  const now = new Date();
+  const deadline = new Date();
+  deadline.setDate(now.getDate() + (5 - now.getDay() + 7) % 7 || 7);
+  deadline.setHours(23,59,59,0);
+
+  const days = ['воскресенье','понедельник','вторник','среду','четверг','пятницу','субботу'];
+  leftEl.textContent = 'до ' + days[deadline.getDay()];
+
+  function tick(){
+    const diff = deadline - new Date();
+    if(diff <= 0){ bar.style.display='none'; return; }
+    const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+    const m = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+    const s = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+    timerEl.textContent = h+':'+m+':'+s;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
 <!-- ── MOBILE MENU ── -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html" onclick="toggleMenu()">Главная</a>
