@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Индекс цен на Wildberries: как не попасть под штраф — Владислав Гвоздев</title>
+  <meta name="description" content="Разбираю механизм индекса цен на WB: как работает пессимизация, почему карточка проседает в выдаче и как выстроить ценовую стратегию, чтобы не попасть под штраф."/>
+  <meta name="author" content="Владислав Гвоздев"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Индекс цен на Wildberries: как не попасть под штраф"/>
+  <meta property="og:description" content="Разбираю механизм индекса цен на WB: как работает пессимизация и как выстроить ценовую стратегию без штрафов."/>
+  <meta property="og:url" content="https://cardprodaet.github.io/gvozdev-site/blog-indeks-tseny-wb.html"/>
+  <meta property="og:site_name" content="Гвоздев | Карточка продает"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Индекс цен на Wildberries: как не попасть под штраф"/>
+  <meta name="twitter:description" content="Механизм индекса цен WB и ценовая стратегия без пессимизации — эксперт Владислав Гвоздев."/>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+  <link rel="shortcut icon" href="favicon.svg"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(109215727,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109215727" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <style>
+    :root{--bg:#0a0f1e;--card:#111827;--border:rgba(255,255,255,.08);--text:#f0f4ff;--muted:#8b9ab8;--accent:#2563eb;--accent2:#60a5fa;--accent3:#f97316;--radius:20px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(10,15,30,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:var(--text);text-decoration:none;}
+    .nav-logo span{color:var(--accent2);}
+    .nav-links{display:flex;gap:32px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-cta{background:var(--accent);color:white!important;padding:10px 22px;border-radius:12px;font-weight:700!important;}
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .burger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:8px;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{color:var(--text);text-decoration:none;font-size:22px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--border);}
+    .article-hero{padding:120px 40px 60px;position:relative;overflow:hidden;}
+    .article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(37,99,235,.18) 0%,transparent 70%);}
+    .article-hero-inner{position:relative;max-width:860px;margin:0 auto;}
+    .breadcrumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:28px;flex-wrap:wrap;}
+    .breadcrumbs a{color:var(--muted);text-decoration:none;transition:color .2s;}
+    .breadcrumbs a:hover{color:var(--accent2);}
+    .breadcrumbs span{color:var(--accent2);}
+    .article-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--accent2);border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;margin-bottom:20px;}
+    .article-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(26px,4.5vw,48px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:24px;}
+    .article-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .meta-item{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+    .meta-dot{width:4px;height:4px;border-radius:50%;background:var(--muted);opacity:.5;}
+    .meta-item strong{color:var(--text);}
+    .article-wrap{max-width:860px;margin:0 auto;padding:0 40px 100px;}
+    .article-body h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-.5px;margin:52px 0 18px;line-height:1.25;color:var(--text);}
+    .article-body h3{font-family:'Unbounded',sans-serif;font-size:clamp(16px,2.5vw,20px);font-weight:700;margin:34px 0 14px;line-height:1.3;color:var(--accent2);}
+    .article-body p{font-size:16px;line-height:1.8;color:rgba(240,244,255,.85);margin-bottom:20px;}
+    .article-body ul,.article-body ol{margin:18px 0 24px 0;padding-left:0;list-style:none;}
+    .article-body ul li,.article-body ol li{font-size:16px;line-height:1.75;color:rgba(240,244,255,.85);margin-bottom:10px;padding-left:28px;position:relative;}
+    .article-body ul li::before{content:'→';position:absolute;left:0;color:var(--accent2);font-weight:700;}
+    .article-body ol{counter-reset:ol-counter;}
+    .article-body ol li{counter-increment:ol-counter;}
+    .article-body ol li::before{content:counter(ol-counter)'.';position:absolute;left:0;color:var(--accent3);font-weight:800;}
+    .tip-box{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.25);border-left:4px solid var(--accent);border-radius:16px;padding:24px 28px;margin:32px 0;}
+    .tip-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:10px;}
+    .tip-box p{margin:0;font-size:15px;color:var(--text);}
+    .warn-box{background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.25);border-left:4px solid var(--accent3);border-radius:16px;padding:24px 28px;margin:32px 0;}
+    .warn-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent3);margin-bottom:10px;}
+    .warn-box p{margin:0;font-size:15px;color:var(--text);}
+    .pull-quote{border-left:4px solid var(--accent2);padding:20px 28px;margin:36px 0;background:rgba(96,165,250,.06);border-radius:0 16px 16px 0;}
+    .pull-quote p{font-size:18px;font-style:italic;color:var(--text);margin:0;line-height:1.65;}
+    .pull-quote cite{display:block;margin-top:10px;font-size:13px;color:var(--muted);font-style:normal;}
+    .step-list{display:flex;flex-direction:column;gap:20px;margin:28px 0;}
+    .step-item{display:flex;gap:20px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 24px;}
+    .step-num{width:44px;height:44px;min-width:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#1d4ed8);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:white;}
+    .step-content h4{font-size:16px;font-weight:800;margin-bottom:6px;color:var(--text);}
+    .step-content p{font-size:14px;color:var(--muted);margin:0;line-height:1.65;}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;}
+    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 20px;text-align:center;}
+    .stat-num{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:900;color:var(--accent2);display:block;margin-bottom:6px;}
+    .stat-label{font-size:13px;color:var(--muted);}
+    .article-cta{background:linear-gradient(135deg,#0d1428,#1e3a8a);border:1px solid rgba(37,99,235,.35);border-radius:24px;padding:48px 40px;text-align:center;margin:60px 0 0;}
+    .article-cta h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:900;margin-bottom:16px;line-height:1.25;}
+    .article-cta p{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto 32px;line-height:1.7;}
+    .btn-primary{display:inline-block;background:var(--accent);color:white;padding:16px 36px;border-radius:14px;font-size:16px;font-weight:800;text-decoration:none;transition:background .2s,transform .2s;}
+    .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+    .cta-sub{margin-top:14px;font-size:13px;color:var(--muted);}
+    footer{background:var(--card);border-top:1px solid var(--border);padding:48px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+    .footer-logo{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900;color:var(--text);text-decoration:none;}
+    .footer-logo span{color:var(--accent2);}
+    .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{font-size:13px;color:var(--muted);}
+    @media(max-width:900px){
+      nav{padding:16px 20px;}
+      .nav-links{display:none;}
+      .burger{display:flex;}
+      .article-hero{padding:100px 20px 48px;}
+      .article-wrap{padding:0 20px 80px;}
+      .stat-row{grid-template-columns:1fr 1fr;}
+      footer{padding:36px 20px;flex-direction:column;align-items:flex-start;}
+    }
+    @media(max-width:560px){
+      .stat-row{grid-template-columns:1fr;}
+      .article-cta{padding:36px 20px;}
+    }
+  </style>
+  <script src="//code.jivo.ru/widget/ZoG71MnhBT" async></script>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Гвоздев<span> | Карточка продает</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html" class="active">Блог</a></li>
+    <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Главная</a>
+  <a href="services.html" onclick="toggleMenu()">Услуги</a>
+  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
+  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
+  <a href="blog.html" onclick="toggleMenu()">Блог</a>
+  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+</div>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <span>›</span>
+      <a href="blog.html">Блог</a>
+      <span>›</span>
+      <span style="color:var(--text);">Индекс цен на WB</span>
+    </nav>
+    <div class="article-tag">💰 Ценообразование</div>
+    <h1>Индекс цен на Wildberries: как не попасть под штраф</h1>
+    <div class="article-meta">
+      <div class="meta-item">Автор: <strong>Владислав Гвоздев</strong></div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">Май 2025</div>
+      <div class="meta-dot"></div>
+      <div class="meta-item">⏱ 8 мин чтения</div>
+    </div>
+  </div>
+</section>
+
+<main class="article-wrap">
+  <div class="article-body">
+
+    <p>В 2025 году индекс цен на Wildberries стал одним из главных инструментов, которым маркетплейс управляет поведением продавцов. Многие воспринимают его как абстрактный показатель — пока не обнаруживают, что их карточка ушла с первой страницы выдачи без видимых причин. Причина, как правило, одна: несоответствие цены индексу.</p>
+
+    <p>Я разобрал механизм индексирования цен досконально — на десятках своих карточек и карточек клиентов. В этой статье объясню, как именно работает система, за что WB наказывает продавцов и как выстроить ценовую стратегию так, чтобы зарабатывать, а не бороться с пессимизацией.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="stat-num">-40%</span>
+        <div class="stat-label">падение трафика карточки при красном индексе цен</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">72 ч</span>
+        <div class="stat-label">время на исправление цены до применения санкций</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">3 площадки</span>
+        <div class="stat-label">Ozon, Яндекс Маркет, Мегамаркет — WB мониторит конкурентов</div>
+      </div>
+    </div>
+
+    <h2>Что такое индекс цен и зачем он WB</h2>
+
+    <p>Индекс цен — это автоматическая система Wildberries, которая сравнивает цену вашего товара с ценой аналогичных или идентичных товаров на других маркетплейсах и у других продавцов внутри самого WB. Цель системы — удерживать покупателей на платформе, предлагая конкурентные или лучшие цены.</p>
+
+    <p>Если WB видит, что ваш товар на Ozon или Яндекс Маркете стоит дешевле, чем у вас на WB — ваша карточка получает «красный» или «жёлтый» индекс. Это влечёт за собой пессимизацию в поисковой выдаче и каталогах.</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">🟢</div>
+        <div class="step-content">
+          <h4>Зелёный индекс</h4>
+          <p>Ваша цена конкурентна или лучше, чем у аналогов. Карточка получает приоритет в выдаче и может участвовать во всех акциях.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">🟡</div>
+        <div class="step-content">
+          <h4>Жёлтый индекс</h4>
+          <p>Цена немного выше рыночной. WB предупреждает, но критической пессимизации пока нет. Есть время скорректировать цену.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">🔴</div>
+        <div class="step-content">
+          <h4>Красный индекс</h4>
+          <p>Цена существенно выше конкурентов. Карточка принудительно опускается в выдаче, теряет позиции и трафик. Продажи падают.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Как WB определяет «правильную» цену</h2>
+
+    <p>Алгоритм мониторинга работает по нескольким направлениям одновременно. Важно понимать каждое из них, чтобы не получить неожиданный красный индекс.</p>
+
+    <h3>Мониторинг других маркетплейсов</h3>
+
+    <p>WB парсит цены на Ozon, Яндекс Маркете и Мегамаркете. Сопоставление происходит по артикулу производителя (если он указан в карточке) или по характеристикам товара. Если ваш SKU есть на нескольких площадках — WB найдёт самую низкую цену и будет сравнивать с ней.</p>
+
+    <div class="warn-box">
+      <div class="warn-box-label">⚠️ Важно знать</div>
+      <p>WB сравнивает цену с учётом скидок и промокодов на других площадках. Если на Ozon ваш товар стоит 1 200 руб., но с постоянной скидкой по промокоду 20% — WB посчитает реальную цену как 960 руб. и будет сравнивать именно с ней.</p>
+    </div>
+
+    <h3>Внутренний мониторинг WB</h3>
+
+    <p>Если тот же товар продаёт несколько поставщиков на WB — алгоритм смотрит на минимальную цену среди всех продавцов. Это создаёт постоянное давление вниз на рынках с высокой конкуренцией. В нишах, где 50+ продавцов продают идентичный китайский товар, война цен разворачивается быстро и жестоко.</p>
+
+    <h3>Ценовая история</h3>
+
+    <p>WB фиксирует историческую максимальную цену карточки. Если вы резко подняли цену (например, перед акцией, чтобы потом дать большую скидку) — система это замечает. Регулярные «искусственные» подъёмы цены перед акциями могут привести к ограничению отображения скидки или к другим санкциям.</p>
+
+    <h2>Реальные последствия красного индекса</h2>
+
+    <p>Многие продавцы не связывают падение продаж с индексом цен. Просто «что-то пошло не так». На самом деле механизм работает так:</p>
+
+    <ol>
+      <li>WB обнаруживает отклонение цены — карточка получает предупреждение в личном кабинете</li>
+      <li>Если цена не исправлена в течение 72 часов — включается автоматическая пессимизация</li>
+      <li>Карточка опускается в поисковой выдаче на 20–40 позиций по целевым запросам</li>
+      <li>Рекламные ставки перестают работать эффективно — даже при высоком бюджете показов становится меньше</li>
+      <li>CTR карточки падает из-за низкой позиции — алгоритм фиксирует снижение интереса и опускает её ещё ниже</li>
+    </ol>
+
+    <div class="pull-quote">
+      <p>У одного из моих клиентов — продавца аксессуаров для телефонов — за три недели красного индекса продажи упали с 400 до 90 заказов в день. Причина: конкурент на Ozon поставил цену ниже на 80 рублей. Исправили цену — за 5 дней вернулись к прежним объёмам.</p>
+      <cite>— Владислав Гвоздев</cite>
+    </div>
+
+    <h2>Как проверить свой индекс цен</h2>
+
+    <p>В личном кабинете WB индекс цен находится в нескольких местах:</p>
+
+    <ul>
+      <li>Раздел «Аналитика» → «Индекс цен» — сводная таблица по всем артикулам с цветовой индикацией</li>
+      <li>Карточка товара в разделе «Товары» → красный/жёлтый значок рядом с ценой</li>
+      <li>Уведомления в личном кабинете — WB присылает оповещения при получении красного индекса</li>
+      <li>Раздел «Цены и скидки» — здесь же можно оперативно изменить цену</li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-box-label">💡 Лайфхак</div>
+      <p>Проверяйте индекс цен еженедельно — не реже. Сделайте это частью регулярного аудита. Я рекомендую ставить напоминание на понедельник: открыть раздел «Индекс цен» и пройтись по всем позициям с жёлтым или красным статусом.</p>
+    </div>
+
+    <h2>Как выстроить ценовую стратегию без штрафов</h2>
+
+    <p>Главная задача — зарабатывать нормальную маржу и при этом оставаться в зелёной зоне. Это реально, если следовать нескольким принципам.</p>
+
+    <h3>Принцип 1. Считайте цену входа правильно</h3>
+
+    <p>Прежде чем зайти на WB с товаром, изучите минимальную цену этого же товара на всех маркетплейсах. Ваша цена на WB должна быть не выше этой минимальной цены. Если ваша себестоимость не позволяет работать по этой цене с нормальной маржой — значит, ниша или поставщик не подходят.</p>
+
+    <h3>Принцип 2. Контролируйте присутствие на других площадках</h3>
+
+    <p>Если вы продаёте один и тот же товар на нескольких маркетплейсах, цены должны быть согласованы. Практика ставить на Ozon цену ниже «чтобы тестировать площадку» при активных продажах на WB — верный путь к красному индексу на WB.</p>
+
+    <h3>Принцип 3. Правильная работа с акциями</h3>
+
+    <p>Не поднимайте цену резко перед акцией. Если хотите участвовать в акции со скидкой 30% — заходите на площадку с ценой, которая уже выше плановой. Делайте это постепенно: +5–10% в неделю. Резкое повышение на 40–50% перед акционным периодом система видит и фиксирует.</p>
+
+    <h3>Принцип 4. Дифференцируйте SKU</h3>
+
+    <p>Если нужно продавать дороже — создайте эксклюзивный SKU для WB. Немного другой комплект, другая упаковка, дополнительный аксессуар в комплекте. Тогда прямого сравнения с другими площадками не будет — артикул уникален для WB. Это один из лучших способов сохранить маржинальность.</p>
+
+    <div class="tip-box">
+      <div class="tip-box-label">💡 Совет эксперта</div>
+      <p>Работает так: продаёте мышку за 1 500 руб. на Ozon. На WB продаёте мышку + коврик в комплекте за 1 900 руб. — это уже другой SKU, и WB не сможет напрямую сравнить цены. Маржа выше, индекс зелёный.</p>
+    </div>
+
+    <h2>Что делать, если уже получили красный индекс</h2>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Найдите причину</h4>
+          <p>Зайдите в раздел «Индекс цен» и посмотрите, с чем именно сравнивает WB. Система обычно показывает ссылку на конкурента или площадку с более низкой ценой.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Оцените возможности</h4>
+          <p>Посчитайте юнит-экономику по сниженной цене. Если маржа остаётся положительной — снижайте цену. Если нет — думайте над дифференциацией SKU.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Скорректируйте цену быстро</h4>
+          <p>У вас 72 часа до применения полноценных санкций. Измените цену в разделе «Цены и скидки». Обновление индекса происходит в течение 24–48 часов.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Восстановите позиции</h4>
+          <p>После получения зелёного индекса позиции восстанавливаются в течение 3–7 дней. Ускорить процесс помогает запуск небольшой рекламной кампании.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Мониторинг цен конкурентов: инструменты</h2>
+
+    <p>Ручной мониторинг 20+ SKU на 3–4 площадках — неэффективно. Используйте инструменты автоматизации:</p>
+
+    <ul>
+      <li><strong>Mpstats:</strong> отслеживает цены конкурентов по артикулам на WB, показывает динамику изменений</li>
+      <li><strong>Moneyplace:</strong> мониторинг цен и выгрузка по нишам, удобная работа с несколькими площадками</li>
+      <li><strong>Pricelist.ru:</strong> специализированный сервис для отслеживания цен на маркетплейсах</li>
+      <li><strong>Встроенная аналитика WB:</strong> в разделе «Индекс цен» есть ссылки на конкурирующие предложения — смотрите их регулярно</li>
+    </ul>
+
+    <h2>Итоговый чек-лист по индексу цен</h2>
+
+    <ul>
+      <li>Проверяю индекс цен раз в неделю по всем SKU</li>
+      <li>Перед запуском нового товара изучил минимальные цены на всех маркетплейсах</li>
+      <li>Цены на WB и других площадках согласованы и не противоречат друг другу</li>
+      <li>Не поднимаю цену резко перед акционным периодом</li>
+      <li>Для премиальных позиций создаю уникальные SKU для WB (другой комплект или упаковка)</li>
+      <li>При получении жёлтого индекса реагирую в течение 48 часов</li>
+      <li>Считаю юнит-экономику при любом изменении цены</li>
+    </ul>
+
+    <p>Индекс цен — это не враг продавца. Это сигнал, который показывает: WB считает вашу цену неконкурентной. Правильная реакция на этот сигнал — часть профессионального управления магазином. Те, кто научился работать с индексом, используют его как конкурентное преимущество: они первыми видят, когда рынок меняется, и адаптируются быстрее конкурентов.</p>
+
+  </div>
+
+  <div class="article-cta">
+    <h2>Нужен аудит ценовой стратегии?</h2>
+    <p>Разберу ваши карточки, найду позиции с красным и жёлтым индексом, посчитаю юнит-экономику и предложу конкретные решения. Всё за 30 минут онлайн.</p>
+    <a href="contacts.html" class="btn-primary">Записаться на диагностику →</a>
+    <div class="cta-sub">Бесплатно · Онлайн · 30 минут · Конкретные рекомендации</div>
+  </div>
+</main>
+
+<footer>
+  <a href="index.html" class="footer-logo">Гвоздев<span> | Карточка продает</span></a>
+  <ul class="footer-links">
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="about.html">Обо мне</a></li>
+    <li><a href="cases.html">Кейсы</a></li>
+    <li><a href="blog.html">Блог</a></li>
+    <li><a href="contacts.html">Контакты</a></li>
+    <li><a href="https://t.me/card_prodaet" target="_blank">📢 Канал</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Владислав Гвоздев</div>
+</footer>
+
+<a href="https://t.me/gvozdev_vladislav" target="_blank" id="tgFloat" style="position:fixed;bottom:28px;right:28px;z-index:9998;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);box-shadow:0 8px 32px rgba(37,99,235,.55);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;transition:transform .2s,box-shadow .2s;animation:tgPulse 2.5s ease-in-out infinite;" title="Написать в Telegram">✈️<span style="position:absolute;top:-6px;right:-4px;background:#22c55e;color:white;font-family:'Manrope',sans-serif;font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3);">онлайн</span></a>
+<style>#tgFloat:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,99,235,.7);}@keyframes tgPulse{0%,100%{box-shadow:0 8px 32px rgba(37,99,235,.55);}50%{box-shadow:0 8px 48px rgba(37,99,235,.85),0 0 0 8px rgba(37,99,235,.12);}}</style>
+
+<a href="https://wa.me/79279122297" target="_blank" id="waFloat" style="position:fixed;bottom:100px;right:28px;z-index:9998;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 8px 32px rgba(37,211,102,.5);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;transition:transform .2s,box-shadow .2s;" title="Написать в WhatsApp">📱</a>
+<style>#waFloat:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,211,102,.75);}</style>
+
+<script>
+  function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+  window.addEventListener('scroll',function(){
+    const nav=document.getElementById('nav');
+    nav.style.background=window.scrollY>50?'rgba(10,15,30,.97)':'rgba(10,15,30,.85)';
+  });
+</script>
+</body>
+</html>
