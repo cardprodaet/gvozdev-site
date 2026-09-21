@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+.AppleDouble
+._*
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*~
+
+# Служебное
+*.log
+*.bak
+
+# Зависимости воркера
+node_modules/
+.wrangler/

@@ -3,122 +3,17 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Услуги — Владислав Гвоздев</title>
-  <meta name="description" content="Аудит магазина, упаковка карточек, настройка рекламы и сопровождение на WB и Ozon."/>
+  <title>Услуги — аудит, стратегия и внедрение на WB и Ozon | Владислав Гвоздев</title>
+  <meta name="description" content="Финансовый и маркетинговый аудит, реклама под ключ, стратегия роста, внедрение в процессы, зарубежные рынки и обучение команды."/>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="shortcut icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="assets/css/base.css">
   <style>
-    :root {
-      --bg:      #0a0f1e;
-      --bg2:     #0d1428;
-      --card:    #111827;
-      --border:  rgba(255,255,255,.08);
-      --text:    #f0f4ff;
-      --muted:   #8b9ab8;
-      --accent:  #2563eb;
-      --accent2: #60a5fa;
-      --accent3: #f97316;
-      --radius:  20px;
-    }
- 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
- 
-    body {
-      font-family: 'Manrope', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
- 
     /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(10,15,30,.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
- 
-    .nav-logo {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 15px;
-      font-weight: 900;
-      color: var(--text);
-      text-decoration: none;
-    }
- 
-    .nav-logo span { color: var(--accent2); }
- 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
- 
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: color .2s;
-    }
- 
-    .nav-links a:hover, .nav-links a.active { color: var(--text); }
- 
-    .nav-cta {
-      background: var(--accent);
-      color: white !important;
-      padding: 10px 22px;
-      border-radius: 12px;
-      font-weight: 700 !important;
-    }
- 
-    .burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
- 
-    .burger span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-    }
- 
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      z-index: 99;
-      padding: 100px 40px 40px;
-      flex-direction: column;
-      gap: 8px;
-    }
- 
-    .mobile-menu.open { display: flex; }
- 
-    .mobile-menu a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 22px;
-      font-weight: 700;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-    }
- 
+
     /* ── PAGE HERO ── */
     .page-hero {
       padding: 140px 40px 80px;
@@ -126,16 +21,16 @@
       position: relative;
       overflow: hidden;
     }
- 
+
     .page-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(37,99,235,.15) 0%, transparent 70%);
     }
- 
+
     .page-hero-content { position: relative; }
- 
+
     .section-label {
       display: inline-block;
       font-size: 12px;
@@ -145,7 +40,7 @@
       color: var(--accent2);
       margin-bottom: 14px;
     }
- 
+
     .page-hero h1 {
       font-family: 'Unbounded', sans-serif;
       font-size: clamp(30px, 5vw, 56px);
@@ -154,7 +49,7 @@
       letter-spacing: -1.5px;
       margin-bottom: 20px;
     }
- 
+
     .page-hero p {
       font-size: 18px;
       color: var(--muted);
@@ -162,7 +57,7 @@
       margin: 0 auto;
       line-height: 1.6;
     }
- 
+
     /* ── TABS ── */
     .tabs-wrap {
       display: flex;
@@ -171,7 +66,7 @@
       flex-wrap: wrap;
       padding: 0 40px 60px;
     }
- 
+
     .tab {
       padding: 10px 22px;
       border-radius: 12px;
@@ -184,10 +79,10 @@
       font-family: 'Manrope', sans-serif;
       transition: all .2s;
     }
- 
+
     .tab:hover { color: var(--text); border-color: rgba(255,255,255,.2); }
     .tab.active { background: var(--accent); color: white; border-color: var(--accent); }
- 
+
     /* ── SERVICE BLOCKS ── */
     .services-wrap {
       max-width: 1100px;
@@ -197,7 +92,7 @@
       flex-direction: column;
       gap: 32px;
     }
- 
+
     .service-block {
       background: var(--card);
       border: 1px solid var(--border);
@@ -207,18 +102,18 @@
       grid-template-columns: 1fr 380px;
       transition: border-color .25s;
     }
- 
+
     .service-block:hover { border-color: rgba(37,99,235,.35); }
- 
+
     .service-block.reverse { direction: rtl; }
     .service-block.reverse > * { direction: ltr; }
- 
+
     .service-info {
       padding: 44px 48px;
       display: flex;
       flex-direction: column;
     }
- 
+
     .service-icon-big {
       width: 64px; height: 64px;
       border-radius: 18px;
@@ -229,7 +124,7 @@
       font-size: 30px;
       margin-bottom: 24px;
     }
- 
+
     .service-info h2 {
       font-family: 'Unbounded', sans-serif;
       font-size: 26px;
@@ -237,7 +132,7 @@
       letter-spacing: -.5px;
       margin-bottom: 12px;
     }
- 
+
     .service-info .desc {
       font-size: 15px;
       color: var(--muted);
@@ -245,7 +140,7 @@
       margin-bottom: 28px;
       flex: 1;
     }
- 
+
     .includes-title {
       font-size: 12px;
       font-weight: 800;
@@ -254,7 +149,7 @@
       color: var(--accent2);
       margin-bottom: 14px;
     }
- 
+
     .includes-list {
       list-style: none;
       display: flex;
@@ -262,7 +157,7 @@
       gap: 8px;
       margin-bottom: 32px;
     }
- 
+
     .includes-list li {
       display: flex;
       align-items: flex-start;
@@ -271,7 +166,7 @@
       color: var(--muted);
       line-height: 1.5;
     }
- 
+
     .includes-list li::before {
       content: '';
       width: 18px; height: 18px;
@@ -284,21 +179,22 @@
       background-repeat: no-repeat;
       background-position: center;
     }
- 
+
     .service-footer {
       display: flex;
       align-items: center;
       gap: 20px;
       flex-wrap: wrap;
     }
- 
+
     .service-price {
       font-family: 'Unbounded', sans-serif;
-      font-size: 30px;
-      font-weight: 900;
+      font-size: 17px;
+      font-weight: 700;
       color: var(--accent2);
+      white-space: nowrap;
     }
- 
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -313,29 +209,29 @@
       border: 0;
       transition: transform .15s, box-shadow .15s, background .15s;
     }
- 
+
     .btn:active { transform: scale(.97); }
- 
+
     .btn-primary {
       background: var(--accent);
       color: white;
       box-shadow: 0 8px 24px rgba(37,99,235,.35);
     }
- 
+
     .btn-primary:hover {
       background: #1d4ed8;
       transform: translateY(-2px);
       box-shadow: 0 12px 32px rgba(37,99,235,.5);
     }
- 
+
     .btn-ghost {
       background: rgba(255,255,255,.06);
       color: var(--text);
       border: 1px solid var(--border);
     }
- 
+
     .btn-ghost:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
- 
+
     /* ── SERVICE VISUAL PANEL ── */
     .service-visual {
       background: linear-gradient(135deg, #0d1428 0%, #0f1f40 100%);
@@ -349,19 +245,19 @@
       position: relative;
       overflow: hidden;
     }
- 
+
     .service-block.reverse .service-visual {
       border-left: 0;
       border-right: 1px solid var(--border);
     }
- 
+
     .service-visual::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(37,99,235,.12) 0%, transparent 70%);
     }
- 
+
     .visual-stat {
       position: relative;
       background: rgba(255,255,255,.05);
@@ -371,7 +267,7 @@
       width: 100%;
       text-align: center;
     }
- 
+
     .visual-stat-num {
       font-family: 'Unbounded', sans-serif;
       font-size: 34px;
@@ -380,12 +276,12 @@
       line-height: 1;
       margin-bottom: 6px;
     }
- 
+
     .visual-stat-label {
       font-size: 12.5px;
       color: var(--muted);
     }
- 
+
     .visual-tag {
       position: relative;
       display: inline-flex;
@@ -399,14 +295,14 @@
       font-size: 13px;
       font-weight: 700;
     }
- 
+
     /* ── FAQ ── */
     .faq-section {
       max-width: 760px;
       margin: 0 auto;
       padding: 0 40px 100px;
     }
- 
+
     .faq-section h2 {
       font-family: 'Unbounded', sans-serif;
       font-size: 30px;
@@ -414,7 +310,7 @@
       margin-bottom: 32px;
       text-align: center;
     }
- 
+
     .faq-item {
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -422,7 +318,7 @@
       overflow: hidden;
       background: var(--card);
     }
- 
+
     .faq-q {
       display: flex;
       justify-content: space-between;
@@ -433,19 +329,26 @@
       font-weight: 700;
       gap: 12px;
       user-select: none;
+
+      width:100%;
+      background:none;
+      border:none;
+      color:inherit;
+      font-family:inherit;
+      text-align:left;
     }
- 
+
     .faq-q:hover { color: var(--accent2); }
- 
+
     .faq-arrow {
       color: var(--accent2);
       font-size: 20px;
       flex-shrink: 0;
       transition: transform .25s;
     }
- 
+
     .faq-item.open .faq-arrow { transform: rotate(180deg); }
- 
+
     .faq-a {
       max-height: 0;
       overflow: hidden;
@@ -455,14 +358,14 @@
       line-height: 1.7;
       padding: 0 22px;
     }
- 
+
     .faq-item.open .faq-a { max-height: 300px; padding: 0 22px 20px; }
- 
+
     /* ── CTA ── */
     .cta-section {
       padding: 0 40px 100px;
     }
- 
+
     .cta-wrap {
       max-width: 1100px;
       margin: 0 auto;
@@ -473,14 +376,14 @@
       position: relative;
       overflow: hidden;
     }
- 
+
     .cta-wrap::before {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse 60% 60% at 80% 20%, rgba(255,255,255,.08) 0%, transparent 60%);
     }
- 
+
     .cta-wrap h2 {
       font-family: 'Unbounded', sans-serif;
       font-size: clamp(22px, 4vw, 38px);
@@ -488,14 +391,14 @@
       margin-bottom: 14px;
       position: relative;
     }
- 
+
     .cta-wrap p {
       font-size: 16px;
       opacity: .8;
       margin-bottom: 32px;
       position: relative;
     }
- 
+
     .cta-actions {
       display: flex;
       gap: 14px;
@@ -503,88 +406,51 @@
       flex-wrap: wrap;
       position: relative;
     }
- 
+
     .btn-white { background: white; color: var(--accent); }
     .btn-white:hover { background: #f0f4ff; transform: translateY(-2px); }
- 
+
     .btn-outline-white {
       background: transparent;
       color: white;
       border: 1.5px solid rgba(255,255,255,.4);
     }
- 
+
     .btn-outline-white:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
- 
+
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
- 
-    .footer-logo {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 14px;
-      font-weight: 900;
-      color: var(--text);
-      text-decoration: none;
-    }
- 
-    .footer-logo span { color: var(--accent2); }
- 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
- 
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
-      transition: color .2s;
-    }
- 
-    .footer-links a:hover { color: var(--text); }
-    .footer-copy { font-size: 13px; color: var(--muted); }
- 
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
- 
+
     .reveal {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity .6s ease, transform .6s ease;
     }
- 
+
     .reveal.visible { opacity: 1; transform: translateY(0); }
- 
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
       .burger { display: flex; }
- 
+
       .page-hero { padding: 110px 20px 50px; }
       .tabs-wrap { padding: 0 20px 40px; }
- 
+
       .services-wrap { padding: 0 20px 70px; }
- 
+
       .service-block {
         grid-template-columns: 1fr;
       }
- 
+
       .service-block.reverse { direction: ltr; }
- 
+
       .service-visual {
         border-left: 0;
         border-top: 1px solid var(--border);
@@ -593,20 +459,20 @@
         flex-wrap: wrap;
         gap: 12px;
       }
- 
+
       .service-block.reverse .service-visual {
         border-right: 0;
         border-top: 1px solid var(--border);
       }
- 
+
       .visual-stat { flex: 1; min-width: 120px; }
- 
+
       .service-info { padding: 28px 24px; }
- 
+
       .faq-section { padding: 0 20px 70px; }
       .cta-section { padding: 0 20px 70px; }
       .cta-wrap { padding: 50px 24px; }
- 
+
       footer { padding: 30px 20px; flex-direction: column; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
@@ -623,18 +489,18 @@
   <!-- OG / Social -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://cardprodaet.github.io/gvozdev-site/services.html">
-  <meta property="og:title"       content="Услуги — Владислав Гвоздев | Эксперт WB и Ozon">
-  <meta property="og:description" content="Аудит магазина, упаковка карточек, настройка рекламы, сопровождение. От 5 000 ₽. Бесплатная диагностика.">
+  <meta property="og:title"       content="Услуги — аудит, стратегия и внедрение | Владислав Гвоздев">
+  <meta property="og:description" content="Финансовый и маркетинговый аудит, реклама под ключ, стратегия роста, внедрение в процессы, зарубежные рынки и обучение команды.">
   <meta property="og:image"       content="https://cardprodaet.github.io/gvozdev-site/expert.jpg">
   <meta property="og:locale"      content="ru_RU">
   <meta name="twitter:card"       content="summary_large_image">
-  <meta name="twitter:title"      content="Услуги — Владислав Гвоздев | Эксперт WB и Ozon">
-  <meta name="twitter:description" content="Аудит магазина, упаковка карточек, настройка рекламы, сопровождение. От 5 000 ₽. Бесплатная диагностика.">
+  <meta name="twitter:title"      content="Услуги — аудит, стратегия и внедрение | Владислав Гвоздев">
+  <meta name="twitter:description" content="Финансовый и маркетинговый аудит, реклама под ключ, стратегия роста, внедрение в процессы, зарубежные рынки и обучение команды.">
   <meta name="twitter:image"      content="https://cardprodaet.github.io/gvozdev-site/expert.jpg">
 <script src="//code.jivo.ru/widget/ZoG71MnhBT" async></script>
 </head>
 <body>
- 
+
 <!-- ── NAV ── -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">Гвоздев<span> | Карточка продает</span></a>
@@ -646,11 +512,12 @@
     <li><a href="blog.html">Блог</a></li>
     <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
   </ul>
-  <div class="burger" onclick="toggleMenu()">
+  <button class="burger" type="button" onclick="toggleMenu()"
+          aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
- 
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html" onclick="toggleMenu()">Главная</a>
   <a href="services.html" onclick="toggleMenu()">Услуги</a>
@@ -659,229 +526,345 @@
   <a href="blog.html" onclick="toggleMenu()">Блог</a>
   <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
 </div>
- 
+
 <!-- ── PAGE HERO ── -->
 <div class="page-hero">
   <div class="page-hero-content">
-    <div class="section-label">Услуги</div>
-    <h1>Чем могу помочь</h1>
-    <p>Комплексная работа с вашим магазином на WB и Ozon — от быстрого аудита до полного сопровождения.</p>
+    <div class="section-label">Направления</div>
+    <h1>Что можно передать мне</h1>
+    <p>От расчёта юнит-экономики до перестройки процессов и выхода на зарубежные рынки. Объём определяем после первого созвона — платите только за то, что нужно вам.</p>
   </div>
 </div>
- 
+
 <!-- ── TABS ── -->
 <div class="tabs-wrap">
-  <button class="tab active" onclick="scrollTo('audit')">🔍 Аудит</button>
-  <button class="tab" onclick="scrollTo('card')">🗂️ Упаковка карточки</button>
+  <button class="tab active" onclick="scrollTo('audit')">📊 Финансовый аудит</button>
+  <button class="tab" onclick="scrollTo('marketing')">🎯 Маркетинговый аудит</button>
   <button class="tab" onclick="scrollTo('ads')">📣 Реклама</button>
-  <button class="tab" onclick="scrollTo('support')">🤝 Сопровождение</button>
+  <button class="tab" onclick="scrollTo('strategy')">🧭 Стратегия</button>
+  <button class="tab" onclick="scrollTo('process')">⚙️ Процессы</button>
+  <button class="tab" onclick="scrollTo('global')">🌍 Зарубежные рынки</button>
+  <button class="tab" onclick="scrollTo('education')">🎓 Обучение</button>
 </div>
- 
+
 <!-- ── SERVICES ── -->
 <div class="services-wrap">
- 
+
   <!-- Аудит -->
   <div class="service-block reveal" id="audit">
     <div class="service-info">
-      <div class="service-icon-big">🔍</div>
-      <h2>Аудит магазина WB / Ozon</h2>
-      <p class="desc">Полный разбор вашего магазина: нахожу где теряете деньги, почему товары не продаются и что нужно исправить в первую очередь. Результат — чёткий план действий с конкретными шагами.</p>
+      <div class="service-icon-big">📊</div>
+      <h2>Финансовый аудит</h2>
+      <p class="desc">Считаю, сколько вы зарабатываете на самом деле. Часто оказывается, что половина ассортимента работает в минус, а прибыль тянут два-три товара. Пока это не посчитано, любые решения по рекламе и ценам — вслепую.</p>
       <div class="includes-title">Что входит</div>
       <ul class="includes-list">
-        <li>Анализ позиций и видимости товаров в поиске</li>
-        <li>Разбор карточек: SEO, фото, описание, инфографика</li>
-        <li>Анализ рекламных кампаний и расходов</li>
-        <li>Оценка ценообразования и маржинальности</li>
-        <li>Анализ конкурентов в вашей нише</li>
-        <li>Письменный отчёт + план действий на 30 дней</li>
-        <li>Созвон 60 минут — разбираем отчёт вместе</li>
+        <li>Юнит-экономика по каждому SKU: закупка, логистика, хранение</li>
+        <li>Реальная маржа с учётом комиссий, возвратов и штрафов</li>
+        <li>Расчёт точки безубыточности по товарам и категориям</li>
+        <li>Разделение ассортимента: что кормит, что съедает</li>
+        <li>Оценка оборачиваемости и замороженных в остатках денег</li>
+        <li>Таблица с расчётами — остаётся у вас и после работы</li>
+        <li>Созвон 60 минут: разбираем цифры и что с ними делать</li>
       </ul>
       <div class="service-footer">
-        <div class="service-price">от 5 000 ₽</div>
-        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
-        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+        <div class="service-price">Индивидуальный расчёт</div>
+        <a href="contacts.html" class="btn btn-primary">Обсудить задачу →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-ghost">Спросить в Telegram</a>
       </div>
     </div>
     <div class="service-visual">
       <div class="visual-stat">
-        <div class="visual-stat-num">1–2</div>
-        <div class="visual-stat-label">дня — срок выполнения</div>
+        <div class="visual-stat-num">SKU</div>
+        <div class="visual-stat-label">расчёт по каждой позиции</div>
       </div>
       <div class="visual-stat">
-        <div class="visual-stat-num">×3</div>
-        <div class="visual-stat-label">средний рост после аудита</div>
+        <div class="visual-stat-num">100%</div>
+        <div class="visual-stat-label">расходов в одной таблице</div>
       </div>
-      <div class="visual-tag">✓ Отчёт + созвон</div>
-      <div class="visual-tag">✓ WB и Ozon</div>
+      <div class="visual-tag">✓ Таблица остаётся у вас</div>
+      <div class="visual-tag">✓ WB, Ozon и зарубежные</div>
     </div>
   </div>
- 
-  <!-- Упаковка карточки -->
-  <div class="service-block reverse reveal" id="card">
+
+  <!-- Маркетинговый аудит -->
+  <div class="service-block reverse reveal" id="marketing">
     <div class="service-info">
-      <div class="service-icon-big">🗂️</div>
-      <h2>Упаковка карточки товара</h2>
-      <p class="desc">Делаю карточку, которая продаёт сама — попадает в топ поиска и конвертирует посетителей в покупателей. SEO, структура, визуал — всё по алгоритмам WB и Ozon.</p>
+      <div class="service-icon-big">🎯</div>
+      <h2>Маркетинговый аудит</h2>
+      <p class="desc">Смотрю, где вы теряете долю рынка и почему покупатель уходит к конкуренту. Не «улучшить карточки», а конкретно: на каком шаге воронки отваливается спрос и сколько денег стоит вернуть эту долю.</p>
       <div class="includes-title">Что входит</div>
       <ul class="includes-list">
-        <li>Сбор семантики и SEO-оптимизация названия и описания</li>
-        <li>Разработка структуры карточки под алгоритмы площадки</li>
-        <li>Рекомендации по инфографике и главному фото</li>
-        <li>Настройка характеристик и атрибутов</li>
-        <li>A/B тест заголовков (при необходимости)</li>
-        <li>Рекомендации по ценообразованию</li>
+        <li>Позиции и видимость по ключевым запросам категории</li>
+        <li>Анализ спроса: сезонность, ёмкость ниши, динамика</li>
+        <li>Разбор конкурентов: чем выигрывают и за счёт чего</li>
+        <li>Воронка от показа до выкупа — где именно потери</li>
+        <li>Оценка карточек и контента с точки зрения конверсии</li>
+        <li>Отчёт с приоритетами: что даст максимум прироста</li>
+        <li>Созвон 60 минут — разбираем выводы вместе</li>
       </ul>
       <div class="service-footer">
-        <div class="service-price">от 5 000 ₽</div>
-        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
-        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+        <div class="service-price">Индивидуальный расчёт</div>
+        <a href="contacts.html" class="btn btn-primary">Обсудить задачу →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-ghost">Спросить в Telegram</a>
       </div>
     </div>
     <div class="service-visual">
       <div class="visual-stat">
-        <div class="visual-stat-num">3–5</div>
-        <div class="visual-stat-label">дней — срок выполнения</div>
+        <div class="visual-stat-num">ТОП</div>
+        <div class="visual-stat-label">разбор конкурентов ниши</div>
       </div>
       <div class="visual-stat">
-        <div class="visual-stat-num">+60%</div>
-        <div class="visual-stat-label">рост конверсии в среднем</div>
+        <div class="visual-stat-num">CR</div>
+        <div class="visual-stat-label">воронка по этапам</div>
       </div>
-      <div class="visual-tag">✓ 1 карточка товара</div>
+      <div class="visual-tag">✓ Отчёт с приоритетами</div>
       <div class="visual-tag">✓ WB и Ozon</div>
     </div>
   </div>
- 
+
   <!-- Реклама -->
   <div class="service-block reveal" id="ads">
     <div class="service-info">
       <div class="service-icon-big">📣</div>
-      <h2>Настройка рекламы</h2>
-      <p class="desc">Выстраиваю рекламные кампании, которые приносят прибыль, а не сливают бюджет. Нахожу прибыльные связки, отключаю неэффективные расходы, масштабирую то, что работает.</p>
+      <h2>Реклама под ключ</h2>
+      <p class="desc">Беру рекламу целиком: от разбора того, что крутится сейчас, до вывода на целевой ДРР. Работаю не с «показами и кликами», а с окупаемостью — сколько рубль рекламы приносит рублей прибыли.</p>
       <div class="includes-title">Что входит</div>
       <ul class="includes-list">
-        <li>Аудит текущих рекламных кампаний</li>
-        <li>Стратегия продвижения под вашу нишу</li>
-        <li>Настройка внутренней рекламы WB / Ozon</li>
-        <li>Подбор ставок и управление бюджетом</li>
-        <li>Настройка минус-слов и целевой аудитории</li>
-        <li>Отчёт с результатами и рекомендациями</li>
-        <li>Созвон после запуска — разбор первых результатов</li>
+        <li>Разбор текущих кампаний: что окупается, что сливает</li>
+        <li>Расчёт целевого ДРР исходя из вашей маржинальности</li>
+        <li>Перестройка структуры кампаний под категории и цели</li>
+        <li>Управление ставками и распределение бюджета</li>
+        <li>Работа с семантикой и минус-словами</li>
+        <li>Ведение до выхода на плановые показатели</li>
+        <li>Отчётность по деньгам, а не по кликам</li>
       </ul>
       <div class="service-footer">
-        <div class="service-price">от 5 000 ₽</div>
-        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
-        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+        <div class="service-price">Индивидуальный расчёт</div>
+        <a href="contacts.html" class="btn btn-primary">Обсудить задачу →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-ghost">Спросить в Telegram</a>
       </div>
     </div>
     <div class="service-visual">
       <div class="visual-stat">
-        <div class="visual-stat-num">7</div>
-        <div class="visual-stat-label">дней — запуск кампаний</div>
+        <div class="visual-stat-num">ДРР</div>
+        <div class="visual-stat-label">целевой показатель под маржу</div>
       </div>
       <div class="visual-stat">
         <div class="visual-stat-num">3.2×</div>
         <div class="visual-stat-label">средний ROI клиентов</div>
       </div>
-      <div class="visual-tag">✓ Без слива бюджета</div>
+      <div class="visual-tag">✓ Ведение до результата</div>
       <div class="visual-tag">✓ WB и Ozon</div>
     </div>
   </div>
- 
-  <!-- Сопровождение -->
-  <div class="service-block reverse reveal" id="support">
+
+  <!-- Стратегия -->
+  <div class="service-block reverse reveal" id="strategy">
     <div class="service-info">
-      <div class="service-icon-big">🤝</div>
-      <h2>Сопровождение 30 дней</h2>
-      <p class="desc">Полное ведение магазина под ключ. Занимаюсь вашим магазином каждый день — аналитика, реклама, карточки, ценообразование. Вы фокусируетесь на бизнесе, я на маркетплейсе.</p>
+      <div class="service-icon-big">🧭</div>
+      <h2>Стратегия роста</h2>
+      <p class="desc">Отвечаю на вопрос «куда двигаться дальше» цифрами, а не интуицией. Какие категории расширять, от каких товаров избавляться, какую цену держать и что закупать под следующий сезон.</p>
       <div class="includes-title">Что входит</div>
       <ul class="includes-list">
-        <li>Ежедневный мониторинг показателей магазина</li>
-        <li>Управление рекламными кампаниями</li>
-        <li>Оптимизация карточек и ценообразования</li>
-        <li>Еженедельные созвоны с разбором результатов</li>
-        <li>Ответы на вопросы в чате в рабочее время</li>
-        <li>Работа с отзывами и рейтингом</li>
-        <li>Итоговый отчёт и план на следующий месяц</li>
+        <li>Ассортиментная матрица: что расширять, что выводить</li>
+        <li>Ценовая политика с учётом маржи и позиций конкурентов</li>
+        <li>План по категориям с целевыми показателями</li>
+        <li>Сезонность: что и когда закупать под спрос</li>
+        <li>Сценарии роста с расчётом необходимых вложений</li>
+        <li>Дорожная карта на 3–6 месяцев с контрольными точками</li>
       </ul>
       <div class="service-footer">
-        <div class="service-price">2от 5 000 ₽</div>
-        <a href="contacts.html" class="btn btn-primary">Записаться →</a>
-        <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-ghost">Спросить в Telegram</a>
+        <div class="service-price">Индивидуальный расчёт</div>
+        <a href="contacts.html" class="btn btn-primary">Обсудить задачу →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-ghost">Спросить в Telegram</a>
       </div>
     </div>
     <div class="service-visual">
       <div class="visual-stat">
-        <div class="visual-stat-num">30</div>
-        <div class="visual-stat-label">дней полного ведения</div>
+        <div class="visual-stat-num">3–6</div>
+        <div class="visual-stat-label">месяцев горизонт плана</div>
       </div>
       <div class="visual-stat">
         <div class="visual-stat-num">×4</div>
-        <div class="visual-stat-label">средний рост продаж</div>
+        <div class="visual-stat-label">средний рост у клиентов</div>
       </div>
-      <div class="visual-tag">✓ Ежедневный контроль</div>
-      <div class="visual-tag">✓ Чат + созвоны</div>
+      <div class="visual-tag">✓ Дорожная карта</div>
+      <div class="visual-tag">✓ Расчёт вложений</div>
     </div>
   </div>
- 
+
+  <!-- Внедрение в процессы -->
+  <div class="service-block reveal" id="process">
+    <div class="service-info">
+      <div class="service-icon-big">⚙️</div>
+      <h2>Внедрение в процессы</h2>
+      <p class="desc">Самая частая проблема после консультации: план есть, а внедрять некому. Здесь я вхожу в вашу операционку и выстраиваю работу так, чтобы результат держался без моего ежедневного участия.</p>
+      <div class="includes-title">Что входит</div>
+      <ul class="includes-list">
+        <li>Разбор текущих процессов: кто что делает и где провисает</li>
+        <li>Распределение зон ответственности внутри команды</li>
+        <li>Регламенты по закупкам, рекламе, контенту и поставкам</li>
+        <li>Система отчётности: какие метрики и с какой периодичностью</li>
+        <li>Подбор и постановка задач менеджерам</li>
+        <li>Сопровождение команды на период внедрения</li>
+      </ul>
+      <div class="service-footer">
+        <div class="service-price">Индивидуальный расчёт</div>
+        <a href="contacts.html" class="btn btn-primary">Обсудить задачу →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-ghost">Спросить в Telegram</a>
+      </div>
+    </div>
+    <div class="service-visual">
+      <div class="visual-stat">
+        <div class="visual-stat-num">KPI</div>
+        <div class="visual-stat-label">метрики для команды</div>
+      </div>
+      <div class="visual-stat">
+        <div class="visual-stat-num">24/7</div>
+        <div class="visual-stat-label">работает без вашего контроля</div>
+      </div>
+      <div class="visual-tag">✓ Регламенты</div>
+      <div class="visual-tag">✓ Работа с командой</div>
+    </div>
+  </div>
+
+  <!-- Зарубежные рынки -->
+  <div class="service-block reverse reveal" id="global">
+    <div class="service-info">
+      <div class="service-icon-big">🌍</div>
+      <h2>Зарубежные рынки</h2>
+      <p class="desc">Выход за пределы российских площадок. Начинаем не с «давайте попробуем», а с расчёта: окупится ли логистика, какая маржа останется после доставки и пошлин, какой рынок подходит вашему товару.</p>
+      <div class="includes-title">Что входит</div>
+      <ul class="includes-list">
+        <li>Подбор рынка под ваш товар и ценовой сегмент</li>
+        <li>Юнит-экономика с учётом логистики, пошлин и комиссий</li>
+        <li>Анализ спроса и конкуренции на выбранной площадке</li>
+        <li>Требования к карточкам, документам и сертификации</li>
+        <li>Запуск и сопровождение первых продаж</li>
+        <li>Передача процесса вашей команде</li>
+      </ul>
+      <div class="service-footer">
+        <div class="service-price">Индивидуальный расчёт</div>
+        <a href="contacts.html" class="btn btn-primary">Обсудить задачу →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-ghost">Спросить в Telegram</a>
+      </div>
+    </div>
+    <div class="service-visual">
+      <div class="visual-stat">
+        <div class="visual-stat-num">2</div>
+        <div class="visual-stat-label">рынка в работе</div>
+      </div>
+      <div class="visual-stat">
+        <div class="visual-stat-num">₽→$</div>
+        <div class="visual-stat-label">расчёт с учётом логистики</div>
+      </div>
+      <div class="visual-tag">✓ От расчёта до запуска</div>
+      <div class="visual-tag">✓ Передача команде</div>
+    </div>
+  </div>
+
+  <!-- Обучение -->
+  <div class="service-block reveal" id="education">
+    <div class="service-info">
+      <div class="service-icon-big">🎓</div>
+      <h2>Обучение команды</h2>
+      <p class="desc">Для тех, кто хочет держать экспертизу внутри компании. Либо готовим менеджера с нуля, либо подтягиваем действующую команду там, где она проседает. Программа собирается под ваши процессы, а не по общему курсу.</p>
+      <div class="includes-title">Что входит</div>
+      <ul class="includes-list">
+        <li>Диагностика: что команда уже умеет, чего не хватает</li>
+        <li>Программа под ваш ассортимент и площадки</li>
+        <li>Аналитика: как читать цифры и принимать решения</li>
+        <li>Реклама: настройка, ведение, оценка окупаемости</li>
+        <li>Работа с поставками, остатками и ценообразованием</li>
+        <li>Проверка усвоенного на ваших реальных задачах</li>
+      </ul>
+      <div class="service-footer">
+        <div class="service-price">Индивидуальный расчёт</div>
+        <a href="contacts.html" class="btn btn-primary">Обсудить задачу →</a>
+        <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-ghost">Спросить в Telegram</a>
+      </div>
+    </div>
+    <div class="service-visual">
+      <div class="visual-stat">
+        <div class="visual-stat-num">0→1</div>
+        <div class="visual-stat-label">с нуля или повышение</div>
+      </div>
+      <div class="visual-stat">
+        <div class="visual-stat-num">7</div>
+        <div class="visual-stat-label">лет практики в основе</div>
+      </div>
+      <div class="visual-tag">✓ Под ваши процессы</div>
+      <div class="visual-tag">✓ Практика на ваших задачах</div>
+    </div>
+  </div>
+
 </div>
- 
+
 <!-- ── FAQ ── -->
 <div class="faq-section">
   <h2>Частые вопросы</h2>
- 
+
   <div class="faq-item reveal">
-    <div class="faq-q" onclick="toggleFaq(this)">
-      С чего начать, если я новичок на маркетплейсе?
+    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+      С какого направления начинать?
       <span class="faq-arrow">⌄</span>
-    </div>
-    <div class="faq-a">Начните с аудита — даже если магазин только запускается. Это поможет сразу сделать всё правильно и избежать типичных ошибок, которые потом сложно исправить.</div>
+    </button>
+    <div class="faq-a">Почти всегда — с финансового аудита. Пока не посчитана юнит-экономика, непонятно, что чинить: можно вложиться в рекламу товара, который в принципе не может быть прибыльным. После расчётов становится видно, какое направление даст больше всего.</div>
   </div>
- 
+
   <div class="faq-item reveal">
-    <div class="faq-q" onclick="toggleFaq(this)">
+    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+      Обязательно брать всё сразу?
+      <span class="faq-arrow">⌄</span>
+    </button>
+    <div class="faq-a">Нет. Направления работают по отдельности, и навязывать комплекс я не буду. Если после аудита видно, что достаточно перестроить рекламу — так и скажу. Часть работы вы можете забрать себе, я останусь на контроле.</div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
       Работаете с любыми нишами?
       <span class="faq-arrow">⌄</span>
-    </div>
-    <div class="faq-a">Да, работаю с большинством ниш на WB и Ozon. Исключения — узкоспециализированные B2B-товары и некоторые регулируемые категории. Уточните в Telegram — отвечу честно.</div>
+    </button>
+    <div class="faq-a">С большинством ниш на WB и Ozon. Исключения — узкоспециализированные B2B-товары и часть регулируемых категорий. Если ниша не моя, скажу об этом на первом созвоне, а не после оплаты.</div>
   </div>
- 
+
   <div class="faq-item reveal">
-    <div class="faq-q" onclick="toggleFaq(this)">
+    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+      Сколько времени это займёт у меня?
+      <span class="faq-arrow">⌄</span>
+    </button>
+    <div class="faq-a">На аудит — доступ к кабинету и один созвон на час. Дальше зависит от направления: при внедрении в процессы нужно вовлечение вас и команды, при ведении рекламы — почти нет. Это обсуждаем на старте, чтобы не было сюрпризов.</div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
       Как быстро будет результат?
       <span class="faq-arrow">⌄</span>
-    </div>
-    <div class="faq-a">Первые улучшения видны уже через 7–14 дней после внедрения рекомендаций. Стабильный рост — на горизонте 30 дней. Конкретные сроки зависят от ниши и текущего состояния магазина.</div>
+    </button>
+    <div class="faq-a">Расчёты и план — в первые недели. Изменения в рекламе дают эффект за 2–4 недели. Перестройка ассортимента и процессов — горизонт от квартала: там результат считается по прибыли за период, а не по всплеску продаж.</div>
   </div>
- 
+
   <div class="faq-item reveal">
-    <div class="faq-q" onclick="toggleFaq(this)">
-      Можно ли заказать несколько услуг сразу?
-      <span class="faq-arrow">⌄</span>
-    </div>
-    <div class="faq-a">Да, и это выгоднее. Комплексный подход (аудит + карточки + реклама) даёт значительно лучший результат, чем каждая услуга по отдельности. Напишите — обсудим пакет под ваш магазин.</div>
-  </div>
- 
-  <div class="faq-item reveal">
-    <div class="faq-q" onclick="toggleFaq(this)">
+    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
       Есть ли гарантия результата?
       <span class="faq-arrow">⌄</span>
-    </div>
-    <div class="faq-a">Гарантирую качество работы и соответствие договорённостям. Результат в цифрах зависит от многих факторов — ниши, конкуренции, бюджета. Могу показать кейсы похожих магазинов ещё до начала работы.</div>
+    </button>
+    <div class="faq-a">Гарантирую расчёты, по которым видно, где теряются деньги, и план с измеримыми показателями. Гарантировать конкретную цифру выручки нечестно — на неё влияют ваш товар, закупка и рынок. Если потенциала не вижу, говорю об этом до начала работы.</div>
   </div>
 </div>
- 
+
 <!-- ── CTA ── -->
 <div class="cta-section">
   <div class="cta-wrap reveal">
-    <h2>Не знаете с чего начать?</h2>
-    <p>Запишитесь на бесплатную диагностику — разберу магазин и скажу, что нужно в первую очередь.</p>
+    <h2>Не знаете, с чего начать?</h2>
+    <p>Оставьте заявку — на созвоне посмотрим ваши показатели и определим, какое направление даст больше всего именно вам.</p>
     <div class="cta-actions">
-      <a href="contacts.html" class="btn btn-white">🎁 Бесплатная диагностика</a>
-      <a href="https://t.me/gvozdev_vladislav" target="_blank" class="btn btn-outline-white">💬 Написать в Telegram</a>
+      <a href="contacts.html" class="btn btn-white">Оставить заявку</a>
+      <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" class="btn btn-outline-white">💬 Написать в Telegram</a>
     </div>
   </div>
 </div>
- 
+
 <!-- ── FOOTER ── -->
 <footer>
   <a href="index.html" class="footer-logo">Гвоздев<span> | Карточка продает</span></a>
@@ -891,48 +874,22 @@
     <li><a href="cases.html">Кейсы</a></li>
     <li><a href="blog.html">Блог</a></li>
     <li><a href="contacts.html">Контакты</a></li>
-    <li><a href="https://t.me/card_prodaet" target="_blank">📢 Канал</a></li>
+    <li><a href="https://t.me/card_prodaet" target="_blank" rel="noopener">📢 Канал</a></li>
   </ul>
   <div class="footer-copy">© 2025 Владислав Гвоздев</div>
 </footer>
- 
+
 <script>
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
- 
+
   function scrollTo(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     event.target.classList.add('active');
   }
- 
-  function toggleFaq(el) {
-    const item = el.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
- 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
- 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
- 
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').style.boxShadow =
-      window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
-  });
 </script>
- 
 
 <!-- ── FLOATING WA BUTTON ── -->
-<a href="https://wa.me/79279122297" target="_blank" id="waFloat" style="
+<a href="https://wa.me/79279122297" target="_blank" rel="noopener" id="waFloat" style="
   position:fixed; bottom:100px; right:28px; z-index:9998;
   width:60px; height:60px; border-radius:50%;
   background:linear-gradient(135deg,#25d366,#128c7e);
@@ -944,11 +901,10 @@
   📱
 </a>
 <style>
-  #waFloat:hover { transform:scale(1.12); box-shadow:0 12px 40px rgba(37,211,102,.75); }
-</style>
+  </style>
 
 <!-- ── FLOATING TG BUTTON ── -->
-<a href="https://t.me/gvozdev_vladislav" target="_blank" id="tgFloat" style="
+<a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" id="tgFloat" style="
   position:fixed; bottom:28px; right:28px; z-index:9998;
   width:60px; height:60px; border-radius:50%;
   background:linear-gradient(135deg,#2563eb,#1d4ed8);
@@ -968,11 +924,11 @@
   ">онлайн</span>
 </a>
 <style>
-  #tgFloat:hover { transform:scale(1.12); box-shadow:0 12px 40px rgba(37,99,235,.7); }
-  @keyframes tgPulse {
+    @keyframes tgPulse {
     0%,100% { box-shadow:0 8px 32px rgba(37,99,235,.55); }
     50%      { box-shadow:0 8px 48px rgba(37,99,235,.85), 0 0 0 8px rgba(37,99,235,.12); }
   }
-</style>
+  </style>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

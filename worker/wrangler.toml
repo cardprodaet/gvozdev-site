@@ -1,0 +1,14 @@
+# Конфигурация Cloudflare Worker для приёма заявок с сайта.
+# Разворачивается командой:  npx wrangler deploy
+#
+# Секреты здесь НЕ хранятся. Токен бота задаётся отдельно:
+#   npx wrangler secret put TG_TOKEN
+
+name = "gvozdev-lead-form"
+main = "lead-form-worker.js"
+compatibility_date = "2026-09-21"
+
+[vars]
+# Открытые значения — их видно в панели, секретом они не являются
+TG_CHAT_ID = "911552952"
+ALLOWED_ORIGIN = "https://cardprodaet.github.io"

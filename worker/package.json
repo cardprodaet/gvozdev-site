@@ -1,0 +1,15 @@
+{
+  "name": "gvozdev-lead-form",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Обработчик заявок с сайта: принимает форму и пересылает в Telegram",
+  "scripts": {
+    "login": "wrangler login",
+    "deploy": "wrangler deploy",
+    "secret": "wrangler secret put TG_TOKEN",
+    "logs": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.135.0"
+  }
+}

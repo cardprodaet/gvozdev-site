@@ -20,101 +20,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(109215727,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
   <noscript><div><img src="https://mc.yandex.ru/watch/109215727" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <link rel="stylesheet" href="assets/css/base.css">
   <style>
-    :root{--bg:#0a0f1e;--card:#111827;--border:rgba(255,255,255,.08);--text:#f0f4ff;--muted:#8b9ab8;--accent:#2563eb;--accent2:#60a5fa;--accent3:#f97316;--radius:20px;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;}
+                body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;}
 
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(10,15,30,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-    .nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:var(--text);text-decoration:none;}
-    .nav-logo span{color:var(--accent2);}
-    .nav-links{display:flex;gap:32px;list-style:none;}
-    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
-    .nav-links a:hover,.nav-links a.active{color:var(--text);}
-    .nav-cta{background:var(--accent);color:white!important;padding:10px 22px;border-radius:12px;font-weight:700!important;}
-    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
-    .burger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;}
-    .mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:99;padding:100px 40px 40px;flex-direction:column;gap:8px;}
-    .mobile-menu.open{display:flex;}
-    .mobile-menu a{color:var(--text);text-decoration:none;font-size:22px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--border);}
+        .nav-logo{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:var(--text);text-decoration:none;}
+                    .nav-cta{background:var(--accent);color:white!important;padding:10px 22px;border-radius:12px;font-weight:700!important;}
 
     /* ARTICLE HERO */
-    .article-hero{padding:120px 40px 60px;position:relative;overflow:hidden;}
-    .article-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(37,99,235,.18) 0%,transparent 70%);}
-    .article-hero-inner{position:relative;max-width:860px;margin:0 auto;}
 
     /* BREADCRUMBS */
-    .breadcrumbs{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:28px;flex-wrap:wrap;}
-    .breadcrumbs a{color:var(--muted);text-decoration:none;transition:color .2s;}
-    .breadcrumbs a:hover{color:var(--accent2);}
-    .breadcrumbs span{color:var(--accent2);}
-
-    .article-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--accent2);border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;margin-bottom:20px;}
-    .article-hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(26px,4.5vw,48px);font-weight:900;line-height:1.15;letter-spacing:-1px;margin-bottom:24px;}
-    .article-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-    .meta-item{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
-    .meta-dot{width:4px;height:4px;border-radius:50%;background:var(--muted);opacity:.5;}
-    .meta-item strong{color:var(--text);}
 
     /* ARTICLE BODY */
-    .article-wrap{max-width:860px;margin:0 auto;padding:0 40px 100px;}
-
-    .article-body h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:900;letter-spacing:-.5px;margin:52px 0 18px;line-height:1.25;color:var(--text);}
-    .article-body h3{font-family:'Unbounded',sans-serif;font-size:clamp(16px,2.5vw,20px);font-weight:700;margin:34px 0 14px;line-height:1.3;color:var(--accent2);}
-    .article-body p{font-size:16px;line-height:1.8;color:rgba(240,244,255,.85);margin-bottom:20px;}
-    .article-body ul,.article-body ol{margin:18px 0 24px 0;padding-left:0;list-style:none;}
-    .article-body ul li,.article-body ol li{font-size:16px;line-height:1.75;color:rgba(240,244,255,.85);margin-bottom:10px;padding-left:28px;position:relative;}
-    .article-body ul li::before{content:'→';position:absolute;left:0;color:var(--accent2);font-weight:700;}
-    .article-body ol{counter-reset:ol-counter;}
-    .article-body ol li{counter-increment:ol-counter;}
-    .article-body ol li::before{content:counter(ol-counter)'.';position:absolute;left:0;color:var(--accent3);font-weight:800;}
 
     /* TIP BOX */
-    .tip-box{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.25);border-left:4px solid var(--accent);border-radius:16px;padding:24px 28px;margin:32px 0;}
-    .tip-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin-bottom:10px;}
-    .tip-box p{margin:0;font-size:15px;color:var(--text);}
 
     /* WARNING BOX */
-    .warn-box{background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.25);border-left:4px solid var(--accent3);border-radius:16px;padding:24px 28px;margin:32px 0;}
-    .warn-box-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent3);margin-bottom:10px;}
-    .warn-box p{margin:0;font-size:15px;color:var(--text);}
 
     /* QUOTE */
-    .pull-quote{border-left:4px solid var(--accent2);padding:20px 28px;margin:36px 0;background:rgba(96,165,250,.06);border-radius:0 16px 16px 0;}
-    .pull-quote p{font-size:18px;font-style:italic;color:var(--text);margin:0;line-height:1.65;}
-    .pull-quote cite{display:block;margin-top:10px;font-size:13px;color:var(--muted);font-style:normal;}
 
     /* STEP LIST */
-    .step-list{display:flex;flex-direction:column;gap:20px;margin:28px 0;}
-    .step-item{display:flex;gap:20px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 24px;}
-    .step-num{width:44px;height:44px;min-width:44px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#1d4ed8);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;color:white;}
-    .step-content h4{font-size:16px;font-weight:800;margin-bottom:6px;color:var(--text);}
-    .step-content p{font-size:14px;color:var(--muted);margin:0;line-height:1.65;}
 
     /* STAT ROW */
-    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;}
-    .stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 20px;text-align:center;}
-    .stat-num{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:900;color:var(--accent2);display:block;margin-bottom:6px;}
-    .stat-label{font-size:13px;color:var(--muted);}
+            .stat-num{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:900;color:var(--accent2);display:block;margin-bottom:6px;}
 
     /* CTA */
-    .article-cta{background:linear-gradient(135deg,#0d1428,#1e3a8a);border:1px solid rgba(37,99,235,.35);border-radius:24px;padding:48px 40px;text-align:center;margin:60px 0 0;}
-    .article-cta h2{font-family:'Unbounded',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:900;margin-bottom:16px;line-height:1.25;}
-    .article-cta p{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto 32px;line-height:1.7;}
-    .btn-primary{display:inline-block;background:var(--accent);color:white;padding:16px 36px;border-radius:14px;font-size:16px;font-weight:800;text-decoration:none;transition:background .2s,transform .2s;}
-    .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
-    .cta-sub{margin-top:14px;font-size:13px;color:var(--muted);}
+                .btn-primary{display:inline-block;background:var(--accent);color:white;padding:16px 36px;border-radius:14px;font-size:16px;font-weight:800;text-decoration:none;transition:background .2s,transform .2s;}
 
     /* FOOTER */
     footer{background:var(--card);border-top:1px solid var(--border);padding:48px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
     .footer-logo{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:900;color:var(--text);text-decoration:none;}
-    .footer-logo span{color:var(--accent2);}
-    .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
+        .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
     .footer-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s;}
-    .footer-links a:hover{color:var(--text);}
-    .footer-copy{font-size:13px;color:var(--muted);}
 
     /* RESPONSIVE */
     @media(max-width:900px){
@@ -145,7 +83,10 @@
     <li><a href="blog.html" class="active">Блог</a></li>
     <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
   </ul>
-  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <button class="burger" type="button" onclick="toggleMenu()"
+          aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html" onclick="toggleMenu()">Главная</a>
@@ -389,7 +330,7 @@
 
   <div class="article-cta">
     <h2>Хотите вывести свой товар в топ?</h2>
-    <p>Запишитесь на бесплатную диагностику. За 30 минут я разберу вашу карточку, покажу точки роста и дам конкретный план действий — без воды и шаблонов.</p>
+    <p>Оставьте заявку — на созвоне посмотрим ваши показатели и обсудим задачу. За 30 минут я разберу вашу карточку, покажу точки роста и дам конкретный план действий — без воды и шаблонов.</p>
     <a href="contacts.html" class="btn-primary">Записаться на диагностику →</a>
     <div class="cta-sub">Бесплатно · Онлайн · 30 минут · Конкретные рекомендации</div>
   </div>
@@ -403,25 +344,16 @@
     <li><a href="cases.html">Кейсы</a></li>
     <li><a href="blog.html">Блог</a></li>
     <li><a href="contacts.html">Контакты</a></li>
-    <li><a href="https://t.me/card_prodaet" target="_blank">📢 Канал</a></li>
+    <li><a href="https://t.me/card_prodaet" target="_blank" rel="noopener">📢 Канал</a></li>
   </ul>
   <div class="footer-copy">© 2025 Владислав Гвоздев</div>
 </footer>
 
-<a href="https://t.me/gvozdev_vladislav" target="_blank" id="tgFloat" style="position:fixed;bottom:28px;right:28px;z-index:9998;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);box-shadow:0 8px 32px rgba(37,99,235,.55);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;transition:transform .2s,box-shadow .2s;animation:tgPulse 2.5s ease-in-out infinite;" title="Написать в Telegram">✈️<span style="position:absolute;top:-6px;right:-4px;background:#22c55e;color:white;font-family:'Manrope',sans-serif;font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3);">онлайн</span></a>
-<style>#tgFloat:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,99,235,.7);}@keyframes tgPulse{0%,100%{box-shadow:0 8px 32px rgba(37,99,235,.55);}50%{box-shadow:0 8px 48px rgba(37,99,235,.85),0 0 0 8px rgba(37,99,235,.12);}}</style>
+<a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" id="tgFloat" style="position:fixed;bottom:28px;right:28px;z-index:9998;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);box-shadow:0 8px 32px rgba(37,99,235,.55);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;transition:transform .2s,box-shadow .2s;animation:tgPulse 2.5s ease-in-out infinite;" title="Написать в Telegram">✈️<span style="position:absolute;top:-6px;right:-4px;background:#22c55e;color:white;font-family:'Manrope',sans-serif;font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3);">онлайн</span></a>
+<style>@keyframes tgPulse{0%,100%{box-shadow:0 8px 32px rgba(37,99,235,.55);}50%{box-shadow:0 8px 48px rgba(37,99,235,.85),0 0 0 8px rgba(37,99,235,.12);}}</style>
 
-<script>
-  function toggleMenu(){
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  window.addEventListener('scroll',function(){
-    const nav=document.getElementById('nav');
-    nav.style.background=window.scrollY>50?'rgba(10,15,30,.97)':'rgba(10,15,30,.85)';
-  });
-</script>
 <!-- ── FLOATING WA BUTTON ── -->
-<a href="https://wa.me/79279122297" target="_blank" id="waFloat" style="
+<a href="https://wa.me/79279122297" target="_blank" rel="noopener" id="waFloat" style="
   position:fixed; bottom:100px; right:28px; z-index:9998;
   width:60px; height:60px; border-radius:50%;
   background:linear-gradient(135deg,#25d366,#128c7e);
@@ -433,7 +365,7 @@
   📱
 </a>
 <style>
-  #waFloat:hover { transform:scale(1.12); box-shadow:0 12px 40px rgba(37,211,102,.75); }
-</style>
+  </style>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -2,56 +2,128 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cardprodaet.github.io/gvozdev-site/</loc>
-    <lastmod>2025-05-14</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cardprodaet.github.io/gvozdev-site/services.html</loc>
-    <lastmod>2025-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cardprodaet.github.io/gvozdev-site/cases.html</loc>
-    <lastmod>2025-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cardprodaet.github.io/gvozdev-site/about.html</loc>
-    <lastmod>2025-05-14</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-analytics-ozon.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-foto-tovar.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-indeks-tseny-wb.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-kartochka.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-konkurenty.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-logistika-wb.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-otzyvy.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-ozon-vs-wb.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-reklama-wb.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-self-redemption.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-seo-ozon.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-sezonnost.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-top-wb.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-tseny.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/blog-zapusk-s-nulya.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cardprodaet.github.io/gvozdev-site/blog.html</loc>
-    <lastmod>2025-05-14</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cardprodaet.github.io/gvozdev-site/cases.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cardprodaet.github.io/gvozdev-site/contacts.html</loc>
-    <lastmod>2025-05-14</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cardprodaet.github.io/gvozdev-site/blog-top-wb.html</loc>
-    <lastmod>2025-05-14</lastmod>
+    <loc>https://cardprodaet.github.io/gvozdev-site/services.html</loc>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cardprodaet.github.io/gvozdev-site/blog-reklama-wb.html</loc>
-    <lastmod>2025-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cardprodaet.github.io/gvozdev-site/blog-kartochka.html</loc>
-    <lastmod>2025-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 </urlset>
