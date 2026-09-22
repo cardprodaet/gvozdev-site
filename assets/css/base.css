@@ -582,3 +582,69 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* ── ПЛАВАЮЩИЕ КНОПКИ СВЯЗИ ─────────────────────────────────────────
+   Раньше эти стили дублировались инлайном на каждой странице. */
+.float-contact {
+  position: fixed;
+  right: 28px;
+  z-index: 9998;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 28px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.float-contact:hover {
+  transform: scale(1.08);
+}
+
+.float-contact--telegram {
+  bottom: 28px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  box-shadow: 0 8px 32px rgba(37,99,235,.55);
+  animation: tgPulse 2.5s ease-in-out infinite;
+}
+
+.float-contact--whatsapp {
+  bottom: 100px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  box-shadow: 0 8px 32px rgba(37,211,102,.5);
+}
+
+/* Отметка «онлайн» на кнопке Telegram */
+.float-badge {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  background: #22c55e;
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+@keyframes tgPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(37,99,235,.55); }
+  50%      { box-shadow: 0 8px 48px rgba(37,99,235,.85), 0 0 0 8px rgba(37,99,235,.12); }
+}
+
+/* Скрытие от глаз, но не от программ чтения с экрана */
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+/* Текущая страница в хлебных крошках */
+.breadcrumbs [aria-current="page"] {
+  color: var(--text);
+}

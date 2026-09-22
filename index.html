@@ -631,6 +631,48 @@
       outline-offset: 3px;
     }
 
+    /* ── БЛОК «КАК СТРОИТСЯ РАБОТА» ── */
+    .process-card {
+      text-align: center;
+      padding: 36px 28px;
+    }
+
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      margin: 0 auto 20px;
+    }
+
+    /* .case-card h3 задаёт свой размер, поэтому уточняем контекстом */
+    .process-card .step-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── ПОЛЯ КАЛЬКУЛЯТОРА ── */
+    .calc-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
     /* ── FAQ ── */
     .faq-item{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);}
     .faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:700;gap:12px;user-select:none;width:100%;background:none;border:none;color:inherit;font-family:inherit;text-align:left;}
@@ -691,7 +733,7 @@
     })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
     ym(109215727,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/109215727" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109215727" class="visually-hidden" alt=""/></div></noscript>
   <!-- OG / Social -->
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://cardprodaet.github.io/gvozdev-site/">
@@ -933,7 +975,7 @@
   <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:28px;padding:48px;max-width:800px;margin:0 auto;">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;">
       <div>
-        <label style="display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">Текущий оборот в месяц</label>
+        <label class="calc-label">Текущий оборот в месяц</label>
         <div style="position:relative;">
           <input id="calc-revenue" type="number" placeholder="300000" min="0"
             style="width:100%;padding:16px 50px 16px 18px;border-radius:14px;border:1.5px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);font-size:16px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s;"
@@ -942,7 +984,7 @@
         </div>
       </div>
       <div>
-        <label style="display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">Площадка</label>
+        <label class="calc-label">Площадка</label>
         <select id="calc-platform" onchange="calcROI()"
           style="width:100%;padding:16px 18px;border-radius:14px;border:1.5px solid var(--border);background:rgba(255,255,255,.05);color:var(--text);font-size:16px;font-family:'Manrope',sans-serif;outline:none;appearance:none;cursor:pointer;">
           <option value="wb">Wildberries</option>
@@ -952,7 +994,7 @@
       </div>
     </div>
     <div style="margin-bottom:28px;">
-      <label style="display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">Главная проблема</label>
+      <label class="calc-label">Главная проблема</label>
       <div class="problem-buttons" id="calc-problems">
         <button class="problem-btn" type="button" aria-pressed="false">Мало трафика</button>
         <button class="problem-btn" type="button" aria-pressed="false">Низкая конверсия</button>
@@ -1133,25 +1175,25 @@ function calcROI() {
     <p class="section-sub">Никаких «пакетов услуг» вслепую. Сначала считаем, потом решаем, за что имеет смысл платить.</p>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;">
-    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">1</div>
-      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Знакомство</h3>
-      <p style="font-size:13px;color:var(--muted);line-height:1.7;">Созвон на 30 минут — бесплатно. Смотрим ваши показатели и решаем, есть ли мне что вам дать.</p>
+    <div class="case-card process-card reveal">
+      <div class="step-circle">1</div>
+      <h3 class="step-title">Знакомство</h3>
+      <p class="step-text">Созвон на 30 минут — бесплатно. Смотрим ваши показатели и решаем, есть ли мне что вам дать.</p>
     </div>
-    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">2</div>
-      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Аудит</h3>
-      <p style="font-size:13px;color:var(--muted);line-height:1.7;">Считаю юнит-экономику, разбираю рекламу и позиции. На выходе — цифры, где теряются деньги.</p>
+    <div class="case-card process-card reveal">
+      <div class="step-circle">2</div>
+      <h3 class="step-title">Аудит</h3>
+      <p class="step-text">Считаю юнит-экономику, разбираю рекламу и позиции. На выходе — цифры, где теряются деньги.</p>
     </div>
-    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">3</div>
-      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Решение</h3>
-      <p style="font-size:13px;color:var(--muted);line-height:1.7;">План с приоритетами и целевыми показателями. Вы решаете, что делаете сами, а что беру я.</p>
+    <div class="case-card process-card reveal">
+      <div class="step-circle">3</div>
+      <h3 class="step-title">Решение</h3>
+      <p class="step-text">План с приоритетами и целевыми показателями. Вы решаете, что делаете сами, а что беру я.</p>
     </div>
-    <div class="case-card reveal" style="text-align:center;padding:36px 28px;">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:20px;font-weight:900;margin:0 auto 20px;">4</div>
-      <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">Внедрение</h3>
-      <p style="font-size:13px;color:var(--muted);line-height:1.7;">Встраиваю изменения в работу команды и довожу до показателей. Отчётность — по цифрам, не по ощущениям.</p>
+    <div class="case-card process-card reveal">
+      <div class="step-circle">4</div>
+      <h3 class="step-title">Внедрение</h3>
+      <p class="step-text">Встраиваю изменения в работу команды и довожу до показателей. Отчётность — по цифрам, не по ощущениям.</p>
     </div>
   </div>
 </section>
@@ -1398,46 +1440,18 @@ function calcROI() {
 </script>
 
 <!-- ── FLOATING WA BUTTON ── -->
-<a href="https://wa.me/79279122297" target="_blank" rel="noopener" id="waFloat" style="
-  position:fixed; bottom:100px; right:28px; z-index:9998;
-  width:60px; height:60px; border-radius:50%;
-  background:linear-gradient(135deg,#25d366,#128c7e);
-  box-shadow:0 8px 32px rgba(37,211,102,.5);
-  display:flex; align-items:center; justify-content:center;
-  text-decoration:none; font-size:28px;
-  transition:transform .2s, box-shadow .2s;
-" title="Написать в WhatsApp">
+<a href="https://wa.me/79279122297" target="_blank" rel="noopener" id="waFloat" class="float-contact float-contact--whatsapp" title="Написать в WhatsApp">
   📱
 </a>
 <style>
   </style>
 
 <!-- ── FLOATING TG BUTTON ── -->
-<a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" id="tgFloat" style="
-  position:fixed; bottom:28px; right:28px; z-index:9998;
-  width:60px; height:60px; border-radius:50%;
-  background:linear-gradient(135deg,#2563eb,#1d4ed8);
-  box-shadow:0 8px 32px rgba(37,99,235,.55);
-  display:flex; align-items:center; justify-content:center;
-  text-decoration:none; font-size:28px;
-  transition:transform .2s, box-shadow .2s;
-  animation:tgPulse 2.5s ease-in-out infinite;
-" title="Написать в Telegram">
+<a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" id="tgFloat" class="float-contact float-contact--telegram" title="Написать в Telegram">
   ✈️
-  <span style="
-    position:absolute; top:-6px; right:-4px;
-    background:#22c55e; color:white;
-    font-family:'Manrope',sans-serif; font-size:10px; font-weight:800;
-    padding:2px 6px; border-radius:999px;
-    white-space:nowrap; box-shadow:0 2px 8px rgba(0,0,0,.3);
-  ">онлайн</span>
+  <span class="float-badge">онлайн</span>
 </a>
-<style>
-    @keyframes tgPulse {
-    0%,100% { box-shadow:0 8px 32px rgba(37,99,235,.55); }
-    50%      { box-shadow:0 8px 48px rgba(37,99,235,.85), 0 0 0 8px rgba(37,99,235,.12); }
-  }
-  </style>
+
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
