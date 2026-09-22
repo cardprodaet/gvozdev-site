@@ -597,6 +597,7 @@ img {
   justify-content: center;
   text-decoration: none;
   font-size: 28px;
+  color: #fff;
   transition: transform .2s, box-shadow .2s;
 }
 
@@ -622,7 +623,7 @@ img {
   position: absolute;
   top: -6px;
   right: -4px;
-  background: #22c55e;
+  background: #15803d;
   color: #fff;
   font-family: 'Manrope', sans-serif;
   font-size: 10px;
