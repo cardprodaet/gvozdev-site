@@ -497,8 +497,12 @@ footer {
   width: 44px;
 }
 
+/* Заголовок шага: обычно h4, но если он идёт сразу после h2,
+   уровень поднят до h3 — вид должен остаться прежним. */
+.step-content h3,
 .step-content h4 {
   color: var(--text);
+  font-family: 'Manrope', sans-serif;   /* иначе h3 возьмёт шрифт из .article-body h3 */
   font-size: 16px;
   font-weight: 800;
   margin-bottom: 6px;
