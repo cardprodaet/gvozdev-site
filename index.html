@@ -46,7 +46,7 @@
             "name": "С какими магазинами вы работаете?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "С действующими магазинами с оборотом, как правило, от 1 млн ₽ в месяц и сформированной товарной матрицей. Запуск с нуля — не профиль."
+              "text": "В основном с действующими магазинами с оборотом от 1 млн ₽ в месяц и сформированной товарной матрицей. Запуск с нуля — редко и при понятной экономике товара."
             }
           },
           {
@@ -595,6 +595,42 @@
 
     .mobile-menu a:hover { color: var(--accent2); }
 
+    /* ── КНОПКИ «ЧТО БОЛИТ» В КАЛЬКУЛЯТОРЕ ── */
+    .problem-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .problem-btn {
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+
+    .problem-btn:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,.2);
+    }
+
+    .problem-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .problem-btn:focus-visible {
+      outline: 2px solid var(--accent2);
+      outline-offset: 3px;
+    }
+
     /* ── FAQ ── */
     .faq-item{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card);}
     .faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:700;gap:12px;user-select:none;width:100%;background:none;border:none;color:inherit;font-family:inherit;text-align:left;}
@@ -682,7 +718,7 @@
     <li><a href="blog.html">Блог</a></li>
     <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
   </ul>
-  <button class="burger" type="button" onclick="toggleMenu()"
+  <button class="burger" type="button"
           aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
@@ -701,20 +737,37 @@
 ">
   <span>Первый созвон — бесплатно: смотрим ваши цифры и решаем, есть ли смысл работать</span>
   <a href="contacts.html" style="background:white;color:#1d4ed8;padding:6px 16px;border-radius:8px;font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap;">Записаться →</a>
-  <span onclick="document.getElementById('promoBar').style.display='none'; document.querySelector('nav').style.top='0';" style="position:absolute;right:16px;cursor:pointer;opacity:.7;font-size:18px;line-height:1;">×</span>
+  <button type="button" class="promo-close" data-close-promo aria-label="Закрыть уведомление">×</button>
 </div>
 <style>
   @keyframes promoGrad { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
   nav { top: 42px !important; transition: top .3s; }
+
+  .promo-close {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: 0;
+    color: inherit;
+    font-size: 22px;
+    line-height: 1;
+    padding: 0 6px;
+    cursor: pointer;
+    opacity: .7;
+    transition: opacity .2s;
+  }
+
+  .promo-close:hover { opacity: 1; }
+  .promo-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   </style>
 <!-- ── MOBILE MENU ── -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="toggleMenu()">Главная</a>
-  <a href="services.html" onclick="toggleMenu()">Услуги</a>
-  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
-  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
-  <a href="blog.html" onclick="toggleMenu()">Блог</a>
-  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+  <a href="index.html">Главная</a>
+  <a href="services.html">Услуги</a>
+  <a href="about.html">Обо мне</a>
+  <a href="cases.html">Кейсы</a>
+  <a href="blog.html">Блог</a>
+  <a href="contacts.html">Контакты</a>
 </div>
 
 <!-- ── HERO ── -->
@@ -900,11 +953,11 @@
     </div>
     <div style="margin-bottom:28px;">
       <label style="display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px;">Главная проблема</label>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;" id="calc-problems">
-        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Мало трафика</button>
-        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Низкая конверсия</button>
-        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Реклама не окупается</button>
-        <button onclick="toggleProblem(this)" style="padding:10px 18px;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;">Не выхожу в топ</button>
+      <div class="problem-buttons" id="calc-problems">
+        <button class="problem-btn" type="button" aria-pressed="false">Мало трафика</button>
+        <button class="problem-btn" type="button" aria-pressed="false">Низкая конверсия</button>
+        <button class="problem-btn" type="button" aria-pressed="false">Реклама не окупается</button>
+        <button class="problem-btn" type="button" aria-pressed="false">Не выхожу в топ</button>
       </div>
     </div>
 
@@ -941,13 +994,16 @@
 </section>
 
 <script>
-function toggleProblem(btn) {
-  const active = btn.style.background === 'var(--accent)' || btn.style.background === 'rgb(37, 99, 235)';
-  btn.style.background = active ? 'var(--card)' : 'var(--accent)';
-  btn.style.color = active ? 'var(--muted)' : 'white';
-  btn.style.borderColor = active ? 'var(--border)' : 'var(--accent)';
+// Кнопки «что болит» в калькуляторе: внешний вид задаёт CSS-класс,
+// а не переписывание стилей из скрипта.
+document.querySelector('.problem-buttons')?.addEventListener('click', (event) => {
+  const button = event.target.closest('.problem-btn');
+  if (!button) return;
+
+  const isActive = button.classList.toggle('active');
+  button.setAttribute('aria-pressed', String(isActive));
   calcROI();
-}
+});
 
 function calcROI() {
   const rev = parseFloat(document.getElementById('calc-revenue').value) || 0;
@@ -1109,27 +1165,27 @@ function calcROI() {
   </div>
   <div style="max-width:760px;display:flex;flex-direction:column;gap:10px;">
     <div class="faq-item reveal">
-      <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">Сколько стоит работа?<span class="faq-arrow">⌄</span></button>
+      <button class="faq-q" type="button" aria-expanded="false">Сколько стоит работа?<span class="faq-arrow">⌄</span></button>
       <div class="faq-a">Стоимость считается индивидуально: она зависит от оборота, числа SKU, площадок и того, какую часть работы вы берёте на себя. Первый созвон на 30 минут — бесплатно, на нём смотрим ваши показатели и определяем объём. Дальше вы получаете расчёт и решаете.</div>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">Почему нельзя назвать цену сразу?<span class="faq-arrow">⌄</span></button>
+      <button class="faq-q" type="button" aria-expanded="false">Почему нельзя назвать цену сразу?<span class="faq-arrow">⌄</span></button>
       <div class="faq-a">Потому что магазин с 20 SKU на одной площадке и магазин с 500 SKU на трёх — это разный объём работы. Фиксированный прайс означал бы, что одни переплачивают за других. Я считаю по вашей ситуации, а не по усреднённому пакету.</div>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">С кем вы работаете?<span class="faq-arrow">⌄</span></button>
-      <div class="faq-a">С действующими магазинами, у которых уже есть оборот и понятная товарная матрица — как правило, от 1 млн ₽ в месяц. Там, где продажи идут, но прибыль не растёт, я вижу максимум точек приложения. Запуск с нуля — не мой профиль.</div>
+      <button class="faq-q" type="button" aria-expanded="false">С кем вы работаете?<span class="faq-arrow">⌄</span></button>
+      <div class="faq-a">В основном с действующими магазинами, у которых уже есть оборот и понятная товарная матрица — как правило, от 1 млн ₽ в месяц. Там, где продажи идут, но прибыль не растёт, расчёты дают максимальный эффект. Запуск с нуля беру редко и только когда за товаром стоит понятная экономика — такие кейсы в подборке тоже есть.</div>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">Что именно вы делаете с бизнесом?<span class="faq-arrow">⌄</span></button>
+      <button class="faq-q" type="button" aria-expanded="false">Что именно вы делаете с бизнесом?<span class="faq-arrow">⌄</span></button>
       <div class="faq-a">Начинаю с цифр: считаю юнит-экономику по товарам, разбираю рекламные кампании, смотрю позиции и конкурентов. Дальше — стратегия и внедрение: перестройка процессов, работа с командой, регламенты и отчётность. Отдельные направления — выход на зарубежные рынки и обучение ваших сотрудников.</div>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">Какие площадки закрываете?<span class="faq-arrow">⌄</span></button>
+      <button class="faq-q" type="button" aria-expanded="false">Какие площадки закрываете?<span class="faq-arrow">⌄</span></button>
       <div class="faq-a">Wildberries и Ozon — основные, можно вести одну или обе. Также помогаю с выходом на зарубежные площадки: выбираем рынок, считаем экономику с учётом логистики и запускаем продажи.</div>
     </div>
     <div class="faq-item reveal">
-      <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">Что с гарантиями?<span class="faq-arrow">⌄</span></button>
+      <button class="faq-q" type="button" aria-expanded="false">Что с гарантиями?<span class="faq-arrow">⌄</span></button>
       <div class="faq-a">Гарантировать конкретную цифру выручки нечестно — на неё влияют ваш товар, закупка и сам рынок. Что гарантирую: расчёты, по которым видно, где именно теряются деньги, и план с измеримыми показателями. Если на первом созвоне я не вижу потенциала роста — скажу прямо и не возьму проект.</div>
     </div>
   </div>
@@ -1254,7 +1310,7 @@ function calcROI() {
     text-align:center; position:relative;
     box-shadow:0 32px 80px rgba(0,0,0,.6);
   ">
-    <button onclick="closePopup()" style="
+    <button data-close-popup style="
       position:absolute; top:16px; right:20px;
       background:none; border:none; color:#8b9ab8;
       font-size:22px; cursor:pointer; line-height:1;
@@ -1268,7 +1324,7 @@ function calcROI() {
     <p style="color:#8b9ab8; font-size:15px; line-height:1.7; margin-bottom:28px;">
       Напишите в Telegram — разберу ваш магазин <strong style="color:#f0f4ff;">бесплатно</strong> и покажу точки роста. Отвечаю за 2 часа.
     </p>
-    <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" onclick="closePopup()" style="
+    <a href="https://t.me/gvozdev_vladislav" target="_blank" rel="noopener" data-close-popup style="
       display:block; background:#2563eb; color:white;
       padding:15px 28px; border-radius:14px;
       font-weight:800; font-size:15px; text-decoration:none;
@@ -1276,7 +1332,7 @@ function calcROI() {
       transition:background .2s;
       margin-bottom:12px;
     ">💬 Написать в Telegram</a>
-    <button onclick="closePopup()" style="
+    <button data-close-popup style="
       background:none; border:none; color:#8b9ab8;
       font-size:13px; cursor:pointer; font-family:'Manrope',sans-serif;
     ">Нет, спасибо</button>
@@ -1299,6 +1355,19 @@ function calcROI() {
     popup.style.display = 'none';
     sessionStorage.setItem('popupClosed', '1');
   }
+
+  // Закрытие попапа и баннера — по data-атрибутам вместо onclick в разметке
+  document.addEventListener('click', (event) => {
+    if (event.target.closest('[data-close-popup]')) {
+      closePopup();
+      return;
+    }
+
+    if (event.target.closest('[data-close-promo]')) {
+      document.getElementById('promoBar').style.display = 'none';
+      document.querySelector('nav').style.top = '0';
+    }
+  });
 
   // Попап-перехват показываем только там, где есть курсор: на телефоне у человека
   // нет «ухода мышью», и окно просто перекрывало бы чтение посреди страницы.

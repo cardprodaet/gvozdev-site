@@ -155,19 +155,19 @@
     <li><a href="blog.html" class="active">Блог</a></li>
     <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
   </ul>
-  <button class="burger" type="button" onclick="toggleMenu()"
+  <button class="burger" type="button"
           aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="toggleMenu()">Главная</a>
-  <a href="services.html" onclick="toggleMenu()">Услуги</a>
-  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
-  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
-  <a href="blog.html" onclick="toggleMenu()">Блог</a>
-  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+  <a href="index.html">Главная</a>
+  <a href="services.html">Услуги</a>
+  <a href="about.html">Обо мне</a>
+  <a href="cases.html">Кейсы</a>
+  <a href="blog.html">Блог</a>
+  <a href="contacts.html">Контакты</a>
 </div>
 
 <!-- HERO -->
@@ -201,12 +201,12 @@
 
 <!-- FILTERS -->
 <div class="filters-wrap">
-  <button class="filter-btn active" onclick="filterPosts('all',this)">Все статьи</button>
-  <button class="filter-btn" onclick="filterPosts('seo',this)">SEO</button>
-  <button class="filter-btn" onclick="filterPosts('ads',this)">Реклама</button>
-  <button class="filter-btn" onclick="filterPosts('analytics',this)">Аналитика</button>
-  <button class="filter-btn" onclick="filterPosts('cards',this)">Карточки</button>
-  <button class="filter-btn" onclick="filterPosts('strategy',this)">Стратегия</button>
+  <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">Все статьи</button>
+  <button class="filter-btn" type="button" data-filter="seo" aria-pressed="false">SEO</button>
+  <button class="filter-btn" type="button" data-filter="ads" aria-pressed="false">Реклама</button>
+  <button class="filter-btn" type="button" data-filter="analytics" aria-pressed="false">Аналитика</button>
+  <button class="filter-btn" type="button" data-filter="cards" aria-pressed="false">Карточки</button>
+  <button class="filter-btn" type="button" data-filter="strategy" aria-pressed="false">Стратегия</button>
 </div>
 
 <!-- BLOG GRID -->
@@ -496,11 +496,11 @@
       <h2>Получайте статьи первыми</h2>
       <p>Раз в неделю — полезная статья про WB и Ozon. Никакого спама, только практика.</p>
     </div>
-    <div class="subscribe-form">
-      <input class="subscribe-input" type="email" placeholder="Ваш email">
-      <button class="btn btn-primary" onclick="subscribe()" style="padding:14px;">Подписаться →</button>
+    <form class="subscribe-form" novalidate>
+      <input class="subscribe-input" type="email" name="email" placeholder="Ваш email" autocomplete="email" required>
+      <button class="btn btn-primary" type="submit" style="padding:14px;">Подписаться →</button>
       <p class="subscribe-hint">Нажимая кнопку, вы соглашаетесь на обработку данных.</p>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -508,11 +508,11 @@
 <div class="topics-section">
   <h2 class="reveal">Популярные темы</h2>
   <div class="topics-grid reveal">
-    <a href="#" class="topic-tag" onclick="filterPosts('seo', document.querySelector('[onclick*=seo]')); return false;">🔍 SEO и оптимизация</a>
-    <a href="#" class="topic-tag" onclick="filterPosts('ads', document.querySelector('[onclick*=ads]')); return false;">📣 Реклама</a>
-    <a href="#" class="topic-tag" onclick="filterPosts('analytics', document.querySelector('[onclick*=analytics]')); return false;">📊 Аналитика</a>
-    <a href="#" class="topic-tag" onclick="filterPosts('cards', document.querySelector('[onclick*=cards]')); return false;">🗂️ Карточки товаров</a>
-    <a href="#" class="topic-tag" onclick="filterPosts('strategy', document.querySelector('[onclick*=strategy]')); return false;">🎯 Стратегия</a>
+    <a href="#" class="topic-tag" data-filter="seo">🔍 SEO и оптимизация</a>
+    <a href="#" class="topic-tag" data-filter="ads">📣 Реклама</a>
+    <a href="#" class="topic-tag" data-filter="analytics">📊 Аналитика</a>
+    <a href="#" class="topic-tag" data-filter="cards">🗂️ Карточки товаров</a>
+    <a href="#" class="topic-tag" data-filter="strategy">🎯 Стратегия</a>
     <a href="#" class="topic-tag">🏆 Wildberries</a>
     <a href="#" class="topic-tag">🛒 Ozon</a>
     <a href="#" class="topic-tag">💰 Ценообразование</a>
@@ -547,20 +547,51 @@
 
 <script>
 
-  function filterPosts(tag, btn){
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    if(btn) btn.classList.add('active');
-    document.querySelectorAll('[data-tag]').forEach(card => {
-      card.style.display = (tag==='all' || card.dataset.tag===tag) ? '' : 'none';
+  /** Показывает статьи выбранной рубрики и подсвечивает активную кнопку. */
+  function filterPosts(tag) {
+    document.querySelectorAll('.filter-btn').forEach((button) => {
+      const isActive = button.dataset.filter === tag;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+
+    document.querySelectorAll('[data-tag]').forEach((card) => {
+      card.hidden = !(tag === 'all' || card.dataset.tag === tag);
     });
   }
 
-  function subscribe(){
+  // Кнопки рубрик и ссылки-теги внизу страницы работают через один обработчик.
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-filter]');
+    if (!trigger) return;
+
+    event.preventDefault();
+    filterPosts(trigger.dataset.filter);
+
+    // по клику из списка тегов возвращаем к ленте, иначе фильтр сработает незаметно
+    if (trigger.classList.contains('topic-tag')) {
+      document.querySelector('.filters-wrap')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  // Подписка на рассылку
+  document.querySelector('.subscribe-form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
     const input = document.querySelector('.subscribe-input');
-    if(!input.value.includes('@')){ alert('Введите корректный email'); return; }
+    const email = input.value.trim();
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      input.setAttribute('aria-invalid', 'true');
+      input.style.borderColor = '#ef4444';
+      input.focus();
+      return;
+    }
+
+    input.removeAttribute('aria-invalid');
+    input.style.borderColor = '';
     input.value = '';
     alert('✅ Вы подписались! Первая статья уже в пути.');
-  }
+  });
 </script>
 
 <!-- ── FLOATING WA BUTTON ── -->

@@ -512,19 +512,19 @@
     <li><a href="blog.html">Блог</a></li>
     <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
   </ul>
-  <button class="burger" type="button" onclick="toggleMenu()"
+  <button class="burger" type="button"
           aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="toggleMenu()">Главная</a>
-  <a href="services.html" onclick="toggleMenu()">Услуги</a>
-  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
-  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
-  <a href="blog.html" onclick="toggleMenu()">Блог</a>
-  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+  <a href="index.html">Главная</a>
+  <a href="services.html">Услуги</a>
+  <a href="about.html">Обо мне</a>
+  <a href="cases.html">Кейсы</a>
+  <a href="blog.html">Блог</a>
+  <a href="contacts.html">Контакты</a>
 </div>
 
 <!-- ── PAGE HERO ── -->
@@ -538,13 +538,13 @@
 
 <!-- ── TABS ── -->
 <div class="tabs-wrap">
-  <button class="tab active" onclick="scrollTo('audit')">📊 Финансовый аудит</button>
-  <button class="tab" onclick="scrollTo('marketing')">🎯 Маркетинговый аудит</button>
-  <button class="tab" onclick="scrollTo('ads')">📣 Реклама</button>
-  <button class="tab" onclick="scrollTo('strategy')">🧭 Стратегия</button>
-  <button class="tab" onclick="scrollTo('process')">⚙️ Процессы</button>
-  <button class="tab" onclick="scrollTo('global')">🌍 Зарубежные рынки</button>
-  <button class="tab" onclick="scrollTo('education')">🎓 Обучение</button>
+  <button class="tab active" type="button" data-scroll="audit">📊 Финансовый аудит</button>
+  <button class="tab" type="button" data-scroll="marketing">🎯 Маркетинговый аудит</button>
+  <button class="tab" type="button" data-scroll="ads">📣 Реклама</button>
+  <button class="tab" type="button" data-scroll="strategy">🧭 Стратегия</button>
+  <button class="tab" type="button" data-scroll="process">⚙️ Процессы</button>
+  <button class="tab" type="button" data-scroll="global">🌍 Зарубежные рынки</button>
+  <button class="tab" type="button" data-scroll="education">🎓 Обучение</button>
 </div>
 
 <!-- ── SERVICES ── -->
@@ -805,7 +805,7 @@
   <h2>Частые вопросы</h2>
 
   <div class="faq-item reveal">
-    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+    <button class="faq-q" type="button" aria-expanded="false">
       С какого направления начинать?
       <span class="faq-arrow">⌄</span>
     </button>
@@ -813,7 +813,7 @@
   </div>
 
   <div class="faq-item reveal">
-    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+    <button class="faq-q" type="button" aria-expanded="false">
       Обязательно брать всё сразу?
       <span class="faq-arrow">⌄</span>
     </button>
@@ -821,7 +821,7 @@
   </div>
 
   <div class="faq-item reveal">
-    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+    <button class="faq-q" type="button" aria-expanded="false">
       Работаете с любыми нишами?
       <span class="faq-arrow">⌄</span>
     </button>
@@ -829,7 +829,7 @@
   </div>
 
   <div class="faq-item reveal">
-    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+    <button class="faq-q" type="button" aria-expanded="false">
       Сколько времени это займёт у меня?
       <span class="faq-arrow">⌄</span>
     </button>
@@ -837,7 +837,7 @@
   </div>
 
   <div class="faq-item reveal">
-    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+    <button class="faq-q" type="button" aria-expanded="false">
       Как быстро будет результат?
       <span class="faq-arrow">⌄</span>
     </button>
@@ -845,7 +845,7 @@
   </div>
 
   <div class="faq-item reveal">
-    <button class="faq-q" type="button" onclick="toggleFaq(this)" aria-expanded="false">
+    <button class="faq-q" type="button" aria-expanded="false">
       Есть ли гарантия результата?
       <span class="faq-arrow">⌄</span>
     </button>
@@ -881,11 +881,23 @@
 
 <script>
 
-  function scrollTo(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    event.target.classList.add('active');
-  }
+  // Подсветка активной вкладки. Саму прокрутку к блоку делает main.js
+  // по атрибуту data-scroll — здесь только отмечаем выбранный раздел.
+  (function initTabs() {
+    const panel = document.querySelector('.tabs-wrap');
+    if (!panel) return;
+
+    panel.addEventListener('click', (event) => {
+      const tab = event.target.closest('.tab');
+      if (!tab) return;
+
+      panel.querySelectorAll('.tab').forEach((t) => {
+        const isActive = t === tab;
+        t.classList.toggle('active', isActive);
+        t.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    });
+  })();
 </script>
 
 <!-- ── FLOATING WA BUTTON ── -->

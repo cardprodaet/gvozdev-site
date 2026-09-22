@@ -677,19 +677,19 @@
     <li><a href="blog.html">Блог</a></li>
     <li><a href="contacts.html" class="nav-cta">Связаться</a></li>
   </ul>
-  <button class="burger" type="button" onclick="toggleMenu()"
+  <button class="burger" type="button"
           aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" onclick="toggleMenu()">Главная</a>
-  <a href="services.html" onclick="toggleMenu()">Услуги</a>
-  <a href="about.html" onclick="toggleMenu()">Обо мне</a>
-  <a href="cases.html" onclick="toggleMenu()">Кейсы</a>
-  <a href="blog.html" onclick="toggleMenu()">Блог</a>
-  <a href="contacts.html" onclick="toggleMenu()">Контакты</a>
+  <a href="index.html">Главная</a>
+  <a href="services.html">Услуги</a>
+  <a href="about.html">Обо мне</a>
+  <a href="cases.html">Кейсы</a>
+  <a href="blog.html">Блог</a>
+  <a href="contacts.html">Контакты</a>
 </div>
 
 <!-- ── PAGE HERO ── -->
@@ -723,12 +723,12 @@
 
 <!-- ── FILTERS ── -->
 <div class="filters-wrap">
-  <button class="filter-btn active" onclick="filter('all', this)">Все</button>
-  <button class="filter-btn" onclick="filter('wb', this)">Wildberries</button>
-  <button class="filter-btn" onclick="filter('ozon', this)">Ozon</button>
-  <button class="filter-btn" onclick="filter('audit', this)">Аудит</button>
-  <button class="filter-btn" onclick="filter('ads', this)">Реклама</button>
-  <button class="filter-btn" onclick="filter('support', this)">Сопровождение</button>
+  <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">Все</button>
+  <button class="filter-btn" type="button" data-filter="wb" aria-pressed="false">Wildberries</button>
+  <button class="filter-btn" type="button" data-filter="ozon" aria-pressed="false">Ozon</button>
+  <button class="filter-btn" type="button" data-filter="audit" aria-pressed="false">Аудит</button>
+  <button class="filter-btn" type="button" data-filter="ads" aria-pressed="false">Реклама</button>
+  <button class="filter-btn" type="button" data-filter="support" aria-pressed="false">Сопровождение</button>
 </div>
 
 <!-- ── CASES ── -->
@@ -1014,19 +1014,29 @@
 
 <script>
 
-  // Filter
-  function filter(tag, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+  // Фильтр кейсов по площадке и типу работы.
+  // Обработчик один на всю панель — кнопка сообщает о себе через data-filter.
+  (function initCaseFilter() {
+    const panel = document.querySelector('.filters-wrap');
+    if (!panel) return;
 
-    document.querySelectorAll('[data-tags]').forEach(card => {
-      if (tag === 'all' || card.dataset.tags.includes(tag)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
+    panel.addEventListener('click', (event) => {
+      const button = event.target.closest('.filter-btn');
+      if (!button) return;
+
+      const tag = button.dataset.filter;
+      panel.querySelectorAll('.filter-btn').forEach((b) => {
+        const isActive = b === button;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-pressed', String(isActive));
+      });
+
+      document.querySelectorAll('[data-tags]').forEach((card) => {
+        const matches = tag === 'all' || card.dataset.tags.includes(tag);
+        card.hidden = !matches;
+      });
     });
-  }
+  })();
 </script>
 
 <!-- ── FLOATING WA BUTTON ── -->

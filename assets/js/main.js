@@ -6,14 +6,15 @@
 
 /**
  * Открывает и закрывает мобильное меню, поддерживая состояние доступности
- * на кнопке-бургере. Вызывается из разметки по onclick.
+ * на кнопке-бургере.
+ * @param {boolean} [force] — true открыть, false закрыть; без него переключает.
  */
-function toggleMenu() {
+function toggleMenu(force) {
   const menu = document.getElementById('mobileMenu');
   const burger = document.querySelector('.burger');
   if (!menu || !burger) return;
 
-  const isOpen = menu.classList.toggle('open');
+  const isOpen = menu.classList.toggle('open', force);
   burger.setAttribute('aria-expanded', String(isOpen));
   burger.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
 }
@@ -38,6 +39,50 @@ function toggleFaq(el) {
     el.setAttribute('aria-expanded', 'true');
   }
 }
+
+/**
+ * Один обработчик на весь документ вместо сотен onclick в разметке:
+ * клик всплывает до document, здесь мы разбираем, по чему нажали.
+ */
+document.addEventListener('click', (event) => {
+  const target = event.target;
+
+  // кнопка-бургер
+  if (target.closest('.burger')) {
+    toggleMenu();
+    return;
+  }
+
+  // ссылка внутри мобильного меню — уходим на страницу и закрываем меню
+  if (target.closest('.mobile-menu a')) {
+    toggleMenu(false);
+    return;
+  }
+
+  // вопрос FAQ
+  const faqQuestion = target.closest('.faq-q');
+  if (faqQuestion) {
+    toggleFaq(faqQuestion);
+    return;
+  }
+
+  // плавный переход к блоку: <button data-scroll="audit">
+  const scrollTrigger = target.closest('[data-scroll]');
+  if (scrollTrigger) {
+    document.getElementById(scrollTrigger.dataset.scroll)
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+});
+
+/** Закрываем мобильное меню по Escape — привычное поведение. */
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  if (document.getElementById('mobileMenu')?.classList.contains('open')) {
+    toggleMenu(false);
+    document.querySelector('.burger')?.focus();
+  }
+});
 
 /**
  * Уплотняет шапку при прокрутке. Класс переключается в requestAnimationFrame,
