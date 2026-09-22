@@ -500,14 +500,17 @@
 <div class="subscribe-section">
   <div class="subscribe-wrap reveal">
     <div class="subscribe-text">
-      <h2>Получайте статьи первыми</h2>
-      <p>Раз в неделю — полезная статья про WB и Ozon. Никакого спама, только практика.</p>
+      <h2>Разборы выходят в канале</h2>
+      <p>Раз в неделю — расчёт по реальному магазину: где утекает маржа и что с этим
+         делать. Без рекламы курсов и «секретов успеха».</p>
     </div>
-    <form class="subscribe-form" novalidate>
-      <input class="subscribe-input" type="email" name="email" placeholder="Ваш email" autocomplete="email" required>
-      <button class="btn btn-primary" type="submit" style="padding:14px;">Подписаться →</button>
-      <p class="subscribe-hint">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" style="color:var(--accent2);">политикой обработки данных</a>.</p>
-    </form>
+    <div class="subscribe-form">
+      <a href="https://t.me/card_prodaet" target="_blank" rel="noopener"
+         class="btn btn-primary" style="padding:14px;justify-content:center;">
+        Читать канал в Telegram →
+      </a>
+      <p class="subscribe-hint">Открыто, подписка в один клик. Отписаться можно там же.</p>
+    </div>
   </div>
 </div>
 
@@ -588,24 +591,6 @@
     }
   });
 
-  // Подписка на рассылку
-  document.querySelector('.subscribe-form')?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const input = document.querySelector('.subscribe-input');
-    const email = input.value.trim();
-
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      input.setAttribute('aria-invalid', 'true');
-      input.style.borderColor = '#ef4444';
-      input.focus();
-      return;
-    }
-
-    input.removeAttribute('aria-invalid');
-    input.style.borderColor = '';
-    input.value = '';
-    alert('✅ Вы подписались! Первая статья уже в пути.');
-  });
 </script>
 
 <!-- ── FLOATING WA BUTTON ── -->
