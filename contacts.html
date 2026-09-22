@@ -278,7 +278,10 @@
 
     <div class="profile-card reveal">
       <div class="profile-photo">
-        <img src="expert.jpg" alt="Владислав Гвоздев" onerror="this.parentElement.style.display='none'; document.getElementById('profilePlaceholder').style.display='flex';" width="589" height="1280" decoding="async" loading="lazy">
+        <picture>
+      <source srcset="expert.webp" type="image/webp">
+      <img src="expert.jpg" alt="Владислав Гвоздев" onerror="this.parentElement.style.display='none'; document.getElementById('profilePlaceholder').style.display='flex';" width="589" height="1280" decoding="async" loading="lazy">
+    </picture>
       </div>
       <div class="profile-photo-placeholder" id="profilePlaceholder" style="display:none;">👤</div>
       <div class="profile-name">Владислав Гвоздев</div>

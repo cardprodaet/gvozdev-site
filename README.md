@@ -21,7 +21,8 @@ assets/css/base.css   общие стили: переменные, сброс, �
 assets/js/main.js     общее поведение: мобильное меню, FAQ, липкая шапка,
                       появление блоков при прокрутке
 
-favicon.svg, expert.jpg, robots.txt, sitemap.xml
+favicon.svg, robots.txt, sitemap.xml
+expert.jpg + expert.webp   фото: WebP основной, JPEG запасной
 ```
 
 ## Как устроены стили
