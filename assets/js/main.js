@@ -110,6 +110,22 @@ document.addEventListener('keydown', (event) => {
 })();
 
 /**
+ * Если фотография не загрузилась, прячем её и показываем заглушку рядом.
+ * Событие error у изображений не всплывает, поэтому слушаем на стадии
+ * перехвата. Изображение может быть обёрнуто в <picture> — прячем обёртку.
+ */
+document.addEventListener('error', (event) => {
+  const img = event.target;
+  if (img.tagName !== 'IMG') return;
+
+  const box = img.closest('picture') || img;
+  box.style.display = 'none';
+
+  const placeholder = box.parentElement?.querySelector('[data-img-placeholder]');
+  if (placeholder) placeholder.style.display = 'flex';
+}, true);
+
+/**
  * Показывает элементы с классом .reveal по мере появления в зоне видимости
  * и заодно заполняет вложенные полосы-индикаторы (атрибут data-w — ширина
  * в процентах): графики на странице кейсов, шкалы навыков на странице «Обо мне».
