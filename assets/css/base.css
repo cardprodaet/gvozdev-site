@@ -678,3 +678,23 @@ img {
     padding-block: 10px;
   }
 }
+
+/* Ссылка для навигации с клавиатуры: спрятана, пока не получит фокус.
+   Позволяет перескочить меню и попасть сразу в содержимое страницы. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 0 0 12px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}

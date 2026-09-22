@@ -110,6 +110,34 @@ document.addEventListener('keydown', (event) => {
 })();
 
 /**
+ * Отмечает в Метрике обращения через мессенджеры. Без этого видна только
+ * отправка формы, а половина людей пишет напрямую — и эти конверсии
+ * не попадают в статистику, из-за чего рабочий канал выглядит пустым.
+ */
+(function trackContactClicks() {
+  const METRIKA_ID = 109215727;
+
+  const goalByHref = (href) => {
+    if (href.includes('wa.me')) return 'whatsapp_click';
+    if (href.includes('t.me/card_prodaet')) return 'channel_click';
+    if (href.includes('t.me/')) return 'telegram_click';
+    return null;
+  };
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const goal = goalByHref(link.href);
+    if (!goal) return;
+
+    if (typeof window.ym === 'function') {
+      window.ym(METRIKA_ID, 'reachGoal', goal);
+    }
+  });
+})();
+
+/**
  * Если фотография не загрузилась, прячем её и показываем заглушку рядом.
  * Событие error у изображений не всплывает, поэтому слушаем на стадии
  * перехвата. Изображение может быть обёрнуто в <picture> — прячем обёртку.
