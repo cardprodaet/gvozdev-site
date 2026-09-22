@@ -648,3 +648,28 @@ img {
 .breadcrumbs [aria-current="page"] {
   color: var(--text);
 }
+
+/* ── ЗОНЫ НАЖАТИЯ НА СЕНСОРНЫХ ЭКРАНАХ ──────────────────────────────
+   Рекомендуемый минимум — 44×44 px. Увеличиваем область нажатия,
+   не меняя вид самих элементов. */
+@media (pointer: coarse) {
+  .burger {
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .promo-close {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    right: 6px;
+  }
+
+  .mobile-menu a {
+    padding-block: 10px;
+  }
+}
